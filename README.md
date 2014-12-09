@@ -1,4 +1,4 @@
 Telerik-Academy-2013-2014
 =========================
 
-My homeworks
+In this repository are all homeworks I've worked on during my education.
