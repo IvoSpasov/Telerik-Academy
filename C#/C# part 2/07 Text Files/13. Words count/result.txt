@@ -1,0 +1,4 @@
+life 7
+get 5
+never 2
+always 1

@@ -1,0 +1,4 @@
+The maximal platform is:
+  3   7 
+  4   3 
+The best sum is: 17
