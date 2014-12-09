@@ -1,0 +1,52 @@
+﻿:root {
+    background-color: #A9A9A9;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+li a {
+    font-size: 1.5em;
+}
+
+h1, li a {
+    color: white;
+}
+
+h1, li {
+    list-style: none;
+    text-align: center;
+}
+
+article header h1 {
+    text-align: left;
+    font-size: 2em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li:last-of-type a {
+    text-decoration: underline;
+}
+
+.current {
+    background-color: #D3D3D3;
+}
+
+p {
+    font-size: 1.3em;
+}
+
+footer {
+    text-align: center;
+    font-size: 1.3em;
+}
+
+article footer p {
+    font-size: 0.7em;
+    text-align: left;
+}

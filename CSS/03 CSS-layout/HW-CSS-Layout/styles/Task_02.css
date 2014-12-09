@@ -1,0 +1,67 @@
+﻿body {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    font-family: Arial;
+}
+
+section {
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    width: 404px;
+    height: 538px;
+}
+
+    section > div:first-of-type {
+        text-align: left;
+        padding: 10px;
+    }
+
+    section > div:not(:first-child) {
+        border: solid 1px #A6A6A6;
+        margin: 35px 10px;
+        background-color: #fff;
+        position: relative;
+    }
+
+img[alt=picture] {
+    float: left;
+    margin: 15px;
+    border: solid 1px #A6A6A6;
+}
+
+div > div {
+    font-size: 0.75em;
+    margin: 15px;
+    margin-bottom: 55px;
+    width: 350px;
+}
+
+img[alt=button1] {
+    position: absolute;
+    right: 78px;
+    bottom: 15px;
+}
+
+img[alt=button2] {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
+
+a {
+    color: #fff;
+    font-size: 0.8em;
+    position: absolute;
+    text-decoration: none;
+}
+
+    a.listen {
+        right: 95px;
+        bottom: 19px;
+    }
+
+    a.add {
+        right: 30px;
+        bottom: 19px;
+    }

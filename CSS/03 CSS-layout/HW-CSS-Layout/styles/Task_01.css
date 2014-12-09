@@ -1,0 +1,32 @@
+﻿ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul ul {
+    display: none;
+}
+
+ul > li:hover > a {
+    text-decoration: underline;
+}
+
+ul li:hover > ul {
+    display: block;
+}
+
+body ul li a {
+    color: #000;
+}
+
+body ul li ul a {
+    color: #808080;
+}
+
+li {
+    position: relative;
+    left: -30px;
+}

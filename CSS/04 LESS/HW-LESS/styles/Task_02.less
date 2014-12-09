@@ -1,0 +1,40 @@
+﻿.reset {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    .reset;
+
+    ul {
+        .reset;
+        list-style: none;
+        overflow: auto;
+        height: 130px;
+
+        li {
+            display: inline-block;            
+
+            img {
+                &:first-of-type {
+                    height: 130px;
+                }
+
+                &:last-of-type {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                img {
+                    &:last-of-type {
+                        display: block;
+                        position: absolute;
+                        top: 140px;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

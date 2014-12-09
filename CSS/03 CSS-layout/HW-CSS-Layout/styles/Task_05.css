@@ -1,0 +1,90 @@
+﻿body {
+    width: 680px;
+    border: 2px solid #656565;
+    border-radius: 10px;
+    margin: 0;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+nav ul {
+    text-align: center;
+    padding: 0;
+    margin: 10px;
+}
+
+a {
+    font-size: 1.3em;
+    font-family: sans-serif;
+    color: #00AAEF;
+    font-weight: bold;
+}
+
+hr {
+    border: 1px solid #393939;
+    width: 93%;
+}
+
+.table {
+    display: table;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-cell {
+    display: table-cell;
+}
+
+img {
+    width: 110px;
+    float: left;
+    padding-right: 5px;
+}
+
+.first {
+    padding: 10px;
+    padding-top: 2px;
+}
+
+.second {
+    border: 2px solid #363636;
+    padding: 5px;
+    padding-bottom: 15px;
+}
+
+#price {
+    font-size: 1.4em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+form label, form input {
+    padding: 10px;
+}
+
+legend {
+    text-align: center;
+}
+
+fieldset {
+    padding: 3px;
+    width: 200px;
+    border: 2px solid #363636;
+}
+
+    fieldset div:first-of-type {
+        padding-top: 20px;
+    }
+
+    fieldset div:not(:first-of-type) {
+        padding-top: 10px;
+    }
+
+    fieldset div span {
+        padding-left: 22px;
+    }

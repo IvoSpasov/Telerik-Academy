@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link href="styles/04_Calculator.css" rel="stylesheet" />
+</head>
+<body>
+    <form action="#">
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="9"><textarea></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="9" class="border">
+                        <table id="binary">
+                            <tr>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                            </tr>
+                            <tr>
+                                <td class="grey">63</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="grey">47</td>
+                                <td></td>
+                                <td></td>
+                                <td class="grey right">32</td>
+                            </tr>
+                            <tr>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                                <td>0000</td>
+                            </tr>
+                            <tr>
+                                <td class="grey">31</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="grey">15</td>
+                                <td></td>
+                                <td></td>
+                                <td class="grey right">0</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3" class="border radio">
+                        <input type="radio" name="numeral-system" id="hex" value="hex" />
+                        <label for="hex">Hex</label><br />
+                        <input type="radio" name="numeral-system" id="dec" value="dec" checked />
+                        <label for="dec">Dec</label><br />
+                        <input type="radio" name="numeral-system" id="oct" value="oct" />
+                        <label for="oct">Oct</label><br />
+                        <input type="radio" name="numeral-system" id="bin" value="bin" />
+                        <label for="bin">Bin</label><br />
+                    </td>
+                    <td><input type="button" value=" " disabled /></td>
+                    <td><input type="button" class="func special"  value="Mod" /></td>
+                    <td><input type="button" class="func hex" value="A" /></td>
+                    <td><input type="button" class="special" value="MC" disabled /></td>
+                    <td><input type="button" class="special" value="MR" disabled /></td>
+                    <td><input type="button" class="special" value="MS" disabled /></td>
+                    <td><input type="button" class="special" value="M+" disabled /></td>
+                    <td><input type="button" class="special" value="M-" disabled /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="func special" value="(" /></td>
+                    <td><input type="button" class="func special" value=")" /></td>
+                    <td><input type="button" class="func hex" value="B" /></td>
+                    <td><input type="button" class="func high-voltage-haha" value="&#8623;" /></td>
+                    <td><input type="button" class="func special" value="CE" /></td>
+                    <td><input type="button" class="func special" value="C" /></td>
+                    <td><input type="button" class="func special" value="&plusmn;" /></td>
+                    <td><input type="button" class="special" value="&radic;" disabled /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="func special" value="RoL" /></td>
+                    <td><input type="button" class="func special" value="RoR" /></td>
+                    <td><input type="button" class="func hex" value="C" /></td>
+                    <td><input type="button" class="number" value="7" /></td>
+                    <td><input type="button" class="number" value="8" /></td>
+                    <td><input type="button" class="number" value="9" /></td>
+                    <td><input type="button" class="func operations" value="/" /></td>
+                    <td><input type="button" class="special" value="%" disabled /></td>
+                </tr>
+                <tr>
+                    <td rowspan="3" class="border radio">
+                        <input type="radio" name="word" id="qword" value="qword" checked />
+                        <label for="qword">Qword</label><br />
+                        <input type="radio" name="word" id="dword" value="dword" />
+                        <label for="dword">Dword</label><br />
+                        <input type="radio" name="word" id="word" value="word" />
+                        <label for="word">Word</label><br />
+                        <input type="radio" name="word" id="byte" value="byte" />
+                        <label for="byte">Byte</label><br />
+                    </td>
+                    <td><input type="button" class="func special" value="Or" /></td>
+                    <td><input type="button" class="func special" value="Xor" /></td>
+                    <td><input type="button" class="func hex" value="D" /></td>
+                    <td><input type="button" class="number" value="4" /></td>
+                    <td><input type="button" class="number" value="5" /></td>
+                    <td><input type="button" class="number" value="6" /></td>
+                    <td><input type="button" class="func multiply" value="*" /></td>
+                    <td><input type="button" class="special" value="1/x" disabled /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="func special" value="Lsh" /></td>
+                    <td><input type="button" class="func special" value="Rsh" /></td>
+                    <td><input type="button" class="func hex" value="E" /></td>
+                    <td><input type="button" class="number" value="1" /></td>
+                    <td><input type="button" class="number" value="2" /></td>
+                    <td><input type="button" class="number" value="3" /></td>
+                    <td><input type="button" class="func operations" value="-" /></td>
+                    <td rowspan="2"><input type="button" class="func equal" value="=" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="func special" value="Not" /></td>
+                    <td><input type="button" class="func special" value="And" /></td>
+                    <td><input type="button" class="func hex" value="F" /></td>
+                    <td colspan="2"><input type="button" class="number zero" value="0" /></td>
+                    <td><input type="button" class="special" value="." disabled /></td>
+                    <td><input type="button" class="func operations" value="+" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
