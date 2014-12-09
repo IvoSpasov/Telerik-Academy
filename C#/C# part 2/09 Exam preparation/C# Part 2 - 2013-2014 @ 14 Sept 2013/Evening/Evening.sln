@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Zerg!!!", "01. Zerg!!!\01. Zerg!!!.csproj", "{624CE6BB-5BE3-47B0-BAC4-5709FBFD9B51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Moving Letters", "02. Moving Letters\02. Moving Letters.csproj", "{B31F1D9E-506E-4B15-A071-6A0192F0CB7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Encode and Encrypt", "04. Encode and Encrypt\04. Encode and Encrypt.csproj", "{1E67CC81-A812-44EE-BD47-855EAE508B49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. They are Green", "05. They are Green\05. They are Green.csproj", "{38F8A0FE-9857-4577-B91F-1902855EE938}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{624CE6BB-5BE3-47B0-BAC4-5709FBFD9B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624CE6BB-5BE3-47B0-BAC4-5709FBFD9B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624CE6BB-5BE3-47B0-BAC4-5709FBFD9B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624CE6BB-5BE3-47B0-BAC4-5709FBFD9B51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B31F1D9E-506E-4B15-A071-6A0192F0CB7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B31F1D9E-506E-4B15-A071-6A0192F0CB7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B31F1D9E-506E-4B15-A071-6A0192F0CB7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B31F1D9E-506E-4B15-A071-6A0192F0CB7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E67CC81-A812-44EE-BD47-855EAE508B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E67CC81-A812-44EE-BD47-855EAE508B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E67CC81-A812-44EE-BD47-855EAE508B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E67CC81-A812-44EE-BD47-855EAE508B49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38F8A0FE-9857-4577-B91F-1902855EE938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38F8A0FE-9857-4577-B91F-1902855EE938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38F8A0FE-9857-4577-B91F-1902855EE938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38F8A0FE-9857-4577-B91F-1902855EE938}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
