@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Consuming remote data with JavaScript: HTTP Requests with jQuery AJAX</title>
+    <script src="scripts/libs/jquery-2.0.2.js"></script>
+    <link href="styles/style1.css" rel="stylesheet" />
+</head>
+<body>
+	<label for="tb-name">Name: </label>
+	<input id="tb-name" name="tb-name" type="text" />
+	<br/>
+	<label for="tb-grade">Grade: </label>
+	<input id="tb-grade" name="tb-grade" type="number" min='1' max='12'/>
+	<br/>
+	<button id='btn-add-student'>Add new</button>
+    <br />
+    <label for="tb-id">Id: </label>
+    <input id="tb-id" type="text" />
+    <button id="btn-remove-student">Remove</button>
+	<div class="messages">
+		<strong class="message success">
+		</strong>
+		<strong class="message error">
+		</strong>
+	</div>
+	<div id="students-container"></div>
+    <script src="scripts/scripts.js"></script>
+	<p class='info'>This web page should be run on a server (localhost or in WWW).</p>
+</body>
+</html>
