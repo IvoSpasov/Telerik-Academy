@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="_02_International_Company.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Toyota Official Site</title>
+    <asp:ContentPlaceHolder ID="cphHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="FormMain" runat="server">
+        <header>
+            <div>
+                <h1>Toyota Official Site</h1>
+                <p>New Cars, Trucks, SUVs & Hybrids</p>
+            </div>
+        </header>
+        <div>
+            <asp:ContentPlaceHolder ID="cphMain" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+            <p>©2014 Toyota Motor Sales</p>
+        </footer>
+    </form>
+</body>
+</html>

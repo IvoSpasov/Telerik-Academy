@@ -1,0 +1,18 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" 
+    CodeBehind="UK.master.cs" Inherits="_02_International_Company.UK.UK" %>
+
+<asp:Content ID="ContentHead" ContentPlaceHolderID="cphHead" runat="server">
+</asp:Content>
+<asp:Content ID="ContentMain" ContentPlaceHolderID="cphMain" runat="server">
+    <header>
+        <h2>Welcome to Toyota UK</h2>
+    </header>
+    <nav>
+        <ul>
+            <li><asp:HyperLink runat="server" NavigateUrl="~/UK/UKHome.aspx">Home</asp:HyperLink></li>
+            <li><asp:HyperLink runat="server" NavigateUrl="~/UK/UKContacts.aspx">Contacts</asp:HyperLink></li>
+            <li><asp:HyperLink runat="server" NavigateUrl="~/UK/UKAbout.aspx">About</asp:HyperLink></li>
+        </ul>
+    </nav>
+    <asp:ContentPlaceHolder ID="cphUKMain" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
