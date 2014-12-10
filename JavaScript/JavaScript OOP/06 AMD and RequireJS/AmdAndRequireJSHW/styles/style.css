@@ -1,0 +1,13 @@
+#combo-box {
+    width:150px;
+    background: #a4cbf5;
+}
+.person-item {
+    text-align:center;
+    background: #b0ebb2;
+    border:1px solid black;
+    padding:5px;
+}
+.selected-person {
+    text-align:center;
+}
