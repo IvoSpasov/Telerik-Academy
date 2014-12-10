@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Time table</title>
+    <style>
+        #js-lectures,
+        #js-lectures th,
+        #js-lectures td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #js-lectures thead {
+            color: white;
+            background-color: gray;
+        }
+
+        #js-lectures td:nth-of-type(2){
+            text-align: left;
+        }
+
+        #js-lectures tr:nth-of-type(2n){
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/x-handlebars-template" id="lectures-list-template">
+        <table id="js-lectures">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Title</th>
+                    <th>Date #1</th>
+                    <th>Date #2</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#lectures}}
+                <tr>
+                    <td>{{number}}</td>
+                    <td>{{title}}</td>
+                    <td>{{firstDate}}</td>
+                    <td>{{secondDate}}</td>
+                </tr>
+                {{/lectures}}
+            </tbody>
+        </table>
+    </script>
+    <script src="libs/handlebars-v1.3.0.js"></script>
+    <script>
+        var lecturesTemplateHtml,
+            lecturesTemplate,
+            lectures = [{
+            number: 0,
+            title: 'Course Introduction',
+            firstDate: 'Wed 18:00, 28-May-2014',
+            secondDate: 'Thu 14:00, 29-May-2014'
+        }, {
+            number: 1,
+            title: 'Canvas',
+            firstDate: 'Wed 18:00, 28-May-2014',
+            secondDate: 'Thu 14:00, 29-May-2014'
+        }, {
+            number: 2,
+            title: 'Canvas frameworks',
+            firstDate: 'Thu 18:00, 29-May-2014',
+            secondDate: 'Fri 14:00, 30-May-2014'
+        }, {
+            number: 3,
+            title: 'SVG and SVG frameworks',
+            firstDate: 'Thu 18:00, 29-May-2014',
+            secondDate: 'Fri 14:00, 30-May-2014'
+        }, {
+            number: 4,
+            title: 'Animations with Canvas and SVG',
+            firstDate: 'Wed 18:00, 04-Jun-2014',
+            secondDate: 'Thu 14:00, 05-Jun-2014'
+        }, {
+            number: 5,
+            title: 'DOM and selecting elements',
+            firstDate: 'Wed 18:00, 04-Jun-2014',
+            secondDate: 'Thu 14:00, 05-Jun-2014'
+        }, {
+            title: 'and so on...',
+        }];
+
+        lecturesTemplateHtml = document.getElementById('lectures-list-template').innerHTML;
+        lecturesTemplate = Handlebars.compile(lecturesTemplateHtml);
+        document.getElementById('root').innerHTML = lecturesTemplate({
+            lectures: lectures
+        });
+    </script>
+</body>
+</html>
