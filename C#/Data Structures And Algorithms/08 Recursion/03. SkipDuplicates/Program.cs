@@ -1,7 +1,8 @@
-﻿using System;
-namespace _03.SkipDuplicates
+﻿namespace _03.SkipDuplicates
 {
-    class Program
+    using System;
+
+    public class Program
     {
         public static void Main()
         {

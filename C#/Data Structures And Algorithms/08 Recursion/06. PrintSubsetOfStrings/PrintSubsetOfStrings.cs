@@ -1,53 +1,41 @@
 ﻿namespace _06.PrintSubsetOfStrings
 {
     using System;
-    using System.Linq;
 
-    /*
-     * Write a program for generating and printing all subsets of k strings from given set of strings.
-     * Example: s = {test, rock, fun}, k=2
-     * (test rock),  (test fun),  (rock fun)
-     */
+    //Write a program for generating and printing all subsets of k strings from given set of strings.
+    //Example: s = {test, rock, fun}, k=2
+    //(test rock),  (test fun),  (rock fun)    
 
     class PrintSubsetOfStrings
     {
         static void Main()
         {
-            //int n = int.Parse(Console.ReadLine());
-            //int k = int.Parse(Console.ReadLine());
-            int n = 3;
             int k = 2;
+            string[] words = new string[] { "test", "rock", "fun" };
+            string[] wordsVariation = new string[k];
 
-            string[] set = new string[] { " ", "test", "rock", "fun" };
-            string[] variation = new string[k];
-
-            //for (int i = 1; i < n+1; i++)
-            //{
-            //    set[i] = Console.ReadLine();
-            //}
-
-            ProcessVariations(set, variation, 0, 1);
+            GenerateVariations(words, wordsVariation, 0, 0);
         }
 
-        private static void ProcessVariations(string[] set, string[] variation, int arrIndex, int startIndex)
+        private static void GenerateVariations(string[] words, string[] wordsVariation, int wordsVariationIndex, int wordsStartIndex)
         {
-            if (arrIndex == variation.Length)
+            if (wordsVariationIndex == wordsVariation.Length)
             {
-                Print(variation);
+                PrintRow(wordsVariation);
                 return;
             }
 
-            for (int i = startIndex, len = set.Length; i < len; i++)
+            for (int i = wordsStartIndex; i < words.Length; i++)
             {
-                    variation[arrIndex] = set[i];
+                wordsVariation[wordsVariationIndex] = words[i];
 
-                    ProcessVariations(set, variation, arrIndex + 1, i + 1);
+                GenerateVariations(words, wordsVariation, wordsVariationIndex + 1, i + 1);
             }
         }
 
-        private static void Print(string[] variation)
+        private static void PrintRow(string[] wordsVariation)
         {
-            Console.WriteLine("(" + String.Join(" ", variation) + ")");
+            Console.WriteLine("(" + String.Join(" ", wordsVariation) + ")");
         }
     }
 }

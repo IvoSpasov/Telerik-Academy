@@ -1,6 +1,7 @@
-﻿using System;
-namespace _02.CombinationsWithDuplicates
+﻿namespace _02.CombinationsWithDuplicates
 {
+    using System;
+
     class Program
     {
         public static void Main()
