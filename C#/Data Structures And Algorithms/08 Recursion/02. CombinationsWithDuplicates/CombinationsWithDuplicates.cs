@@ -2,7 +2,7 @@
 {
     using System;
 
-    class Program
+    class CombinationsWithDuplicates
     {
         public static void Main()
         {

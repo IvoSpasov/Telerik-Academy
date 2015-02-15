@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace _05.StringVariations
+﻿namespace _05.StringVariations
 {
-    class Program
+    using System;
+
+    class StringVariations
     {
         static void Main()
         {

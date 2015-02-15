@@ -1,7 +1,8 @@
-﻿using System;
-namespace _04.Permutations
+﻿namespace _04.Permutations
 {
-    class Program
+    using System;
+
+    class Permutations
     {
         static void Main()
         {
@@ -31,7 +32,6 @@ namespace _04.Permutations
                     ProcessNestedLoops(permutation, arrIndex + 1, usedNum);
                     usedNum[i] = false;
                 }
-
             }
         }
     }

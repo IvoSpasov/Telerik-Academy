@@ -4,7 +4,7 @@ namespace _01.NestedLoops
 {
     using System;
 
-    public class Program
+    public class NestedLoops
     {
         public static void Main()
         {
