@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _02.BunnyFactory
+﻿namespace _02.BunnyFactory
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Numerics;
+
     class BunnyFactory
     {
         static void Main()
@@ -13,12 +12,11 @@ namespace _02.BunnyFactory
             List<int> cages = ReadCages();
             int counter = 1;
 
-            //for (int i = 0; i < cages.Count; i++)
             while(counter < cages.Count)
             {
                 int initialSum = 0;
                 int secondSum = 0;
-                int product = 1;
+                BigInteger product = 1;
 
                 for (int i = 0; i < counter; i++)
                 {
@@ -33,14 +31,16 @@ namespace _02.BunnyFactory
                 for (int j = counter; j < counter + initialSum; j++)
                 {
                     secondSum += cages[j];
-                    product *= cages[j];
+                    product *= (cages[j]);
                 }
 
-                string nextCages = secondSum.ToString() + product.ToString();
+                StringBuilder nextCages = new StringBuilder();
+                nextCages.Append(secondSum);
+                nextCages.Append(product);
 
                 for (int k = counter + initialSum; k < cages.Count; k++)
                 {
-                    nextCages += cages[k];
+                    nextCages.Append(cages[k]);
                 }
 
                 cages.Clear();
