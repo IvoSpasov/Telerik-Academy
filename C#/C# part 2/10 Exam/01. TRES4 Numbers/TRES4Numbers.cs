@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class TRES4Numbers
+    public class Tres4Numbers
     {
         public static void Main()
         {
