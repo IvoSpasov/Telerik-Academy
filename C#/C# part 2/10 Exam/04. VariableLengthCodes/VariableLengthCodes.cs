@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace _04.VariableLengthCodes
+﻿namespace _04.VariableLengthCodes
 {
+    using System;
+    using System.Text;
+
     class VariableLengthCodes
     {
         static void Main()

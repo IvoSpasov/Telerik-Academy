@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Patterns", "03. Pattern
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. VariableLengthCodes", "04. VariableLengthCodes\04. VariableLengthCodes.csproj", "{AB717762-C510-4784-92C1-F95752C085B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. HelpDodge", "05. HelpDodge\05. HelpDodge.csproj", "{034B11BE-39AE-41DE-B28C-C6E4F796791A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AB717762-C510-4784-92C1-F95752C085B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB717762-C510-4784-92C1-F95752C085B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB717762-C510-4784-92C1-F95752C085B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034B11BE-39AE-41DE-B28C-C6E4F796791A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034B11BE-39AE-41DE-B28C-C6E4F796791A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034B11BE-39AE-41DE-B28C-C6E4F796791A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034B11BE-39AE-41DE-B28C-C6E4F796791A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
