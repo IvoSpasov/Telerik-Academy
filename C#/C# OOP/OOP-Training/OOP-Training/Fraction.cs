@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP_Training
+﻿namespace OOP_Training
 {
-    class Fraction
+    using System;
+    using System.Linq;
+
+    public class Fraction
     {
         private int numerator;
 
@@ -22,36 +19,13 @@ namespace OOP_Training
             get { return (decimal)this.numerator / this.denumerator; }
         }
 
-        private void Parse(string fraction)
-        {
-            if (!fraction.Contains('/'))
-            {
-                throw new InvalidCastException("The fraction is not valid because it does not contain \"/\" ");
-            }
-
-            string[] splittedFraction = fraction.Split('/');
-            int num = int.Parse(splittedFraction[0]);
-            int denum = int.Parse(splittedFraction[1]);
-
-            if (num == 0)
-            {
-                throw new InvalidOperationException("The numerator must be different than 0");
-            }
-            if (denum == 0)
-            {
-                throw new InvalidOperationException("The denumerator must be different than 0");
-            }
-
-            this.numerator = num;
-            this.denumerator = denum;
-        }
-
         public void CancelFraction()
         {
             if (this.numerator == default(int))
             {
                 throw new InvalidOperationException("The numerator must be different than 0");
             }
+
             if (this.denumerator == default(int))
             {
                 throw new InvalidOperationException("The denumerator must be different than 0");
@@ -77,6 +51,31 @@ namespace OOP_Training
         public override string ToString()
         {
             return string.Format("{0}/{1}", this.numerator, this.denumerator);
+        }
+
+        private void Parse(string fraction)
+        {
+            if (!fraction.Contains('/'))
+            {
+                throw new InvalidCastException("The fraction is not valid because it does not contain \"/\" ");
+            }
+
+            string[] splittedFraction = fraction.Split('/');
+            int num = int.Parse(splittedFraction[0]);
+            int denum = int.Parse(splittedFraction[1]);
+
+            if (num == 0)
+            {
+                throw new InvalidOperationException("The numerator must be different than 0");
+            }
+
+            if (denum == 0)
+            {
+                throw new InvalidOperationException("The denumerator must be different than 0");
+            }
+
+            this.numerator = num;
+            this.denumerator = denum;
         }
     }
 }
