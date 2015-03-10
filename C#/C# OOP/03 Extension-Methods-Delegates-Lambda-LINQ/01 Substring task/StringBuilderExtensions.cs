@@ -20,7 +20,7 @@
             }
 
             var result = new StringBuilder();
-            result.Append(originalStr.ToString().ToCharArray(), index, length);
+            result.Append(originalStr.ToString(), index, length);
             return result;
         }
 

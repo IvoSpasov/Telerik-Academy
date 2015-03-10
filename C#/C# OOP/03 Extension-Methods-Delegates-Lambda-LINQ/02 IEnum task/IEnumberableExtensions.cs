@@ -2,8 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
-    public static class Extensions
+    public static class IEnumberableExtensions
     {
         public static double Sum<T>(this IEnumerable<T> collection)
         {
@@ -31,32 +32,32 @@
 
         public static double Min<T>(this IEnumerable<T> collection) where T : IComparable<T>
         {
-            double temp = double.MaxValue;
+            double initialValue = Convert.ToDouble(collection.First());
 
             foreach (var item in collection)
             {
-                if (temp > Convert.ToDouble(item))
+                if (initialValue > Convert.ToDouble(item))
                 {
-                    temp = Convert.ToDouble(item);
+                    initialValue = Convert.ToDouble(item);
                 }
             }
 
-            return temp;
+            return initialValue;
         }
 
         public static double Max<T>(this IEnumerable<T> collection) where T : IComparable<T>
         {
-            double temp = double.MinValue;
+            double initialValue = Convert.ToDouble(collection.First());
 
             foreach (var item in collection)
             {
-                if (temp < Convert.ToDouble(item))
+                if (initialValue < Convert.ToDouble(item))
                 {
-                    temp = Convert.ToDouble(item);
+                    initialValue = Convert.ToDouble(item);
                 }
             }
 
-            return temp;
+            return initialValue;
         }
 
         public static double Average<T>(this IEnumerable<T> collection)

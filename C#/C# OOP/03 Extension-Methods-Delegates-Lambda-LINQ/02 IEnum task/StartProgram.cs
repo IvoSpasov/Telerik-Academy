@@ -12,10 +12,10 @@ namespace _02_IEnum_task
         {
             var list = new List<int>();
 
-            for (int i = 1; i <= 20; i++)
-            {
-                list.Add(i);
-            }
+            //for (int i = 1; i <= 20; i++)
+            //{
+            //    list.Add(i);
+            //}
 
             Console.WriteLine("In the collection: ");
             Console.WriteLine("The sum is: " + list.Sum());
