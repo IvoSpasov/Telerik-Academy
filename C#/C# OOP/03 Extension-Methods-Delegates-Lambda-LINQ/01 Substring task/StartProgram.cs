@@ -8,17 +8,21 @@ namespace _01_Substring_task
 
     public class StartProgram
     {
-        static void Main()
+        public static void Main()
         {
             var text = new StringBuilder();
             text.Append("I have no idea what I'm doing :)");
-            Console.WriteLine("Before:");
+            Console.WriteLine("Original text:");
             Console.WriteLine(text.ToString());
 
-            // calling my extension method
-            text = text.Substring(0, 10);
-            Console.WriteLine("After:");
-            Console.WriteLine(text.ToString());
+            // calling my extension methods
+            var substring = text.Substring(2, 10);
+            Console.WriteLine("Text after substring(0, 10):");
+            Console.WriteLine(substring.ToString());
+
+            var substringUpToEnd = text.Substring(15);
+            Console.WriteLine("Text after substring(15)");
+            Console.WriteLine(substringUpToEnd.ToString());
         }
     }
 }
