@@ -15,10 +15,16 @@
         private const int RegistrationNumberLength = 10;
         private const string RegistrationNumberLengthErrorMessage = "The registration number must be exactly {0} symbols";
         private const string RegistrationNumberParseErrorMessage = "The registration number must contain only digits";
+        private const string FurnitureNullErrorMessage = "The furniture cannot be null";
+        private const string ToStringFormat = "{0} - {1} - {2} {3}";
+        private const int ZeroFurnitures = 0;
+        private const int OneFurniture = 1;
+        private const string NoFurnitures = "no";
+        private const string ManyFurnitures = "furnitures";
+        private const string SingleFurniture = "furniture";
 
         private string name;
         private string registrationNumber;
-        private long regNumber;
 
         public Company(string name, string registrationNumber)
         {
@@ -64,7 +70,7 @@
                     throw new ArgumentOutOfRangeException(string.Format(RegistrationNumberLengthErrorMessage, RegistrationNumberLength));
                 }
 
-                if (!long.TryParse(value, out this.regNumber))
+                if (value.Any(ch => !char.IsDigit(ch)))
                 {
                     throw new InvalidOperationException(RegistrationNumberParseErrorMessage);
                 }
@@ -81,20 +87,28 @@
 
         public void Add(IFurniture furniture)
         {
+            if (furniture == null)
+            {
+                throw new ArgumentNullException(FurnitureNullErrorMessage);
+            }
+
             this.Furnitures.Add(furniture);
         }
 
         public void Remove(IFurniture furniture)
         {
-            // TODO: Do I have to search if there is an existing one first?
+            if (furniture == null)
+            {
+                throw new ArgumentNullException(FurnitureNullErrorMessage);
+            }
+
             this.Furnitures.Remove(furniture);
         }
 
         public IFurniture Find(string model)
         {
             var foundFurniture = this.Furnitures
-                .Where(fur => fur.Model.ToLower() == model.ToLower())
-                .FirstOrDefault();
+                .FirstOrDefault(fur => fur.Model.ToLower() == model.ToLower());
 
             return foundFurniture;
         }
@@ -122,11 +136,11 @@
         public override string ToString()
         {
             string result = string.Format(
-                "{0} - {1} - {2} {3}",
+                ToStringFormat,
                 this.Name,
                 this.RegistrationNumber,
-                this.Furnitures.Count != 0 ? this.Furnitures.Count.ToString() : "no",
-                this.Furnitures.Count != 1 ? "furnitures" : "furniture");
+                this.Furnitures.Count != ZeroFurnitures ? this.Furnitures.Count.ToString() : NoFurnitures,
+                this.Furnitures.Count != OneFurniture ? ManyFurnitures : SingleFurniture);
 
             return result;
         }

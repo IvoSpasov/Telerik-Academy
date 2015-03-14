@@ -1,7 +1,5 @@
 ﻿namespace FurnitureManufacturer.Models
 {
-    using System;
-
     using Interfaces;
 
     public class AdjustableChair : Chair, IAdjustableChair

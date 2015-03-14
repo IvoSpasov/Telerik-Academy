@@ -12,6 +12,7 @@
         private const int Zero = 0;
         private const string PriceZeroOrLessErrorMessage = "The price cannot be less than or equal to {0}";
         private const string HeightZeroOrLessErrorMessage = "The height cannot be less than or equal to {0}";
+        private const string ToStringFormat = "Type: {0}, Model: {1}, Material: {2}, Price: {3}, Height: {4}";
 
         private readonly MaterialType material;
         private string model;
@@ -91,6 +92,19 @@
 
                 this.height = value;
             }
+        }
+
+        public override string ToString()
+        {
+            string result = string.Format(
+                ToStringFormat, 
+                this.GetType().Name, 
+                this.Model,
+                this.Material,
+                this.Price,
+                this.Height);
+
+            return result;
         }
     }
 }
