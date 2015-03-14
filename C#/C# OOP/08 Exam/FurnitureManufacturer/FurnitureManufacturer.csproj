@@ -49,6 +49,7 @@
     <Compile Include="Engine\FurnitureManufacturerEngine.cs" />
     <Compile Include="FurnitureProgram.cs" />
     <Compile Include="Interfaces\Engine\IRenderer.cs" />
+    <Compile Include="Models\Furniture.cs" />
     <Compile Include="Models\MaterialType.cs" />
     <Compile Include="Interfaces\IAdjustableChair.cs" />
     <Compile Include="Interfaces\IChair.cs" />
