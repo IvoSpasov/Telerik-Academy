@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
 
     using Interfaces;
 
@@ -17,7 +18,7 @@
 
         private string name;
         private string registrationNumber;
-        private int regNumber;
+        private long regNumber;
 
         public Company(string name, string registrationNumber)
         {
@@ -28,7 +29,7 @@
 
         public string Name
         {
-            get 
+            get
             {
                 return this.name;
             }
@@ -51,7 +52,7 @@
 
         public string RegistrationNumber
         {
-            get 
+            get
             {
                 return this.registrationNumber;
             }
@@ -62,7 +63,8 @@
                 {
                     throw new ArgumentOutOfRangeException(string.Format(RegistrationNumberLengthErrorMessage, RegistrationNumberLength));
                 }
-                if (!int.TryParse(value, out regNumber))
+
+                if (!long.TryParse(value, out this.regNumber))
                 {
                     throw new InvalidOperationException(RegistrationNumberParseErrorMessage);
                 }
@@ -84,7 +86,7 @@
 
         public void Remove(IFurniture furniture)
         {
-            //TODO: Do I have to search if there is an existing one first?
+            // TODO: Do I have to search if there is an existing one first?
             this.Furnitures.Remove(furniture);
         }
 
@@ -99,7 +101,34 @@
 
         public string Catalog()
         {
-            throw new NotImplementedException();
+            StringBuilder result = new StringBuilder();
+            result.AppendLine(this.ToString());
+
+            if (this.Furnitures.Count > 0)
+            {
+                var orderedFurnitures = this.Furnitures
+                    .OrderBy(fur => fur.Price)
+                    .ThenBy(fur => fur.Model);
+
+                foreach (var furniture in orderedFurnitures)
+                {
+                    result.AppendLine(furniture.ToString());
+                }
+            }
+
+            return result.ToString().Trim();
+        }
+
+        public override string ToString()
+        {
+            string result = string.Format(
+                "{0} - {1} - {2} {3}",
+                this.Name,
+                this.RegistrationNumber,
+                this.Furnitures.Count != 0 ? this.Furnitures.Count.ToString() : "no",
+                this.Furnitures.Count != 1 ? "furnitures" : "furniture");
+
+            return result;
         }
     }
 }
