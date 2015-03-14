@@ -4,7 +4,7 @@
 
     using Interfaces;
 
-    public class Furniture : IFurniture
+    public abstract class Furniture : IFurniture
     {
         private const string ModelNullOrEmptyErrorMessage = "The model of the furniture cannot be null or empty";
         private const int ModelMinimumLength = 3;
@@ -82,7 +82,7 @@
                 return this.height;
             }
 
-            private set
+            set
             {
                 if (value < Zero)
                 {
