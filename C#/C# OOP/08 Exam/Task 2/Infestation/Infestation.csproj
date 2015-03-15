@@ -49,6 +49,8 @@
     <Compile Include="InteractionType.cs" />
     <Compile Include="ISupplement.cs" />
     <Compile Include="Marine.cs" />
+    <Compile Include="Supplements\AggressionCatalyst.cs" />
+    <Compile Include="Supplements\HealthCatalyst.cs" />
     <Compile Include="Supplements\PowerCatalyst.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,9 +59,6 @@
     <Compile Include="Unit.cs" />
     <Compile Include="UnitClassification.cs" />
     <Compile Include="UnitInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
