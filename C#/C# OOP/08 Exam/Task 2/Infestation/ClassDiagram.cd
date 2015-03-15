@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Infestation.Dog" Collapsed="true">
-    <Position X="6.5" Y="4.75" Width="1.5" />
+    <Position X="4.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Dog.cs</FileName>
@@ -15,7 +15,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Infestation.Human" Collapsed="true">
-    <Position X="11" Y="4.75" Width="1.5" />
+    <Position X="8.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>Human.cs</FileName>
@@ -36,7 +36,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Infestation.Marine" Collapsed="true">
-    <Position X="11" Y="6.25" Width="1.5" />
+    <Position X="8.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Marine.cs</FileName>
@@ -50,14 +50,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Infestation.Tank" Collapsed="true">
-    <Position X="8.75" Y="4.75" Width="1.5" />
+    <Position X="6.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAACAAAAQAAAA=</HashCode>
       <FileName>Tank.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Infestation.Unit" Collapsed="true">
-    <Position X="7.5" Y="3.5" Width="1.5" />
+    <Position X="8.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgiCCAAAgAAAAAUAAAAAADEAAAAgAABIAAAAEABAAA=</HashCode>
       <FileName>Unit.cs</FileName>
@@ -121,10 +121,24 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Infestation.Parasite" Collapsed="true">
-    <Position X="4.25" Y="4.75" Width="1.5" />
+    <Position X="11" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAAAAAAAAAA=</HashCode>
       <FileName>Parasite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Infestation.Queen" Collapsed="true">
+    <Position X="13.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Queen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Infestation.InfestationUnit" Collapsed="true">
+    <Position X="12.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAABAAA=</HashCode>
+      <FileName>InfestationUnit.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="Infestation.UnitInfo" Collapsed="true">

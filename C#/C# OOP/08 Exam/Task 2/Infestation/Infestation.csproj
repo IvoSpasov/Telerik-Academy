@@ -46,11 +46,13 @@
     <Compile Include="HoldingPenExtension.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="InfestationRequirements.cs" />
+    <Compile Include="InfestationUnit.cs" />
     <Compile Include="Interaction.cs" />
     <Compile Include="InteractionType.cs" />
     <Compile Include="ISupplement.cs" />
     <Compile Include="Marine.cs" />
     <Compile Include="Parasite.cs" />
+    <Compile Include="Queen.cs" />
     <Compile Include="Supplements\AggressionCatalyst.cs" />
     <Compile Include="Supplements\HealthCatalyst.cs" />
     <Compile Include="Supplements\InfestationSpores.cs" />
