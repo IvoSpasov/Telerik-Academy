@@ -2,11 +2,10 @@
 {
     public class PowerCatalyst : Supplement
     {
-        private const int PowerEffect = 3;
-        private const int Zero = 0;
+        private const int Power = 3;
 
         public PowerCatalyst()
-            : base(PowerEffect, Zero, Zero)
+            : base(Power, Supplement.Zero, Supplement.Zero)
         {
         }
     }

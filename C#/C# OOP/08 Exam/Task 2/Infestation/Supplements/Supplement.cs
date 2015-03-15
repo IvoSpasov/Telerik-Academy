@@ -2,6 +2,8 @@
 {
     public abstract class Supplement : ISupplement
     {
+        protected const int Zero = 0;
+
         public Supplement(int power, int health, int aggression)
         {
             this.PowerEffect = power;
@@ -29,7 +31,8 @@
 
         public virtual void ReactTo(ISupplement otherSupplement)
         {
-            // what should be inside?
+            // Just leave it empty and override it where needed (Weapon class)? Really?
+            // If I make it abstract I will have to create an empty method in the other children.
         }
     }
 }

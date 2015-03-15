@@ -9,10 +9,9 @@ namespace Infestation.Supplements
     {
         private const int Power = 10;
         private const int Aggression = 3;
-        private const int Zero = 0;
 
         public Weapon()
-            : base(Zero, Zero, Zero)
+            : base(Supplement.Zero, Supplement.Zero, Supplement.Zero)
         {
         }
 

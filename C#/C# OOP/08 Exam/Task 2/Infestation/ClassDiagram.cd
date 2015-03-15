@@ -113,6 +113,13 @@
       <FileName>Supplements\Weapon.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Infestation.Supplements.InfestationSpores" Collapsed="true">
+    <Position X="14" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Supplements\InfestationSpores.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Struct Name="Infestation.UnitInfo" Collapsed="true">
     <Position X="18" Y="2.75" Width="1.5" />
     <TypeIdentifier>

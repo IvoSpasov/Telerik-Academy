@@ -52,6 +52,7 @@
     <Compile Include="Marine.cs" />
     <Compile Include="Supplements\AggressionCatalyst.cs" />
     <Compile Include="Supplements\HealthCatalyst.cs" />
+    <Compile Include="Supplements\InfestationSpores.cs" />
     <Compile Include="Supplements\PowerCatalyst.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
