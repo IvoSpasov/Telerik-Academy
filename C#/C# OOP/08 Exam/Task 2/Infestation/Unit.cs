@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Infestation
+﻿namespace Infestation
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     abstract public class Unit
     {
         public string Id { get; private set; }
@@ -41,6 +41,7 @@ namespace Infestation
                 return this.basePower + supplementsBonus;
             }
         }
+
         public virtual int Aggression
         {
             get

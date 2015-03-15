@@ -15,7 +15,6 @@
             string[] commandWords = command.Split(commandWordSeparators, StringSplitOptions.RemoveEmptyEntries);
 
             DispatchCommand(commandWords);
-
         }
 
         protected virtual void DispatchCommand(string[] commandWords)
