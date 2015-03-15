@@ -112,6 +112,7 @@ namespace Infestation
             {
                 supplementsBuilder.Remove(supplementsBuilder.Length - ", ".Length, ", ".Length); //removing the excess comma-space, coming from the foreach loop above (", ")
             }
+
             string unitSignature = this.GetType().Name + " " + this.Id + " (" + this.UnitClassification + ")";
 
             return String.Format("{0} [Health: {1}, Power: {2}, Aggression: {3}, Supplements: [{4}]]",

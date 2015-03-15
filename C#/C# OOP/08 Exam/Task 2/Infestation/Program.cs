@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Infestation
+﻿namespace Infestation
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             HoldingPen pen = InitializePen();
             StartOperations(pen);
@@ -25,7 +22,7 @@ namespace Infestation
 
         private static HoldingPen InitializePen()
         {
-            return new HoldingPen();
+            return new HoldingPenExtension();
         }
     }
 }

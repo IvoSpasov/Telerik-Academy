@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Infestation
+﻿namespace Infestation
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class HoldingPen
     {
         private List<Unit> containedUnits = new List<Unit>();

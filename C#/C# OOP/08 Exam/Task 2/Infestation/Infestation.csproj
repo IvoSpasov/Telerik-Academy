@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Dog.cs" />
     <Compile Include="HoldingPen.cs" />
+    <Compile Include="HoldingPenExtension.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="InfestationRequirements.cs" />
     <Compile Include="Interaction.cs" />
@@ -59,6 +60,9 @@
     <Compile Include="Unit.cs" />
     <Compile Include="UnitClassification.cs" />
     <Compile Include="UnitInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
