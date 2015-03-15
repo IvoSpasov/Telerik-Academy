@@ -12,28 +12,24 @@
         public int PowerEffect
         {
             get;
-            private set;
+            protected set;
         }
 
         public int HealthEffect
         {
             get;
-            private set;
+            protected set;
         }
 
         public int AggressionEffect
         {
             get;
-            private set;
+            protected set;
         }
 
         public virtual void ReactTo(ISupplement otherSupplement)
         {
             // what should be inside?
-
-            //this.PowerEffect += otherSupplement.PowerEffect;
-            //this.HealthEffect += otherSupplement.HealthEffect;
-            //this.AggressionEffect += otherSupplement.AggressionEffect;
         }
     }
 }

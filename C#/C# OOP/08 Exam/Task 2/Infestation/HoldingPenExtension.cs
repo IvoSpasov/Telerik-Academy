@@ -19,6 +19,9 @@
                 case "PowerCatalyst":
                     this.GetUnit(commandWords[2]).AddSupplement(new PowerCatalyst());
                     break;
+                case "Weapon":
+                    this.GetUnit(commandWords[2]).AddSupplement(new Weapon());
+                    break;
                 default:
                     throw new ArgumentException("there is no such supplement");
             }
