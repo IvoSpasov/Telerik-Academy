@@ -27,11 +27,13 @@
             private set;
         }
 
-        public void ReactTo(ISupplement otherSupplement)
+        public virtual void ReactTo(ISupplement otherSupplement)
         {
-            this.PowerEffect += otherSupplement.PowerEffect;
-            this.HealthEffect += otherSupplement.HealthEffect;
-            this.AggressionEffect += otherSupplement.AggressionEffect;
+            // what should be inside?
+
+            //this.PowerEffect += otherSupplement.PowerEffect;
+            //this.HealthEffect += otherSupplement.HealthEffect;
+            //this.AggressionEffect += otherSupplement.AggressionEffect;
         }
     }
 }

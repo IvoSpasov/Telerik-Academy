@@ -22,14 +22,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Infestation.InfestationRequirements" Collapsed="true">
-    <Position X="13.5" Y="0.5" Width="1.5" />
+    <Position X="15.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>InfestationRequirements.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Infestation.Interaction" Collapsed="true">
-    <Position X="15.25" Y="0.5" Width="1.5" />
+    <Position X="17.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAgAAAAAAEAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>Interaction.cs</FileName>
@@ -43,7 +43,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Infestation.Program" Collapsed="true">
-    <Position X="13.5" Y="1.5" Width="1.5" />
+    <Position X="15.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAABBAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -85,7 +85,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Infestation.Supplements.Supplement" Collapsed="true">
-    <Position X="8.75" Y="0.5" Width="1.5" />
+    <Position X="9.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACABAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Supplements\Supplement.cs</FileName>
@@ -95,33 +95,40 @@
   <Class Name="Infestation.HoldingPenExtension" Collapsed="true">
     <Position X="6.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>HoldingPenExtension.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Infestation.Supplements.WeaponrySkill" Collapsed="true">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Supplements\WeaponrySkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Struct Name="Infestation.UnitInfo" Collapsed="true">
-    <Position X="13.5" Y="2.75" Width="1.5" />
+    <Position X="15.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACCCAAAAAAAAAAAAAAAAAAAAAAgAABAAAAAAAAAAA=</HashCode>
       <FileName>UnitInfo.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Interface Name="Infestation.ISupplement" Collapsed="true">
-    <Position X="13.5" Y="4" Width="1.5" />
+    <Position X="15.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACABAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISupplement.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="Infestation.InteractionType" Collapsed="true">
-    <Position X="13.5" Y="5" Width="1.5" />
+    <Position X="15.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>InteractionType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Infestation.UnitClassification" Collapsed="true">
-    <Position X="15.25" Y="5" Width="1.5" />
+    <Position X="17.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAIAEAAAAABA=</HashCode>
       <FileName>UnitClassification.cs</FileName>

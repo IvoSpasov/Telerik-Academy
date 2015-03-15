@@ -159,6 +159,7 @@ namespace Infestation
                     attackUnit = true;
                 }
             }
+
             return attackUnit;
         }
 
