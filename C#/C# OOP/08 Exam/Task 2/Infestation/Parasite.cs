@@ -12,7 +12,5 @@
             : base(id, UnitClassification.Biological, ParasiteHealth, ParasitePower, ParasiteAggression)
         {
         }
-
-
     }
 }

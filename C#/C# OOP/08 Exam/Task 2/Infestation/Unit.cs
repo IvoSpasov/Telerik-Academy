@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    abstract public class Unit
+    public abstract class Unit
     {
         public string Id { get; private set; }
 
@@ -28,6 +28,7 @@
                 return this.baseHealth + supplementsBonus;
             }
         }
+
         public virtual int Power
         {
             get
@@ -116,7 +117,7 @@
 
             string unitSignature = this.GetType().Name + " " + this.Id + " (" + this.UnitClassification + ")";
 
-            return String.Format("{0} [Health: {1}, Power: {2}, Aggression: {3}, Supplements: [{4}]]",
+            return string.Format("{0} [Health: {1}, Power: {2}, Aggression: {3}, Supplements: [{4}]]",
                 unitSignature, this.Health, this.Power, this.Aggression, supplementsBuilder.ToString());
         }
 

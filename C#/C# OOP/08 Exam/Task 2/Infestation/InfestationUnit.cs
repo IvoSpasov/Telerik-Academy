@@ -37,5 +37,19 @@ namespace Infestation
 
             return optimalAttackableUnit;
         }
+
+        public override Interaction DecideInteraction(IEnumerable<UnitInfo> units)
+        {
+            IEnumerable<UnitInfo> attackableUnits = units.Where((unit) => this.CanAttackUnit(unit));
+
+            UnitInfo optimalAttackableUnit = GetOptimalAttackableUnit(attackableUnits);
+
+            if (optimalAttackableUnit.Id != null)
+            {
+                return new Interaction(new UnitInfo(this), optimalAttackableUnit, InteractionType.Infest);
+            }
+
+            return Interaction.PassiveInteraction;
+        }
     }
 }

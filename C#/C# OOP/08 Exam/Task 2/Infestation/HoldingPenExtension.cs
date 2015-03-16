@@ -39,10 +39,41 @@
                     var marine = new Marine(commandWords[2]);
                     this.InsertUnit(marine);
                     break;
+                case "Parasite":
+                    var parasite = new Parasite(commandWords[2]);
+                    this.InsertUnit(parasite);
+                    break;
+                case "Queen":
+                    var queen = new Queen(commandWords[2]);
+                    this.InsertUnit(queen);
+                    break;
                 default:
                     base.ExecuteInsertUnitCommand(commandWords);
                     break;
             }
+        }
+
+        protected override void ProcessSingleInteraction(Interaction interaction)
+        {
+            switch (interaction.InteractionType)
+            {
+                case InteractionType.Infest:
+
+                    Unit sourceUnit = this.GetUnit(interaction.SourceUnit);
+                    Unit targetUnit = this.GetUnit(interaction.TargetUnit);
+                    UnitClassification allowedInfestationUnitClassification = InfestationRequirements.RequiredClassificationToInfest(targetUnit.UnitClassification);
+
+                    if (sourceUnit.UnitClassification == allowedInfestationUnitClassification)
+                    {
+                        targetUnit.AddSupplement(new InfestationSpores());                        
+                    }
+
+                    break;
+                default:
+                    base.ProcessSingleInteraction(interaction);
+                    break;
+            }
+
         }
     }
 }
