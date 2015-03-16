@@ -31,8 +31,7 @@
 
         public virtual void ReactTo(ISupplement otherSupplement)
         {
-            // Just leave it empty and override it where needed (Weapon class)? Really?
-            // If I make it abstract I will have to create an empty method in the other children.
+            // Just leave it empty and override it where needed (Weapon class for example).
         }
     }
 }
