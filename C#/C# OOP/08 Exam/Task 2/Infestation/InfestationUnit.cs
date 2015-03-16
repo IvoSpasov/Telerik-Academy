@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Infestation
+﻿namespace Infestation
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public abstract class InfestationUnit : Unit
     {
         public InfestationUnit(string id, UnitClassification unitType, int health, int power, int aggression)
@@ -12,10 +10,27 @@ namespace Infestation
         {
         }
 
+        public override Interaction DecideInteraction(IEnumerable<UnitInfo> units)
+        {
+            IEnumerable<UnitInfo> attackableUnits = units.Where((unit) => this.CanAttackUnit(unit));
+
+            UnitInfo optimalAttackableUnit = this.GetOptimalAttackableUnit(attackableUnits);
+
+            if (optimalAttackableUnit.Id != null)
+            {
+                return new Interaction(new UnitInfo(this), optimalAttackableUnit, InteractionType.Infest);
+            }
+
+            return Interaction.PassiveInteraction;
+        }
+
         protected override bool CanAttackUnit(UnitInfo unit)
         {
             bool attackUnit = false;
-            if (this.Id != unit.Id)
+            UnitClassification sourceUnitAllowedClassification = InfestationRequirements.RequiredClassificationToInfest(unit.UnitClassification);
+            bool allowedInfestation = sourceUnitAllowedClassification == this.UnitClassification;
+
+            if (this.Id != unit.Id && allowedInfestation)
             {
                 attackUnit = true;
             }
@@ -36,20 +51,6 @@ namespace Infestation
             }
 
             return optimalAttackableUnit;
-        }
-
-        public override Interaction DecideInteraction(IEnumerable<UnitInfo> units)
-        {
-            IEnumerable<UnitInfo> attackableUnits = units.Where((unit) => this.CanAttackUnit(unit));
-
-            UnitInfo optimalAttackableUnit = GetOptimalAttackableUnit(attackableUnits);
-
-            if (optimalAttackableUnit.Id != null)
-            {
-                return new Interaction(new UnitInfo(this), optimalAttackableUnit, InteractionType.Infest);
-            }
-
-            return Interaction.PassiveInteraction;
         }
     }
 }

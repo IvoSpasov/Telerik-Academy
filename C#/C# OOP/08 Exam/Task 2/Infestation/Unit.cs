@@ -125,7 +125,7 @@
         {
             IEnumerable<UnitInfo> attackableUnits = units.Where((unit) => this.CanAttackUnit(unit));
 
-            UnitInfo optimalAttackableUnit = GetOptimalAttackableUnit(attackableUnits);
+            UnitInfo optimalAttackableUnit = this.GetOptimalAttackableUnit(attackableUnits);
 
             if (optimalAttackableUnit.Id != null)
             {
@@ -137,7 +137,7 @@
 
         protected virtual UnitInfo GetOptimalAttackableUnit(IEnumerable<UnitInfo> attackableUnits)
         {
-            //This method finds the unit with the least power and attacks it
+            // This method finds the unit with the least power and attacks it
             UnitInfo optimalAttackableUnit = new UnitInfo(null, UnitClassification.Unknown, 0, int.MaxValue, 0);
 
             foreach (var unit in attackableUnits)

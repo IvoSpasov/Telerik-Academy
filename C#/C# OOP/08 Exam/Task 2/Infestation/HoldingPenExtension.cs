@@ -58,22 +58,13 @@
             switch (interaction.InteractionType)
             {
                 case InteractionType.Infest:
-
-                    Unit sourceUnit = this.GetUnit(interaction.SourceUnit);
                     Unit targetUnit = this.GetUnit(interaction.TargetUnit);
-                    UnitClassification allowedInfestationUnitClassification = InfestationRequirements.RequiredClassificationToInfest(targetUnit.UnitClassification);
-
-                    if (sourceUnit.UnitClassification == allowedInfestationUnitClassification)
-                    {
-                        targetUnit.AddSupplement(new InfestationSpores());                        
-                    }
-
+                    targetUnit.AddSupplement(new InfestationSpores());
                     break;
                 default:
                     base.ProcessSingleInteraction(interaction);
                     break;
             }
-
         }
     }
 }
