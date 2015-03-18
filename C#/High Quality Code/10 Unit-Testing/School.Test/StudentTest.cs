@@ -24,7 +24,7 @@
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestStudentWithNullName()
         {
-            Student invalid = new Student(null, 10001);
+            new Student(null, 10001);
         }
 
         [TestMethod]

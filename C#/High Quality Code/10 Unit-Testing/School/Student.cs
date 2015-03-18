@@ -19,12 +19,14 @@
             {
                 return this.name;
             }
+
             private set
             {
                 if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentNullException("name", "The student name cannot be null or empty");
                 }
+
                 this.name = value;
             }
         }
@@ -35,6 +37,7 @@
             {
                 return this.number;
             }
+
             private set
             {
                 if (value < 10000 || 99999 < value)
