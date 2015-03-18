@@ -6,13 +6,7 @@
 
     public abstract class Furniture : IFurniture
     {
-        private const string ModelNullOrEmptyErrorMessage = "The model of the furniture cannot be null or empty";
         private const int ModelMinimumLength = 3;
-        private const string ModelMinimumLengthErrorMessage = "The model must be at least {0} symbols long";
-        private const int Zero = 0;
-        private const string PriceZeroOrLessErrorMessage = "The price cannot be less than or equal to {0}";
-        private const string HeightZeroOrLessErrorMessage = "The height cannot be less than or equal to {0}";
-        private const string ToStringFormat = "Type: {0}, Model: {1}, Material: {2}, Price: {3}, Height: {4}";
 
         private readonly MaterialType material;
         private string model;
@@ -38,12 +32,12 @@
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException(ModelNullOrEmptyErrorMessage);
+                    throw new ArgumentNullException("The model of the furniture cannot be null or empty");
                 }
 
                 if (value.Length < ModelMinimumLength)
                 {
-                    throw new ArgumentOutOfRangeException(string.Format(ModelMinimumLengthErrorMessage, ModelMinimumLength));
+                    throw new ArgumentOutOfRangeException(string.Format("The model must be at least {0} symbols long", ModelMinimumLength));
                 }
 
                 this.model = value;
@@ -67,9 +61,9 @@
 
             set
             {
-                if (value <= Zero)
+                if (value <= 0)
                 {
-                    throw new ArgumentException(string.Format(PriceZeroOrLessErrorMessage, Zero));
+                    throw new ArgumentException(string.Format("The price cannot be less than or equal to {0}", 0));
                 }
 
                 this.price = value;
@@ -85,9 +79,9 @@
 
             set
             {
-                if (value < Zero)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException(string.Format(HeightZeroOrLessErrorMessage, Zero));
+                    throw new ArgumentOutOfRangeException(string.Format("The height cannot be less than or equal to {0}", 0));
                 }
 
                 this.height = value;
@@ -97,7 +91,7 @@
         public override string ToString()
         {
             string result = string.Format(
-                ToStringFormat, 
+                "Type: {0}, Model: {1}, Material: {2}, Price: {3}, Height: {4}", 
                 this.GetType().Name, 
                 this.Model,
                 this.Material,

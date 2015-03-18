@@ -90,7 +90,7 @@
         protected Unit GetUnit(UnitInfo unitInfo)
         {
             return this.GetUnit(unitInfo.Id);
-            //return this.containedUnits.FirstOrDefault((unit) => unit.Id == unitInfo.Id);
+            // return this.containedUnits.FirstOrDefault((unit) => unit.Id == unitInfo.Id);
         }
 
         protected virtual void ExecuteInsertUnitCommand(string[] commandWords)

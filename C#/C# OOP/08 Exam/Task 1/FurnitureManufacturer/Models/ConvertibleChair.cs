@@ -5,7 +5,6 @@
     public class ConvertibleChair : Chair, IConvertibleChair
     {
         private const decimal ConvertedChairHeight = 0.10m;
-        private const string ToStringFormatAddition = "{0}, State: {1}";
         private const string ConvertedState = "Converted";
         private const string NormalState = "Normal";
 
@@ -41,7 +40,7 @@
         public override string ToString()
         {
             string result = string.Format(
-                ToStringFormatAddition, 
+                "{0}, State: {1}", 
                 base.ToString(),
                 this.IsConverted ? ConvertedState : NormalState);
 

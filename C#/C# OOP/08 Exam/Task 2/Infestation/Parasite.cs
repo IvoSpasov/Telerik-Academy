@@ -1,7 +1,5 @@
 ﻿namespace Infestation
 {
-    using System.Collections.Generic;
-
     public class Parasite : InfestationUnit
     {
         private const int ParasiteHealth = 1;

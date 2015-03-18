@@ -2,8 +2,6 @@
 {
     public abstract class Supplement : ISupplement
     {
-        protected const int Zero = 0;
-
         public Supplement(int power, int health, int aggression)
         {
             this.PowerEffect = power;

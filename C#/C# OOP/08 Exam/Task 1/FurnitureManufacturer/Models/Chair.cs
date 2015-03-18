@@ -4,8 +4,6 @@
 
     public class Chair : Furniture, IChair
     {
-        private const string ToStringFormat = "{0}, Legs: {1}";
-
         public Chair(string model, MaterialType material, decimal price, decimal height, int numberOfLegs)
             : base(model, material, price, height)
         {
@@ -21,7 +19,7 @@
         public override string ToString()
         {
             string result = string.Format(
-                ToStringFormat,
+                "{0}, Legs: {1}",
                 base.ToString(),
                 this.NumberOfLegs);
 

@@ -6,7 +6,7 @@
         private const int Aggression = 3;
 
         public Weapon()
-            : base(Supplement.Zero, Supplement.Zero, Supplement.Zero)
+            : base(0, 0, 0)
         {
         }
 

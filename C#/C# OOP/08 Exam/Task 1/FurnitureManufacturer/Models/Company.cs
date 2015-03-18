@@ -9,14 +9,8 @@
 
     public class Company : ICompany
     {
-        private const string NameNullOrEmptyErrorMessage = "The name of the company cannot be null or empty";
         private const int NameMinimumLength = 5;
-        private const string NameMinimumLengthErrorMessage = "The name must be at least {0} symbols long";
         private const int RegistrationNumberLength = 10;
-        private const string RegistrationNumberLengthErrorMessage = "The registration number must be exactly {0} symbols";
-        private const string RegistrationNumberParseErrorMessage = "The registration number must contain only digits";
-        private const string FurnitureNullErrorMessage = "The furniture cannot be null";
-        private const string ToStringFormat = "{0} - {1} - {2} {3}";
         private const int ZeroFurnitures = 0;
         private const int OneFurniture = 1;
         private const string NoFurnitures = "no";
@@ -44,12 +38,12 @@
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException(NameNullOrEmptyErrorMessage);
+                    throw new ArgumentNullException("The name of the company cannot be null or empty");
                 }
 
                 if (value.Length < NameMinimumLength)
                 {
-                    throw new ArgumentOutOfRangeException(string.Format(NameMinimumLengthErrorMessage, NameMinimumLength));
+                    throw new ArgumentOutOfRangeException(string.Format("The name must be at least {0} symbols long", NameMinimumLength));
                 }
 
                 this.name = value;
@@ -67,12 +61,12 @@
             {
                 if (value.Length != RegistrationNumberLength)
                 {
-                    throw new ArgumentOutOfRangeException(string.Format(RegistrationNumberLengthErrorMessage, RegistrationNumberLength));
+                    throw new ArgumentOutOfRangeException(string.Format("The registration number must be exactly {0} symbols", RegistrationNumberLength));
                 }
 
                 if (value.Any(ch => !char.IsDigit(ch)))
                 {
-                    throw new InvalidOperationException(RegistrationNumberParseErrorMessage);
+                    throw new InvalidOperationException("The registration number must contain only digits");
                 }
 
                 this.registrationNumber = value;
@@ -89,7 +83,7 @@
         {
             if (furniture == null)
             {
-                throw new ArgumentNullException(FurnitureNullErrorMessage);
+                throw new ArgumentNullException("The furniture cannot be null");
             }
 
             this.Furnitures.Add(furniture);
@@ -99,7 +93,7 @@
         {
             if (furniture == null)
             {
-                throw new ArgumentNullException(FurnitureNullErrorMessage);
+                throw new ArgumentNullException("The furniture cannot be null");
             }
 
             this.Furnitures.Remove(furniture);
@@ -136,7 +130,7 @@
         public override string ToString()
         {
             string result = string.Format(
-                ToStringFormat,
+                "{0} - {1} - {2} {3}",
                 this.Name,
                 this.RegistrationNumber,
                 this.Furnitures.Count != ZeroFurnitures ? this.Furnitures.Count.ToString() : NoFurnitures,

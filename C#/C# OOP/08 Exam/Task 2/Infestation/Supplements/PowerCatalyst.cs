@@ -5,7 +5,7 @@
         private const int Power = 3;
 
         public PowerCatalyst()
-            : base(Power, Supplement.Zero, Supplement.Zero)
+            : base(Power, 0, 0)
         {
         }
     }

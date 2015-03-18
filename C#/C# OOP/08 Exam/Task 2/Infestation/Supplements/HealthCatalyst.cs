@@ -5,7 +5,7 @@
         private const int Health = 3;
 
         public HealthCatalyst()
-            : base(Supplement.Zero, Health, Supplement.Zero)
+            : base(0, Health, 0)
         {
         }
     }

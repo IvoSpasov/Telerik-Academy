@@ -5,7 +5,7 @@
         private const int Aggression = 3;
 
         public AggressionCatalyst()
-            : base(Supplement.Zero, Supplement.Zero, Aggression)
+            : base(0, 0, Aggression)
         {
         }
     }

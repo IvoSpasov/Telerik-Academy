@@ -6,7 +6,7 @@
         private const int Power = -1;
 
         public InfestationSpores()
-            : base(Power, Supplement.Zero, Agression)
+            : base(Power, 0, Agression)
         {
         }
 
@@ -14,9 +14,8 @@
         {
             if (otherSupplement is InfestationSpores)
             {
-                this.AggressionEffect = Supplement.Zero;
-                this.HealthEffect = Supplement.Zero;
-                this.PowerEffect = Supplement.Zero;
+                this.AggressionEffect = 0;
+                this.PowerEffect = 0;
             }
         }
     }

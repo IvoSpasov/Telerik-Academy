@@ -4,8 +4,6 @@
 
     public class Table : Furniture, ITable
     {
-        private const string ToStringFormat = "{0}, Length: {1}, Width: {2}, Area: {3}";
-
         public Table(string model, MaterialType material, decimal price, decimal height, decimal length, decimal width)
             : base(model, material, price, height)
         {
@@ -33,7 +31,7 @@
         public override string ToString()
         {
             string result = string.Format(
-                ToStringFormat,
+                "{0}, Length: {1}, Width: {2}, Area: {3}",
                 base.ToString(),
                 this.Length,
                 this.Width,
