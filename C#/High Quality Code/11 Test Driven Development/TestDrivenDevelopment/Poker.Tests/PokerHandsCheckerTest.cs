@@ -180,7 +180,43 @@
         [TestMethod]
         public void TestIsStraightFlush()
         {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Seven, CardSuit.Clubs),
+                new Card(CardFace.Three, CardSuit.Clubs),
+                new Card(CardFace.Four, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Six, CardSuit.Clubs)
+            });
+            Assert.IsTrue(checker.IsStraightFlush(hand));
+        }
 
+        [TestMethod]
+        public void TestIsNotStraightFlushByDifferentSuit()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Seven, CardSuit.Diamonds),
+                new Card(CardFace.Three, CardSuit.Clubs),
+                new Card(CardFace.Four, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Six, CardSuit.Clubs)
+            });
+            Assert.IsFalse(checker.IsStraightFlush(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotStraightFlushByNotInSequence()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.King, CardSuit.Clubs),
+                new Card(CardFace.Three, CardSuit.Clubs),
+                new Card(CardFace.Four, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Six, CardSuit.Clubs)
+            });
+            Assert.IsFalse(checker.IsStraightFlush(hand));
         }
     }
 }

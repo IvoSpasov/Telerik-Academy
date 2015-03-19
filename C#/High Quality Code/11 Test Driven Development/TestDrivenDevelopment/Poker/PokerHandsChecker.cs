@@ -36,7 +36,12 @@
 
         public bool IsStraightFlush(IHand hand)
         {
-            throw new NotImplementedException();
+            if (!this.IsValidHand(hand))
+            {
+                throw new ArgumentException("The hand is not valid");
+            }
+
+            return this.AllCardsHaveSameSuit(hand) && this.AllCardsAreInSequence(hand);
         }
 
         public bool IsFourOfAKind(IHand hand)
