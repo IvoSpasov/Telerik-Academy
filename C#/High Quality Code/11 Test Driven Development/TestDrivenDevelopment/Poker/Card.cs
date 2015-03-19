@@ -24,6 +24,23 @@
             return card;
         }
 
+        public override bool Equals(object obj)
+        {
+            var otherCard = obj as ICard;
+
+            if (otherCard == null)
+            {
+                throw new ArgumentNullException("obj", "The passed parameter is not of type Icard");
+            }
+
+            if (this.Face == otherCard.Face && this.Suit == otherCard.Suit)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private string GetFace()
         {
             if ((int)this.Face <= 10)

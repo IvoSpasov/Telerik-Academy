@@ -1,20 +1,22 @@
 ﻿namespace Poker.Tests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
 
     using Interfaces;
 
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class PokerHandsCheckerTest
     {
-        // Test the method IsValidHand()
+        // Testing the method IsValidHand()
         [TestMethod]
-        public void TestIsValidHand()
+        public void TestIsValidHandIfOk()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>() 
+            { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
                 new Card(CardFace.Ace, CardSuit.Diamonds),
                 new Card(CardFace.King, CardSuit.Hearts),
@@ -28,7 +30,8 @@
         public void TestIsValidHandIfLessCards()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>() 
+            { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
                 new Card(CardFace.Ace, CardSuit.Diamonds),
                 new Card(CardFace.King, CardSuit.Hearts),
@@ -41,7 +44,8 @@
         public void TestIsValidHandIfMoreCards()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>() 
+            { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
                 new Card(CardFace.Ace, CardSuit.Diamonds),
                 new Card(CardFace.King, CardSuit.Hearts),
@@ -56,25 +60,12 @@
         public void TestIsValidHandIfSameCards()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>() 
+            { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
                 new Card(CardFace.Ace, CardSuit.Clubs),
                 new Card(CardFace.King, CardSuit.Hearts),
                 new Card(CardFace.King, CardSuit.Spades),                
-                new Card(CardFace.Seven, CardSuit.Diamonds),
-            });
-            Assert.IsFalse(checker.IsValidHand(hand));
-        }
-
-        [TestMethod]
-        public void TestIsValidHandIfSameCards2()
-        {
-            PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
-                new Card(CardFace.Ace, CardSuit.Clubs),
-                new Card(CardFace.Ace, CardSuit.Spades),
-                new Card(CardFace.King, CardSuit.Hearts),
-                new Card(CardFace.Seven, CardSuit.Diamonds),                
                 new Card(CardFace.Seven, CardSuit.Diamonds),
             });
             Assert.IsFalse(checker.IsValidHand(hand));
@@ -85,7 +76,8 @@
         public void TestIsFlush1()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>() 
+            { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
                 new Card(CardFace.Three, CardSuit.Clubs),
                 new Card(CardFace.King, CardSuit.Clubs),
@@ -99,7 +91,8 @@
         public void TestIsFlush2()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>() 
+            { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
                 new Card(CardFace.Queen, CardSuit.Clubs),
                 new Card(CardFace.Jack, CardSuit.Clubs),                
@@ -113,7 +106,8 @@
         public void TestIsNotFlush1()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>()
+            { 
                 new Card(CardFace.Ace, CardSuit.Diamonds),
                 new Card(CardFace.King, CardSuit.Clubs),
                 new Card(CardFace.Queen, CardSuit.Clubs),
@@ -127,7 +121,8 @@
         public void TestIsNotFlush2()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>() 
+            { 
                 new Card(CardFace.Ace, CardSuit.Clubs),                
                 new Card(CardFace.Ten, CardSuit.Clubs),
                 new Card(CardFace.Queen, CardSuit.Clubs),
@@ -142,7 +137,8 @@
         public void TestIsFourOfAkind()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>() 
+            { 
                 new Card(CardFace.Ace, CardSuit.Clubs),                
                 new Card(CardFace.Ace, CardSuit.Diamonds),
                 new Card(CardFace.Ace, CardSuit.Hearts),
@@ -156,7 +152,8 @@
         public void TestIsNotFourOfAkind()
         {
             PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() { 
+            IHand hand = new Hand(new List<ICard>()
+            { 
                 new Card(CardFace.Ace, CardSuit.Clubs),                
                 new Card(CardFace.Ace, CardSuit.Diamonds),
                 new Card(CardFace.Ace, CardSuit.Hearts),

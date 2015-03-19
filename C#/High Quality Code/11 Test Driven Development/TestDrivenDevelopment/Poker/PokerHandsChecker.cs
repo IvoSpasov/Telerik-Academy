@@ -6,9 +6,15 @@
 
     public class PokerHandsChecker : IPokerHandsChecker
     {
+        private const int ValidNumberOfCardsPerHand = 5;
+
+        public PokerHandsChecker()
+        {
+        }
+
         public bool IsValidHand(IHand hand)
         {
-            if (hand.Cards.Count != 5)
+            if (hand.Cards.Count != ValidNumberOfCardsPerHand)
             {
                 return false;
             }
@@ -17,7 +23,7 @@
             {
                 for (int j = i + 1; j < hand.Cards.Count; j++)
                 {
-                    if (hand.Cards[i].ToString() == hand.Cards[j].ToString())
+                    if (hand.Cards[i].Equals(hand.Cards[j]))
                     {
                         return false;
                     }
@@ -34,7 +40,7 @@
 
         public bool IsFourOfAKind(IHand hand)
         {
-            if (!IsValidHand(hand))
+            if (!this.IsValidHand(hand))
             {
                 throw new ArgumentException("The hand is not valid");
             }
@@ -71,7 +77,7 @@
 
         public bool IsFlush(IHand hand)
         {
-            if (!IsValidHand(hand))
+            if (!this.IsValidHand(hand))
             {
                 throw new ArgumentException("The hand is not valid");
             }

@@ -24,7 +24,7 @@
         {
             if (card == null)
             {
-                throw new ArgumentNullException("card", "THe card cannot be null");
+                throw new ArgumentNullException("card", "The card cannot be null");
             }
 
             this.Cards.Add(card);
