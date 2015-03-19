@@ -1,4 +1,4 @@
-﻿namespace Poker
+﻿namespace Poker.Interfaces
 {
     /// <summary>
     /// Interface for checking poker hands as defined in http://en.wikipedia.org/wiki/List_of_poker_hands.

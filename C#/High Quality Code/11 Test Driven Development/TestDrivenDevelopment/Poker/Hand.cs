@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Text;
 
+    using Interfaces;
+
     public class Hand : IHand
     {
         public IList<ICard> Cards { get; private set; }

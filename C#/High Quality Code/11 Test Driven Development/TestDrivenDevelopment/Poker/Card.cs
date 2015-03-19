@@ -1,7 +1,9 @@
-﻿using System;
-
-namespace Poker
+﻿namespace Poker
 {
+    using System;
+
+    using Interfaces;
+
     public class Card : ICard
     {
         public CardFace Face { get; private set; }
