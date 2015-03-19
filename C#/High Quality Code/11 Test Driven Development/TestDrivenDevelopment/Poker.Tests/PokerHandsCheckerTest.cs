@@ -218,5 +218,34 @@
             });
             Assert.IsFalse(checker.IsStraightFlush(hand));
         }
+
+        // Testing the method IsFullHouse
+        [TestMethod]
+        public void TestIsFullHouse()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Ten, CardSuit.Clubs),
+                new Card(CardFace.Ten, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Hearts)
+            });
+            Assert.IsTrue(checker.IsFullHouse(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotFullHouse()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Jack, CardSuit.Clubs),
+                new Card(CardFace.Ten, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Hearts)
+            });
+            Assert.IsFalse(checker.IsFullHouse(hand));
+        }
     }
 }

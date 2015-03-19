@@ -1,6 +1,7 @@
 ﻿namespace Poker
 {
     using System;
+    using System.Collections.Generic;
 
     using Interfaces;
 
@@ -8,6 +9,8 @@
     {
         private const int ValidNumberOfCardsPerHand = 5;
         private const int Carre = 4;
+        private const int ThreeMatchingCards = 3;
+        private const int TwoMatchingCards = 2;
 
         public PokerHandsChecker()
         {
@@ -51,34 +54,17 @@
                 throw new ArgumentException("The hand is not valid");
             }
 
-            int counter = 1;
-
-            for (int i = 0; i < 2; i++)
-            {
-                for (int j = i + 1; j < hand.Cards.Count; j++)
-                {
-                    if (hand.Cards[i].Face == hand.Cards[j].Face)
-                    {
-                        counter++;
-                    }
-                }
-
-                if (counter == Carre)
-                {
-                    return true;
-                }
-                else
-                {
-                    counter = 0;
-                }
-            }
-
-            return false;
+            return AreCardsInHandOfSameFace(hand, Carre);
         }
 
         public bool IsFullHouse(IHand hand)
         {
-            throw new NotImplementedException();
+            if (!this.IsValidHand(hand))
+            {
+                throw new ArgumentException("The hand is not valid");
+            }
+
+            return AreCardsInHandOfSameFace(hand, ThreeMatchingCards) && AreCardsInHandOfSameFace(hand, TwoMatchingCards);
         }
 
         public bool IsFlush(IHand hand)
@@ -163,6 +149,31 @@
             }
 
             return inSequence;
+        }
+
+        private bool AreCardsInHandOfSameFace(IHand hand, int numberOfCardsWithSameFace)
+        {
+            var cardFacesCount = new Dictionary<CardFace, int>();
+            for (int i = 0; i < hand.Cards.Count; i++)
+            {
+                CardFace currentFace = hand.Cards[i].Face;
+
+                if (!cardFacesCount.ContainsKey(currentFace))
+                {
+                    cardFacesCount.Add(currentFace, 1);
+                }
+                else
+                {
+                    cardFacesCount[currentFace]++;
+                }
+            }
+
+            if (cardFacesCount.ContainsValue(numberOfCardsWithSameFace))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
