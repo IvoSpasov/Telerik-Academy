@@ -347,5 +347,62 @@
             });
             Assert.IsFalse(checker.IsTwoPair(hand));
         }
+
+        // Testing method IsOnePair
+        [TestMethod]
+        public void TestIsOnePair()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Nine, CardSuit.Clubs),
+                new Card(CardFace.Nine, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Jack, CardSuit.Spades),
+                new Card(CardFace.Two, CardSuit.Hearts)
+            });
+            Assert.IsTrue(checker.IsOnePair(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotOnePairWhenTwoPair()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Nine, CardSuit.Clubs),
+                new Card(CardFace.Nine, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Jack, CardSuit.Spades),
+                new Card(CardFace.Jack, CardSuit.Hearts)
+            });
+            Assert.IsFalse(checker.IsOnePair(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotOnePairWhenFullHouse()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Ten, CardSuit.Clubs),
+                new Card(CardFace.Ten, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Hearts)
+            });
+            Assert.IsFalse(checker.IsOnePair(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotOnePairWhenFourOfAKind()
+        {
+            IHand hand = new Hand(new List<ICard>() 
+            { 
+                new Card(CardFace.Ace, CardSuit.Clubs),                
+                new Card(CardFace.Ace, CardSuit.Diamonds),
+                new Card(CardFace.Ace, CardSuit.Hearts),
+                new Card(CardFace.Ace, CardSuit.Spades),
+                new Card(CardFace.King, CardSuit.Clubs),
+            });
+            Assert.IsFalse(checker.IsOnePair(hand));
+        }
     }
 }

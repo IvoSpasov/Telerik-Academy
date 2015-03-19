@@ -40,70 +40,49 @@
 
         public bool IsStraightFlush(IHand hand)
         {
-            if (!this.IsValidHand(hand))
-            {
-                throw new ArgumentException("The hand is not valid");
-            }
+            this.CheckForValidHand(hand);
 
             return this.AllCardsHaveSameSuit(hand) && this.AllCardsAreInSequence(hand);
         }
 
         public bool IsFourOfAKind(IHand hand)
         {
-            if (!this.IsValidHand(hand))
-            {
-                throw new ArgumentException("The hand is not valid");
-            }
+            this.CheckForValidHand(hand);
 
             return this.AreCardsInHandOfSameFace(hand, Carre);
         }
 
         public bool IsFullHouse(IHand hand)
         {
-            if (!this.IsValidHand(hand))
-            {
-                throw new ArgumentException("The hand is not valid");
-            }
+            this.CheckForValidHand(hand);
 
             return this.AreCardsInHandOfSameFace(hand, ThreeMatchingCards) && this.AreCardsInHandOfSameFace(hand, TwoMatchingCards);
         }
 
         public bool IsFlush(IHand hand)
         {
-            if (!this.IsValidHand(hand))
-            {
-                throw new ArgumentException("The hand is not valid");
-            }
+            this.CheckForValidHand(hand);
 
             return this.AllCardsHaveSameSuit(hand) && (!this.AllCardsAreInSequence(hand));
         }
 
         public bool IsStraight(IHand hand)
         {
-            if (!this.IsValidHand(hand))
-            {
-                throw new ArgumentException("The hand is not valid");
-            }
+            this.CheckForValidHand(hand);
 
             return (!this.AllCardsHaveSameSuit(hand)) && this.AllCardsAreInSequence(hand);
         }
 
         public bool IsThreeOfAKind(IHand hand)
         {
-            if (!this.IsValidHand(hand))
-            {
-                throw new ArgumentException("The hand is not valid");
-            }
+            this.CheckForValidHand(hand);
 
             return this.AreCardsInHandOfSameFace(hand, ThreeMatchingCards) && (!this.AreCardsInHandOfSameFace(hand, TwoMatchingCards));
         }
 
         public bool IsTwoPair(IHand hand)
         {
-            if (!this.IsValidHand(hand))
-            {
-                throw new ArgumentException("The hand is not valid");
-            }
+            this.CheckForValidHand(hand);
 
             var cardFacesCount = this.AddHandToDictionary(hand);
             int counter = 0;
@@ -120,17 +99,29 @@
 
         public bool IsOnePair(IHand hand)
         {
-            throw new NotImplementedException();
+            this.CheckForValidHand(hand);
+
+            return AreCardsInHandOfSameFace(hand, TwoMatchingCards) && (!AreCardsInHandOfSameFace(hand, ThreeMatchingCards)) && (!IsTwoPair(hand));
         }
 
         public bool IsHighCard(IHand hand)
         {
+            this.CheckForValidHand(hand);
+
             throw new NotImplementedException();
         }
 
         public int CompareHands(IHand firstHand, IHand secondHand)
         {
             throw new NotImplementedException();
+        }
+
+        private void CheckForValidHand(IHand hand)
+        {
+            if (!this.IsValidHand(hand))
+            {
+                throw new ArgumentException("The hand is not valid");
+            }
         }
 
         private bool AllCardsHaveSameSuit(IHand hand)
