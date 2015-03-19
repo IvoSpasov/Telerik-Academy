@@ -11,6 +11,7 @@
         private const int Carre = 4;
         private const int ThreeMatchingCards = 3;
         private const int TwoMatchingCards = 2;
+        private const int TwoPairsOfMatchingCards = 2;
 
         public PokerHandsChecker()
         {
@@ -54,7 +55,7 @@
                 throw new ArgumentException("The hand is not valid");
             }
 
-            return AreCardsInHandOfSameFace(hand, Carre);
+            return this.AreCardsInHandOfSameFace(hand, Carre);
         }
 
         public bool IsFullHouse(IHand hand)
@@ -64,7 +65,7 @@
                 throw new ArgumentException("The hand is not valid");
             }
 
-            return AreCardsInHandOfSameFace(hand, ThreeMatchingCards) && AreCardsInHandOfSameFace(hand, TwoMatchingCards);
+            return this.AreCardsInHandOfSameFace(hand, ThreeMatchingCards) && this.AreCardsInHandOfSameFace(hand, TwoMatchingCards);
         }
 
         public bool IsFlush(IHand hand)
@@ -89,12 +90,32 @@
 
         public bool IsThreeOfAKind(IHand hand)
         {
-            throw new NotImplementedException();
+            if (!this.IsValidHand(hand))
+            {
+                throw new ArgumentException("The hand is not valid");
+            }
+
+            return this.AreCardsInHandOfSameFace(hand, ThreeMatchingCards) && (!this.AreCardsInHandOfSameFace(hand, TwoMatchingCards));
         }
 
         public bool IsTwoPair(IHand hand)
         {
-            throw new NotImplementedException();
+            if (!this.IsValidHand(hand))
+            {
+                throw new ArgumentException("The hand is not valid");
+            }
+
+            var cardFacesCount = this.AddHandToDictionary(hand);
+            int counter = 0;
+            foreach (var cardFace in cardFacesCount)
+            {
+                if (cardFace.Value == TwoMatchingCards)
+                {
+                    counter++;
+                }
+            }
+
+            return counter == TwoPairsOfMatchingCards;
         }
 
         public bool IsOnePair(IHand hand)
@@ -153,6 +174,18 @@
 
         private bool AreCardsInHandOfSameFace(IHand hand, int numberOfCardsWithSameFace)
         {
+            var cardFacesCount = this.AddHandToDictionary(hand);
+
+            if (cardFacesCount.ContainsValue(numberOfCardsWithSameFace))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private Dictionary<CardFace, int> AddHandToDictionary(IHand hand)
+        {
             var cardFacesCount = new Dictionary<CardFace, int>();
             for (int i = 0; i < hand.Cards.Count; i++)
             {
@@ -168,12 +201,7 @@
                 }
             }
 
-            if (cardFacesCount.ContainsValue(numberOfCardsWithSameFace))
-            {
-                return true;
-            }
-
-            return false;
+            return cardFacesCount;
         }
     }
 }

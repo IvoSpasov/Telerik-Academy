@@ -235,7 +235,7 @@
         }
 
         [TestMethod]
-        public void TestIsNotFullHouse()
+        public void TestIsNotFullHouseWhenTwoPair()
         {
             var hand = new Hand(new List<ICard>()
             {
@@ -246,6 +246,106 @@
                 new Card(CardFace.Five, CardSuit.Hearts)
             });
             Assert.IsFalse(checker.IsFullHouse(hand));
+        }
+
+        // Testing the method IsThreeOfAKind
+        [TestMethod]
+        public void TestIsThreeOfAKind()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Ten, CardSuit.Clubs),
+                new Card(CardFace.Ten, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Four, CardSuit.Hearts)
+            });
+            Assert.IsTrue(checker.IsThreeOfAKind(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotThreeOfAKindWhenFullHouse()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Ten, CardSuit.Clubs),
+                new Card(CardFace.Ten, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Hearts)
+            });
+            Assert.IsFalse(checker.IsThreeOfAKind(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotThreeOfAKind()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Jack, CardSuit.Clubs),
+                new Card(CardFace.Ten, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Hearts)
+            });
+            Assert.IsFalse(checker.IsThreeOfAKind(hand));
+        }
+
+        // Testing the method IsTwoPair
+        [TestMethod]
+        public void TestIsTwoPair()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Jack, CardSuit.Clubs),
+                new Card(CardFace.Jack, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Hearts)
+            });
+            Assert.IsTrue(checker.IsTwoPair(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotTwoPairWhenFourOfAKind()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Jack, CardSuit.Clubs),
+                new Card(CardFace.Jack, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Jack, CardSuit.Spades),
+                new Card(CardFace.Jack, CardSuit.Hearts)
+            });
+            Assert.IsFalse(checker.IsTwoPair(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotTwoPairWhenOnePair()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Jack, CardSuit.Clubs),
+                new Card(CardFace.Jack, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Three, CardSuit.Spades),
+                new Card(CardFace.Seven, CardSuit.Hearts)
+            });
+            Assert.IsFalse(checker.IsTwoPair(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotTwoPair()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Nine, CardSuit.Diamonds),
+                new Card(CardFace.Ten, CardSuit.Spades),
+                new Card(CardFace.Jack, CardSuit.Spades),
+                new Card(CardFace.Two, CardSuit.Hearts)
+            });
+            Assert.IsFalse(checker.IsTwoPair(hand));
         }
     }
 }
