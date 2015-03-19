@@ -6,19 +6,20 @@
 
     public class Card : ICard
     {
-        public CardFace Face { get; private set; }
-        public CardSuit Suit { get; private set; }
-
         public Card(CardFace face, CardSuit suit)
         {
             this.Face = face;
             this.Suit = suit;
         }
 
+        public CardFace Face { get; private set; }
+
+        public CardSuit Suit { get; private set; }
+
         public override string ToString()
         {
-            string face = GetFace();
-            string suit = GetSuit();
+            string face = this.GetFace();
+            string suit = this.GetSuit();
             string card = face + suit;
             return card;
         }
@@ -48,4 +49,3 @@
         }
     }
 }
-
