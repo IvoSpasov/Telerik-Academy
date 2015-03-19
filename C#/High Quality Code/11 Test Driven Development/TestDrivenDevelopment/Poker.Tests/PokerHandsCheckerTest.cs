@@ -10,11 +10,18 @@
     [TestClass]
     public class PokerHandsCheckerTest
     {
+        private static PokerHandsChecker checker;
+
+        [ClassInitialize]
+        public static void InitializeChecker(TestContext context)
+        {
+            checker = new PokerHandsChecker();
+        }
+
         // Testing the method IsValidHand()
         [TestMethod]
         public void TestIsValidHandIfOk()
         {
-            PokerHandsChecker checker = new PokerHandsChecker();
             IHand hand = new Hand(new List<ICard>() 
             { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
@@ -29,7 +36,6 @@
         [TestMethod]
         public void TestIsValidHandIfLessCards()
         {
-            PokerHandsChecker checker = new PokerHandsChecker();
             IHand hand = new Hand(new List<ICard>() 
             { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
@@ -43,7 +49,6 @@
         [TestMethod]
         public void TestIsValidHandIfMoreCards()
         {
-            PokerHandsChecker checker = new PokerHandsChecker();
             IHand hand = new Hand(new List<ICard>() 
             { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
@@ -59,7 +64,6 @@
         [TestMethod]
         public void TestIsValidHandIfSameCards()
         {
-            PokerHandsChecker checker = new PokerHandsChecker();
             IHand hand = new Hand(new List<ICard>() 
             { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
@@ -71,11 +75,10 @@
             Assert.IsFalse(checker.IsValidHand(hand));
         }
 
-        // Test the method IsFlush()
+        // Testing the method IsFlush()
         [TestMethod]
-        public void TestIsFlush1()
+        public void TestIsFlushIfSameSuitNotInSequence()
         {
-            PokerHandsChecker checker = new PokerHandsChecker();
             IHand hand = new Hand(new List<ICard>() 
             { 
                 new Card(CardFace.Ace, CardSuit.Clubs),
@@ -88,24 +91,8 @@
         }
 
         [TestMethod]
-        public void TestIsFlush2()
+        public void TestIsNotFlushIfDifferentSuit()
         {
-            PokerHandsChecker checker = new PokerHandsChecker();
-            IHand hand = new Hand(new List<ICard>() 
-            { 
-                new Card(CardFace.Ace, CardSuit.Clubs),
-                new Card(CardFace.Queen, CardSuit.Clubs),
-                new Card(CardFace.Jack, CardSuit.Clubs),                
-                new Card(CardFace.Ten, CardSuit.Clubs),
-                new Card(CardFace.Nine, CardSuit.Clubs),
-            });
-            Assert.IsTrue(checker.IsFlush(hand));
-        }
-
-        [TestMethod]
-        public void TestIsNotFlush1()
-        {
-            PokerHandsChecker checker = new PokerHandsChecker();
             IHand hand = new Hand(new List<ICard>()
             { 
                 new Card(CardFace.Ace, CardSuit.Diamonds),
@@ -118,9 +105,8 @@
         }
 
         [TestMethod]
-        public void TestIsNotFlush2()
+        public void TestIsNotFlushIfInSequence()
         {
-            PokerHandsChecker checker = new PokerHandsChecker();
             IHand hand = new Hand(new List<ICard>() 
             { 
                 new Card(CardFace.Ace, CardSuit.Clubs),                
@@ -132,11 +118,10 @@
             Assert.IsFalse(checker.IsFlush(hand));
         }
 
-        // Test the method IsFourOfAKind
+        // Testing the method IsFourOfAKind
         [TestMethod]
-        public void TestIsFourOfAkind()
+        public void TestIsFourOfAKind()
         {
-            PokerHandsChecker checker = new PokerHandsChecker();
             IHand hand = new Hand(new List<ICard>() 
             { 
                 new Card(CardFace.Ace, CardSuit.Clubs),                
@@ -149,9 +134,8 @@
         }
 
         [TestMethod]
-        public void TestIsNotFourOfAkind()
+        public void TestIsNotFourOfAKind()
         {
-            PokerHandsChecker checker = new PokerHandsChecker();
             IHand hand = new Hand(new List<ICard>()
             { 
                 new Card(CardFace.Ace, CardSuit.Clubs),                
@@ -161,6 +145,42 @@
                 new Card(CardFace.King, CardSuit.Clubs),
             });
             Assert.IsFalse(checker.IsFourOfAKind(hand));
+        }
+
+        // Testing the method IsStraight
+        [TestMethod]
+        public void TestIsStraight()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Two, CardSuit.Clubs),
+                new Card(CardFace.Three, CardSuit.Clubs),
+                new Card(CardFace.Four, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Diamonds),
+                new Card(CardFace.Six, CardSuit.Hearts)
+            });
+            Assert.IsTrue(checker.IsStraight(hand));
+        }
+
+        [TestMethod]
+        public void TestIsNotStraight()
+        {
+            var hand = new Hand(new List<ICard>()
+            {
+                new Card(CardFace.Two, CardSuit.Clubs),
+                new Card(CardFace.Three, CardSuit.Clubs),
+                new Card(CardFace.Four, CardSuit.Clubs),
+                new Card(CardFace.Five, CardSuit.Clubs),
+                new Card(CardFace.Six, CardSuit.Clubs)
+            });
+            Assert.IsFalse(checker.IsStraight(hand));
+        }
+
+        // Testing the method IsStraightFlush
+        [TestMethod]
+        public void TestIsStraightFlush()
+        {
+
         }
     }
 }
