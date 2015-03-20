@@ -141,15 +141,7 @@
         [TestMethod]
         public void TestIsNotFullHouseWhenTwoPair()
         {
-            var hand = new Hand(new List<ICard>()
-            {
-                new Card(CardFace.Jack, CardSuit.Clubs),
-                new Card(CardFace.Ten, CardSuit.Diamonds),
-                new Card(CardFace.Ten, CardSuit.Spades),
-                new Card(CardFace.Five, CardSuit.Clubs),
-                new Card(CardFace.Five, CardSuit.Hearts)
-            });
-            Assert.IsFalse(checker.IsFullHouse(hand));
+            Assert.IsFalse(checker.IsFullHouse(PokerHands.TwoPair));
         }
 
         // Testing the method IsFlush()
@@ -218,15 +210,7 @@
         [TestMethod]
         public void TestIsNotThreeOfAKindWhenFullHouse()
         {
-            var hand = new Hand(new List<ICard>()
-            {
-                new Card(CardFace.Ten, CardSuit.Clubs),
-                new Card(CardFace.Ten, CardSuit.Diamonds),
-                new Card(CardFace.Ten, CardSuit.Spades),
-                new Card(CardFace.Five, CardSuit.Clubs),
-                new Card(CardFace.Five, CardSuit.Hearts)
-            });
-            Assert.IsFalse(checker.IsThreeOfAKind(hand));
+            Assert.IsFalse(checker.IsThreeOfAKind(PokerHands.FullHouse));
         }
 
         [TestMethod]
@@ -253,29 +237,13 @@
         [TestMethod]
         public void TestIsNotTwoPairWhenFourOfAKind()
         {
-            var hand = new Hand(new List<ICard>()
-            {
-                new Card(CardFace.Jack, CardSuit.Clubs),
-                new Card(CardFace.Jack, CardSuit.Diamonds),
-                new Card(CardFace.Ten, CardSuit.Spades),
-                new Card(CardFace.Jack, CardSuit.Spades),
-                new Card(CardFace.Jack, CardSuit.Hearts)
-            });
-            Assert.IsFalse(checker.IsTwoPair(hand));
+            Assert.IsFalse(checker.IsTwoPair(PokerHands.FourOfAKind));
         }
 
         [TestMethod]
         public void TestIsNotTwoPairWhenOnePair()
         {
-            var hand = new Hand(new List<ICard>()
-            {
-                new Card(CardFace.Jack, CardSuit.Clubs),
-                new Card(CardFace.Jack, CardSuit.Diamonds),
-                new Card(CardFace.Ten, CardSuit.Spades),
-                new Card(CardFace.Three, CardSuit.Spades),
-                new Card(CardFace.Seven, CardSuit.Hearts)
-            });
-            Assert.IsFalse(checker.IsTwoPair(hand));
+            Assert.IsFalse(checker.IsTwoPair(PokerHands.OnePair));
         }
 
         [TestMethod]
@@ -302,43 +270,19 @@
         [TestMethod]
         public void TestIsNotOnePairWhenTwoPair()
         {
-            var hand = new Hand(new List<ICard>()
-            {
-                new Card(CardFace.Nine, CardSuit.Clubs),
-                new Card(CardFace.Nine, CardSuit.Diamonds),
-                new Card(CardFace.Ten, CardSuit.Spades),
-                new Card(CardFace.Jack, CardSuit.Spades),
-                new Card(CardFace.Jack, CardSuit.Hearts)
-            });
-            Assert.IsFalse(checker.IsOnePair(hand));
+            Assert.IsFalse(checker.IsOnePair(PokerHands.TwoPair));
         }
 
         [TestMethod]
         public void TestIsNotOnePairWhenFullHouse()
         {
-            var hand = new Hand(new List<ICard>()
-            {
-                new Card(CardFace.Ten, CardSuit.Clubs),
-                new Card(CardFace.Ten, CardSuit.Diamonds),
-                new Card(CardFace.Ten, CardSuit.Spades),
-                new Card(CardFace.Five, CardSuit.Clubs),
-                new Card(CardFace.Five, CardSuit.Hearts)
-            });
-            Assert.IsFalse(checker.IsOnePair(hand));
+            Assert.IsFalse(checker.IsOnePair(PokerHands.FullHouse));
         }
 
         [TestMethod]
         public void TestIsNotOnePairWhenFourOfAKind()
         {
-            IHand hand = new Hand(new List<ICard>() 
-            { 
-                new Card(CardFace.Ace, CardSuit.Clubs),                
-                new Card(CardFace.Ace, CardSuit.Diamonds),
-                new Card(CardFace.Ace, CardSuit.Hearts),
-                new Card(CardFace.Ace, CardSuit.Spades),
-                new Card(CardFace.King, CardSuit.Clubs),
-            });
-            Assert.IsFalse(checker.IsOnePair(hand));
+            Assert.IsFalse(checker.IsOnePair(PokerHands.FourOfAKind));
         }
 
         // Testing the method IsHighCard
@@ -349,31 +293,51 @@
         }
 
         [TestMethod]
+        public void TestIsNotHighCardWhenStraightFlush()
+        {
+            Assert.IsFalse(checker.IsHighCard(PokerHands.StraightFlush));
+        }
+
+        [TestMethod]
+        public void TestIsNotHighCardWhenFourOfAKind()
+        {
+            Assert.IsFalse(checker.IsHighCard(PokerHands.FourOfAKind));
+        }
+
+        [TestMethod]
+        public void TestIsNotHighCardWhenFullHouse()
+        {
+            Assert.IsFalse(checker.IsHighCard(PokerHands.FullHouse));
+        }
+
+        [TestMethod]
         public void TestIsNotHighCardWhenStraight()
         {
-            var hand = new Hand(new List<ICard>()
-            {
-                new Card(CardFace.Two, CardSuit.Clubs),
-                new Card(CardFace.Three, CardSuit.Clubs),
-                new Card(CardFace.Four, CardSuit.Clubs),
-                new Card(CardFace.Five, CardSuit.Diamonds),
-                new Card(CardFace.Six, CardSuit.Hearts)
-            });
-            Assert.IsFalse(checker.IsHighCard(hand));
+            Assert.IsFalse(checker.IsHighCard(PokerHands.Straight));
         }
 
         [TestMethod]
         public void TestIsNotHighCardWhenFlush()
         {
-            IHand hand = new Hand(new List<ICard>() 
-            { 
-                new Card(CardFace.Ace, CardSuit.Clubs),
-                new Card(CardFace.Three, CardSuit.Clubs),
-                new Card(CardFace.King, CardSuit.Clubs),
-                new Card(CardFace.Seven, CardSuit.Clubs),                
-                new Card(CardFace.Queen, CardSuit.Clubs),
-            });
-            Assert.IsFalse(checker.IsHighCard(hand));
+            Assert.IsFalse(checker.IsHighCard(PokerHands.Flush));
+        }
+
+        [TestMethod]
+        public void TestIsNotHighCardWhenThreeOfAKind()
+        {
+            Assert.IsFalse(checker.IsHighCard(PokerHands.ThreeOfAKind));
+        }
+
+        [TestMethod]
+        public void TestNotHighCardWhenTwoPair()
+        {
+            Assert.IsFalse(checker.IsHighCard(PokerHands.TwoPair));
+        }
+
+        [TestMethod]
+        public void TestIsNotHighCardWhenOnePair()
+        {
+            Assert.IsFalse(checker.IsHighCard(PokerHands.OnePair));
         }
     }
 }
