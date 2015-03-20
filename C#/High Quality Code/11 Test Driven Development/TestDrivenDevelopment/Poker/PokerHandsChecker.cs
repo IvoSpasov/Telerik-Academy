@@ -109,10 +109,10 @@
             this.CheckForValidHand(hand);
 
             var cardsCount = this.AddHandToDictionary(hand);
-            bool allCardsAreDifferent = (cardsCount.Keys.Count == ValidNumberOfCardsPerHand);
+            bool allCardsAreDifferent = cardsCount.Keys.Count == ValidNumberOfCardsPerHand;
             bool allCardsAreOfDifferentSuit = !this.AllCardsHaveSameSuit(hand);
 
-            return (allCardsAreDifferent && allCardsAreOfDifferentSuit && !IsStraight(hand));
+            return allCardsAreDifferent && allCardsAreOfDifferentSuit && !this.IsStraight(hand);
         }
 
         public int CompareHands(IHand firstHand, IHand secondHand)
