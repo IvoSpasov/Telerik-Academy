@@ -49,6 +49,7 @@
     <Compile Include="Interfaces\IHand.cs" />
     <Compile Include="Interfaces\IPokerHandsChecker.cs" />
     <Compile Include="PokerExample.cs" />
+    <Compile Include="PokerHands.cs" />
     <Compile Include="PokerHandsChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -101,7 +101,7 @@
         {
             this.CheckForValidHand(hand);
 
-            return AreCardsInHandOfSameFace(hand, TwoMatchingCards) && (!AreCardsInHandOfSameFace(hand, ThreeMatchingCards)) && (!IsTwoPair(hand));
+            return this.AreCardsInHandOfSameFace(hand, TwoMatchingCards) && (!this.AreCardsInHandOfSameFace(hand, ThreeMatchingCards)) && (!this.IsTwoPair(hand));
         }
 
         public bool IsHighCard(IHand hand)
