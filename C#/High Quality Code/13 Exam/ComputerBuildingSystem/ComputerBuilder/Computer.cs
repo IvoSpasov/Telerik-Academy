@@ -9,7 +9,7 @@
 
     public class Computer
     {
-        public Computer(ComputerType type, Cpu cpu, RamMemory ram, IEnumerable<HardDrive> hardDrives, IVideoCard videoCard, Battery battery)
+        public Computer(ComputerType type, Cpu cpu, RamMemory ram, IEnumerable<HardDrive> hardDrives, IVideoCard videoCard, IBattery battery)
         {
             this.Cpu = cpu;
             this.Ram = ram;
@@ -26,13 +26,13 @@
 
         public IVideoCard VideoCard { get; set; }
 
-        public Battery Battery { get; set; }
+        public IBattery Battery { get; set; }
 
         public void ChargeBattery(int percentage)
         {
             this.Battery.Charge(percentage);
 
-            VideoCard.Draw(string.Format("Battery status: {0}", this.Battery.Percentage));
+            VideoCard.Draw(string.Format("Battery status: {0}", this.Battery.BatterPercentage));
         }
 
         public void Play(int guessNumber)

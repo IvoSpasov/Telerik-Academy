@@ -6,10 +6,6 @@
 
     public class ColorVideoCard : IVideoCard
     {
-        public ColorVideoCard()
-        {
-        }
-
         public void Draw(string text)
         {
             Console.ForegroundColor = ConsoleColor.Green;

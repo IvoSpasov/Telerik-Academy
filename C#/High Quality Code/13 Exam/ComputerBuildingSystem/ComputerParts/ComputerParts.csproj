@@ -39,7 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Battery.cs" />
+    <Compile Include="Interfaces\IBattery.cs" />
+    <Compile Include="LaptopBattery.cs" />
     <Compile Include="ColorVideoCard.cs" />
     <Compile Include="Cpu.cs" />
     <Compile Include="Enums\NumberOfBits.cs" />

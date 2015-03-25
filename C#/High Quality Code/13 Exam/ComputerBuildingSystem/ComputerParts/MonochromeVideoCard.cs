@@ -6,10 +6,6 @@
 
     public class MonochromeVideoCard : IVideoCard
     {
-        public MonochromeVideoCard()
-        {
-        }
-
         public void Draw(string text)
         {
             Console.ForegroundColor = ConsoleColor.Gray;
