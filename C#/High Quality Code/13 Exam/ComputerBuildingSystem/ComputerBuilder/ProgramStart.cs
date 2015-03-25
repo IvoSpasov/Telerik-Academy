@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ComputerBuilder
+﻿namespace ComputerBuilder
 {
-    class ProgramStart
+    public class ProgramStart
     {
-        static void Main()
+        public static void Main()
         {
             Program computers = new Program();
             computers.Start();
         }
-
     }
 }

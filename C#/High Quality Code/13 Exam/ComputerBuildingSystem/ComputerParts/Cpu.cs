@@ -2,8 +2,8 @@
 {
     using System;
 
-    using Interfaces;
     using ComputerParts.Enums;
+    using Interfaces;
 
     public class Cpu
     {
@@ -24,6 +24,13 @@
             this.randomGenerator = new Random();
         }
 
+        // separate to two methods for strong cohesion?
+        public void GenerateRandomNumberAndSaveItToRam(int minValue, int maxValue)
+        {
+            int randomNumber = this.randomGenerator.Next(minValue, maxValue);
+            this.motherboard.SaveRamValue(randomNumber);
+        }
+
         public void CalculateSquareNumber()
         {
             int number = this.motherboard.LoadRamValue();
@@ -31,7 +38,7 @@
             {
                 this.motherboard.DrawOnVideoCard("Number too low.");
             }
-            else if (number > ReturnNumberHighBoundaryForCpu())
+            else if (number > this.ReturnNumberHighBoundaryForCpu())
             {
                 this.motherboard.DrawOnVideoCard("Number too high.");
             }
@@ -50,13 +57,6 @@
                 case NumberOfBits.Bit64: return Cpu64BitHighBoundary;
                 default: throw new ArgumentException("Invalid processor");
             }
-        }
-        
-        // separate to two methods for strong cohesion?
-        public void GenerateRandomNumberAndSaveItToRam(int minValue, int maxValue)
-        {
-            int randomNumber = this.randomGenerator.Next(minValue, maxValue);
-            this.motherboard.SaveRamValue(randomNumber);
         }
     }
 }

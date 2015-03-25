@@ -1,6 +1,8 @@
 ﻿namespace ComputerParts
 {
-    public class RamMemory
+    using ComputerParts.Interfaces;
+
+    public class RamMemory : IRamMemory
     {
         private int value; 
 
@@ -9,7 +11,7 @@
             this.Amount = maximumAmount;
         } 
 
-        public int Amount { get; set; } 
+        public int Amount { get; private set; } 
 
         public void SaveValue(int newValue)
         {

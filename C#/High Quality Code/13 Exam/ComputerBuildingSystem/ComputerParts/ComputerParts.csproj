@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IBattery.cs" />
+    <Compile Include="Interfaces\IRamMemory.cs" />
     <Compile Include="LaptopBattery.cs" />
     <Compile Include="ColorVideoCard.cs" />
     <Compile Include="Cpu.cs" />

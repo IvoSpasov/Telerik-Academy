@@ -1,15 +1,13 @@
-﻿
-using ComputerParts;
-using ComputerParts.Enums;
-using System;
-using System.Collections.Generic;
-
-namespace ComputerBuilder
+﻿namespace ComputerBuilder
 {
+    using System;
+
+    using ComputerParts;
+    using ComputerParts.Enums;
+
     public class Program
     {
         private const int Ram2gb = 2;
-
         private const byte Cpu2Core = 2;
 
         public void Start()
@@ -23,14 +21,11 @@ namespace ComputerBuilder
             if (manufacturer == "HP")
             {
                 var pcRam = new RamMemory(Ram2gb);
-
                 var pcVideoCard = new MonochromeVideoCard();
-
                 var pcMotherboard = new Motherboard(pcRam, pcVideoCard);
-
                 var pcCpu = new Cpu(Cpu2Core, NumberOfBits.Bit32, pcMotherboard);
 
-                pc = new Computer(ComputerType.Pc, pcCpu, pcRam, new[] { new HardDrive(500, false, 0) }, pcVideoCard, null);
+                pc = new Computer(ComputerType.Pc, pcCpu, pcMotherboard, new[] { new HardDrive(500, false, 0) }, null);
 
                 //var serverRam = new RamMemory(Eight * 4);
                 //var serverVideo = new IVideoCard();
@@ -129,10 +124,8 @@ namespace ComputerBuilder
                     Console.WriteLine("Invalid command!"); 
                 }
             }
-        }
-        
+        }        
 
         public class InvalidArgumentException : ArgumentException { public InvalidArgumentException(string message) : base(message) { } }
-        const int Eight = 8;
     }
 }

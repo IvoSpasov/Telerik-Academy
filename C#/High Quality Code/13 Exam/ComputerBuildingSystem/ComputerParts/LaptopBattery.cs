@@ -8,22 +8,23 @@
 
         public LaptopBattery() 
         { 
-            this.BatterPercentage = LaptopBatteryInitialPower;
+            this.BatteryPercentage = LaptopBatteryInitialPower;
         }
 
-        public int BatterPercentage { get; private set; }
+        public int BatteryPercentage { get; private set; }
 
         public void Charge(int additialCharge)
         {
-            this.BatterPercentage += additialCharge;
+            this.BatteryPercentage += additialCharge;
 
-            if (BatterPercentage > 100)
+            if (this.BatteryPercentage > 100)
             {
-                BatterPercentage = 100;
+                this.BatteryPercentage = 100;
             }
-            if (BatterPercentage < 0)
+
+            if (this.BatteryPercentage < 0)
             {
-                BatterPercentage = 0;
+                this.BatteryPercentage = 0;
             }
         }
     }

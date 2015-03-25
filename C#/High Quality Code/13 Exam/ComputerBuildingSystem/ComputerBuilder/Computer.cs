@@ -9,51 +9,48 @@
 
     public class Computer
     {
-        public Computer(ComputerType type, Cpu cpu, RamMemory ram, IEnumerable<HardDrive> hardDrives, IVideoCard videoCard, IBattery battery)
+        public Computer(ComputerType type, Cpu cpu, IMotherboard motherboard, IEnumerable<HardDrive> hardDrives, IBattery battery)
         {
             this.Cpu = cpu;
-            this.Ram = ram;
+            this.Motherboard = motherboard;
             this.HardDrives = hardDrives;
-            this.VideoCard = videoCard;
             this.Battery = battery;
         }
 
-        public Cpu Cpu { get; set; }
+        public Cpu Cpu { get; private set; }
 
-        public RamMemory Ram { get; set; }
+        public IMotherboard Motherboard { get; private set; }
 
-        public IEnumerable<HardDrive> HardDrives { get; set; }
+        public IEnumerable<HardDrive> HardDrives { get; private set; }
 
-        public IVideoCard VideoCard { get; set; }
-
-        public IBattery Battery { get; set; }
+        public IBattery Battery { get; private set; }
 
         public void ChargeBattery(int percentage)
         {
             this.Battery.Charge(percentage);
-
-            VideoCard.Draw(string.Format("Battery status: {0}", this.Battery.BatterPercentage));
+            this.Motherboard.DrawOnVideoCard(string.Format("Battery status: {0}", this.Battery.BatteryPercentage));
         }
 
         public void Play(int guessNumber)
         {
-            Cpu.GenerateRandomNumberAndSaveItToRam(1, 10);
-            var number = Ram.LoadValue();
+            this.Cpu.GenerateRandomNumberAndSaveItToRam(1, 10);
+            var number = this.Motherboard.LoadRamValue();
             if (number != guessNumber)
             {
-                VideoCard.Draw(string.Format("You didn't guess the number {0}.", number));
+                this.Motherboard.DrawOnVideoCard(string.Format("You didn't guess the number {0}.", number));
             }
             else 
             {
-                VideoCard.Draw("You win!"); 
+                this.Motherboard.DrawOnVideoCard("You win!"); 
             }
         }
 
         public void Process(int data)
         {
-            Ram.SaveValue(data);
+            this.Motherboard.SaveRamValue(data);
+
             // TODO: Fix it
-            Cpu.CalculateSquareNumber();
+            this.Cpu.CalculateSquareNumber();
         }
     }
 }

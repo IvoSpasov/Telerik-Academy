@@ -2,7 +2,7 @@
 {
     public interface IBattery
     {        
-        int BatterPercentage { get; }
+        int BatteryPercentage { get; }
 
         void Charge(int additialCharge);
     }
