@@ -1,8 +1,9 @@
 ﻿
+using ComputerParts;
 using System;
 using System.Collections.Generic;
 
-namespace Computers
+namespace ComputerBuilder
 {
     public class Program
     {
@@ -30,7 +31,7 @@ namespace Computers
 
                 var pcCpu = new Cpu(Cpu2Core, Cpu32Bit, pcMotherboard);
 
-                pc = new Computer(Type.Pc, pcCpu, pcRam, new[] { new HardDrive(500, false, 0) }, pcVideoCard, null);
+                pc = new Computer(ComputerType.Pc, pcCpu, pcRam, new[] { new HardDrive(500, false, 0) }, pcVideoCard, null);
 
                 var serverRam = new RamMemory(Eight * 4);
                 var serverVideo = new VideoCard();

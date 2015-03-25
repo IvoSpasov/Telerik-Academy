@@ -4,21 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Computers
+using ComputerParts;
+
+namespace ComputerBuilder
 {
     public class Computer
     {
         //public Computer(Type type, )
 
 
-        public Computer(Type type, Cpu cpu, RamMemory ram, IEnumerable<HardDrive> hardDrives, VideoCard videoCard, Battery battery)
+        public Computer(ComputerType type, Cpu cpu, RamMemory ram, IEnumerable<HardDrive> hardDrives, VideoCard videoCard, Battery battery)
         {
             this.Cpu = cpu;
             this.Ram = ram;
             this.HardDrives = hardDrives;
             this.VideoCard = videoCard;
 
-            if (type != Type.Laptop && type != Type.Pc)
+            if (type != ComputerType.Laptop && type != ComputerType.Pc)
             {
                 VideoCard.IsMonochrome = true;
             }
@@ -63,7 +65,7 @@ namespace Computers
         {
             Ram.SaveValue(data);
             // TODO: Fix it
-            Cpu.SquareNumber();
+            Cpu.CalculateSquareNumber();
         }
     }
 }

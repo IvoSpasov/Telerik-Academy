@@ -1,4 +1,4 @@
-﻿namespace Computers
+﻿namespace ComputerParts
 {
     using System;
     using System.Collections.Generic;
@@ -16,11 +16,11 @@
         
         // public bool IsMonochrome { get; set; }
 
-        internal HardDrive() 
+        public HardDrive() 
         {
         }
 
-        internal HardDrive(int capacity, bool isInRaid, int hardDrivesInRaid)
+        public HardDrive(int capacity, bool isInRaid, int hardDrivesInRaid)
         {
             this.isInRaid = isInRaid;
             this.hardDrivesInRaid = hardDrivesInRaid;

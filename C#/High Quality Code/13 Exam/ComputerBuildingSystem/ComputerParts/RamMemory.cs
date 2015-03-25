@@ -1,4 +1,4 @@
-﻿namespace Computers
+﻿namespace ComputerParts
 {
     public class RamMemory
     {
@@ -13,12 +13,12 @@
 
         public void SaveValue(int newValue)
         {
-            value = newValue; 
+            this.value = newValue; 
         }
 
         public int LoadValue()
         {
-            return value;
+            return this.value;
         }
     }
 }

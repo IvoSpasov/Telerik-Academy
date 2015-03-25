@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Computers.UI.Console")]
+[assembly: AssemblyTitle("ComputerParts")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Telerik Academy")]
-[assembly: AssemblyProduct("Computers.UI.Console")]
-[assembly: AssemblyCopyright("Telerik Academy © 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ComputerParts")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1c60548e-fd20-4d04-bbbb-80dd222bb452")]
+[assembly: Guid("b620c892-2ae7-45d4-afb4-a682666f9164")]
 
 // Version information for an assembly consists of the following four values:
 //

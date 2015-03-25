@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Computers
+namespace ComputerParts
 {
-    public enum Type
+    public enum ComputerType
     {
         Pc, 
         Laptop, Server

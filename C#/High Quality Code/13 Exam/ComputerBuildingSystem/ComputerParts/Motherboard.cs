@@ -1,5 +1,7 @@
-﻿namespace Computers
+﻿namespace ComputerParts
 {
+    using Interfaces;
+
     public class Motherboard : IMotherboard
     {
         private RamMemory ramMemory;
