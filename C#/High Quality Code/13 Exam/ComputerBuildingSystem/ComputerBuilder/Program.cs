@@ -1,6 +1,7 @@
 ﻿namespace ComputerBuilder
 {
     using System;
+    using System.Collections.Generic;
 
     using ComputerParts;
     using ComputerParts.Enums;
@@ -8,7 +9,10 @@
     public class Program
     {
         private const int Ram2gb = 2;
+        private const int Ram4gb = 4;
+        private const int Ram32gb = 32;
         private const byte Cpu2Core = 2;
+        private const byte Cpu4Core = 4;
 
         public void Start()
         {
@@ -21,38 +25,25 @@
             if (manufacturer == "HP")
             {
                 var pcRam = new RamMemory(Ram2gb);
-                var pcVideoCard = new MonochromeVideoCard();
+                var pcVideoCard = new ColorVideoCard();
                 var pcMotherboard = new Motherboard(pcRam, pcVideoCard);
                 var pcCpu = new Cpu(Cpu2Core, NumberOfBits.Bit32, pcMotherboard);
 
                 pc = new Computer(ComputerType.Pc, pcCpu, pcMotherboard, new[] { new HardDrive(500, false, 0) }, null);
 
-                //var serverRam = new RamMemory(Eight * 4);
-                //var serverVideo = new IVideoCard();
+                var serverRam = new RamMemory(Ram32gb);
+                var serverVideoCard = new MonochromeVideoCard();
+                var serverMotherboard = new Motherboard(serverRam, serverVideoCard);
+                var serverCpu = new Cpu(Cpu4Core, NumberOfBits.Bit32, serverMotherboard);
 
-                //server = new Computer(Type.Server, new Cpu(Eight / 2, 32, serverRam, serverVideo), serverRam, new List<HardDrive>{
-                //            new HardDrive(0, true, 2, new List<HardDrive> { new HardDrive(1000, false, 0), new HardDrive(1000, false, 0) })
-                //        },
-                //        serverVideo, null);
-                //{
-                //    var card = new VideoCard()
-                //    {
-                //        IsMonochrome
-                //            = false
-                //    };
-                //    var ram1 = new RamMemory(Eight / 2);
-                //    laptop = new Computer(
-                //        Type.Laptop,
-                //        new Cpu(Eight / 4, 64, ram1, card),
-                //        ram1,
-                //        new[]
-                //            {
-                //                new HardDrive(500,
-                //                    false, 0)
-                //            },
-                //        card,
-                //        new Battery());
-                //}
+                server = new Computer(ComputerType.Server, serverCpu, serverMotherboard, new List<HardDrive> { new HardDrive(0, true, 2, new List<HardDrive> { new HardDrive(1000, false, 0), new HardDrive(1000, false, 0) }) }, null);
+
+                var laptopVideoCard = new ColorVideoCard();
+                var laptopRam = new RamMemory(Ram4gb);
+                var laptopMotherboard = new Motherboard(laptopRam, laptopVideoCard);
+                var laptopCpu = new Cpu(Cpu2Core, NumberOfBits.Bit64, laptopMotherboard);
+
+                laptop = new Computer(ComputerType.Laptop, laptopCpu, laptopMotherboard, new[] { new HardDrive(500, false, 0) }, new LaptopBattery());
             }
             //else if (manufacturer == "Dell")
             //{
@@ -75,23 +66,20 @@
             //        new Battery());
             //}
             else
-            { 
-                throw new InvalidArgumentException("Invalid manufacturer!"); 
+            {
+                throw new ArgumentException("Invalid manufacturer!");
             }
-
 
             while (true)
             {
                 var currentLine = Console.ReadLine();
 
-                if (currentLine == null) 
+                if (currentLine == null)
                 {
-
                 }
 
                 if (currentLine.StartsWith("Exit"))
                 {
-
                 }
 
                 var cp = currentLine.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -106,14 +94,13 @@
                 var cn = cp[0];
                 var ca = int.Parse(cp[1]);
 
-
-                if (cn == "Charge") 
+                if (cn == "Charge")
                 {
-                    //laptop.ChargeBattery(ca); 
+                    laptop.ChargeBattery(ca);
                 }
-                else if (cn == "Process") 
+                else if (cn == "Process")
                 {
-                    //server.Process(ca); 
+                    server.Process(ca);
                 }
                 else if (cn == "Play")
                 {
@@ -121,11 +108,9 @@
                 }
                 else
                 {
-                    Console.WriteLine("Invalid command!"); 
+                    Console.WriteLine("Invalid command!");
                 }
             }
-        }        
-
-        public class InvalidArgumentException : ArgumentException { public InvalidArgumentException(string message) : base(message) { } }
+        }
     }
 }
