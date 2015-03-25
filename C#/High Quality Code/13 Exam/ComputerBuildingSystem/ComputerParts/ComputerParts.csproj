@@ -40,14 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Battery.cs" />
+    <Compile Include="ColorVideoCard.cs" />
     <Compile Include="Cpu.cs" />
+    <Compile Include="Enums\NumberOfBits.cs" />
     <Compile Include="HardDrive.cs" />
     <Compile Include="Interfaces\IMotherboard.cs" />
+    <Compile Include="MonochromeVideoCard.cs" />
     <Compile Include="Motherboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RamMemory.cs" />
-    <Compile Include="ComputerType.cs" />
-    <Compile Include="VideoCard.cs" />
+    <Compile Include="Enums\ComputerType.cs" />
+    <Compile Include="Interfaces\IVideoCard.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

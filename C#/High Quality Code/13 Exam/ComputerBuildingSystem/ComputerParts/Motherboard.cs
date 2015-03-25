@@ -5,9 +5,9 @@
     public class Motherboard : IMotherboard
     {
         private RamMemory ramMemory;
-        private VideoCard videoCard;
+        private IVideoCard videoCard;
 
-        public Motherboard(RamMemory ram, VideoCard videoCard)
+        public Motherboard(RamMemory ram, IVideoCard videoCard)
         {
             this.ramMemory = ram;
             this.videoCard = videoCard;

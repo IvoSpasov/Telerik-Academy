@@ -1,5 +1,6 @@
 ﻿
 using ComputerParts;
+using ComputerParts.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -10,8 +11,6 @@ namespace ComputerBuilder
         private const int Ram2gb = 2;
 
         private const byte Cpu2Core = 2;
-
-        private const byte Cpu32Bit = 32;
 
         public void Start()
         {
@@ -25,16 +24,16 @@ namespace ComputerBuilder
             {
                 var pcRam = new RamMemory(Ram2gb);
 
-                var pcVideoCard = new VideoCard() { IsMonochrome = false };
+                var pcVideoCard = new MonochromeVideoCard();
 
                 var pcMotherboard = new Motherboard(pcRam, pcVideoCard);
 
-                var pcCpu = new Cpu(Cpu2Core, Cpu32Bit, pcMotherboard);
+                var pcCpu = new Cpu(Cpu2Core, NumberOfBits.Bit32, pcMotherboard);
 
                 pc = new Computer(ComputerType.Pc, pcCpu, pcRam, new[] { new HardDrive(500, false, 0) }, pcVideoCard, null);
 
-                var serverRam = new RamMemory(Eight * 4);
-                var serverVideo = new VideoCard();
+                //var serverRam = new RamMemory(Eight * 4);
+                //var serverVideo = new IVideoCard();
 
                 //server = new Computer(Type.Server, new Cpu(Eight / 2, 32, serverRam, serverVideo), serverRam, new List<HardDrive>{
                 //            new HardDrive(0, true, 2, new List<HardDrive> { new HardDrive(1000, false, 0), new HardDrive(1000, false, 0) })

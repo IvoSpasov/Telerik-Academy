@@ -1,7 +1,9 @@
 ﻿namespace ComputerParts
 {
     using System;
+
     using Interfaces;
+    using ComputerParts.Enums;
 
     public class Cpu
     {
@@ -9,12 +11,12 @@
         private const int Cpu64BitHighBoundary = 1000;
 
         private readonly byte numberOfCores;
-        private readonly byte numberOfBits;
+        private readonly NumberOfBits numberOfBits;
         private readonly IMotherboard motherboard;
 
         private readonly Random randomGenerator;
 
-        public Cpu(byte numberOfCores, byte numberOfBits, IMotherboard motherboard)
+        public Cpu(byte numberOfCores, NumberOfBits numberOfBits, IMotherboard motherboard)
         {
             this.numberOfCores = numberOfCores;
             this.numberOfBits = numberOfBits;
@@ -44,7 +46,8 @@
         {
             switch (this.numberOfBits)
             {
-                case 32: return Cpu32BitHighBoundary;
+                case NumberOfBits.Bit32: return Cpu32BitHighBoundary;
+                case NumberOfBits.Bit64: return Cpu64BitHighBoundary;
                 default: throw new ArgumentException("Invalid processor");
             }
         }

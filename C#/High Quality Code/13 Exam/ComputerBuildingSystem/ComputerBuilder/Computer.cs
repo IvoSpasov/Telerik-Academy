@@ -1,34 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using ComputerParts;
-
-namespace ComputerBuilder
+﻿namespace ComputerBuilder
 {
+    using System;
+    using System.Collections.Generic;
+
+    using ComputerParts;
+    using ComputerParts.Enums;
+    using ComputerParts.Interfaces;
+
     public class Computer
     {
-        //public Computer(Type type, )
-
-
-        public Computer(ComputerType type, Cpu cpu, RamMemory ram, IEnumerable<HardDrive> hardDrives, VideoCard videoCard, Battery battery)
+        public Computer(ComputerType type, Cpu cpu, RamMemory ram, IEnumerable<HardDrive> hardDrives, IVideoCard videoCard, Battery battery)
         {
             this.Cpu = cpu;
             this.Ram = ram;
             this.HardDrives = hardDrives;
             this.VideoCard = videoCard;
-
-            if (type != ComputerType.Laptop && type != ComputerType.Pc)
-            {
-                VideoCard.IsMonochrome = true;
-            }
-
             this.Battery = battery;
         }
-
-
 
         public Cpu Cpu { get; set; }
 
@@ -36,7 +24,7 @@ namespace ComputerBuilder
 
         public IEnumerable<HardDrive> HardDrives { get; set; }
 
-        public VideoCard VideoCard { get; set; }
+        public IVideoCard VideoCard { get; set; }
 
         public Battery Battery { get; set; }
 
