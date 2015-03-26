@@ -43,6 +43,7 @@
     <Compile Include="Factories\IComputerFactory.cs" />
     <Compile Include="Interfaces\IBattery.cs" />
     <Compile Include="Interfaces\IRamMemory.cs" />
+    <Compile Include="Laptop.cs" />
     <Compile Include="Parts\LaptopBattery.cs" />
     <Compile Include="Parts\ColorVideoCard.cs" />
     <Compile Include="Parts\Cpu.cs" />
@@ -51,11 +52,12 @@
     <Compile Include="Interfaces\IMotherboard.cs" />
     <Compile Include="Parts\MonochromeVideoCard.cs" />
     <Compile Include="Parts\Motherboard.cs" />
+    <Compile Include="Pc.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Parts\RamMemory.cs" />
-    <Compile Include="Enums\ComputerType.cs" />
     <Compile Include="Interfaces\IVideoCard.cs" />
+    <Compile Include="Server.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
