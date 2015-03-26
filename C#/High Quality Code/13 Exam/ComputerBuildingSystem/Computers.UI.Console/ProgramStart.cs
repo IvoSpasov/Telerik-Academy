@@ -8,6 +8,11 @@
 
     public class ProgramStart
     {
+        private const string ExitCommand = "Exit";
+        private const string ChargeCommand = "Charge";
+        private const string ProcessCommand = "Process";
+        private const string PlayCommand = "Play";
+
         public static void Main()
         {
             IComputerFactory computerManufacturer;
@@ -39,7 +44,7 @@
                     break;
                 }
 
-                if (currentLine.StartsWith("Exit"))
+                if (currentLine.StartsWith(ExitCommand))
                 {
                     break;
                 }
@@ -56,15 +61,15 @@
                 var word = currentCommand[0];
                 var number = int.Parse(currentCommand[1]);
 
-                if (word == "Charge")
+                if (word == ChargeCommand)
                 {
                     laptop.ChargeBattery(number);
                 }
-                else if (word == "Process")
+                else if (word == ProcessCommand)
                 {
                     server.Process(number);
                 }
-                else if (word == "Play")
+                else if (word == PlayCommand)
                 {
                     pc.Play(number);
                 }

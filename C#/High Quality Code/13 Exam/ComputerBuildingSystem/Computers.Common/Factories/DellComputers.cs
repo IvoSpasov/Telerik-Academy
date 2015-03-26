@@ -1,40 +1,40 @@
 ﻿namespace Computers.Common.Factories
 {
-    using System;
+    using System.Collections.Generic;
+
+    using Computers.Common.Interfaces;
+    using Computers.Common.Parts;
 
     public class DellComputers : IComputerFactory
     {
         public Pc CreatePc()
         {
-            throw new NotImplementedException();
+            return new Pc(
+                new Cpu64Bit(4),
+                new RamMemory(8),
+                new[] { new HardDrive(1000) },
+                new ColorfulVideoCard());
         }
 
         public Server CreateServer()
         {
-            throw new NotImplementedException();
+            return new Server(
+                new Cpu64Bit(8),
+                new RamMemory(64),
+                new List<IHardDrive>
+                    {
+                        new RaidArray(new List<IHardDrive> { new HardDrive(2000), new HardDrive(2000) })
+                    });
         }
 
         public Laptop CreateLaptop()
         {
-            throw new NotImplementedException();
+            return new Laptop(
+                new Cpu32Bit(4),
+                new RamMemory(8),
+                new[] { new HardDrive(1000) },
+                new ColorfulVideoCard(),
+                new LaptopBattery());
         }
-
-        //    var ram = new RamMemory(Eight); var videoCard = new VideoCard() { IsMonochrome = false };
-        //    pc = new Computer(Type.Pc, new Cpu(Eight / 2, 64, ram, videoCard), ram, new[] { new HardDrive(1000, false, 0) }, videoCard, null);
-        //    var ram1 = new RamMemory(Eight * Eight);
-        //    var card = new VideoCard(); 
-        //    server = new Computer(Type.Server,
-        //         new Cpu(Eight, 64, ram1, card),
-        //         ram1,
-        //         new List<HardDrive>{
-        //                new HardDrive(0, true, 2, new List<HardDrive> { new HardDrive(2000, false, 0), new HardDrive(2000, false, 0) })
-        //            }, card, null); var ram2 = new RamMemory(Eight); var videoCard1 = new VideoCard() { IsMonochrome = false };
-        //    laptop = new Computer(Type.Laptop,
-        //        new Cpu(Eight / 2, ((32)), ram2, videoCard1),
-        //        ram2,
-        //        new[] { new HardDrive(1000, false, 0) },
-        //        videoCard1,
-
-        //        new Battery());
     }
 }
