@@ -8,7 +8,7 @@
 
     public abstract class Computer
     {
-        public Computer(Cpu cpu, IMotherboard motherboard, IEnumerable<HardDrive> hardDrives)
+        public Computer(Cpu cpu, IMotherboard motherboard, IEnumerable<IHardDrive> hardDrives)
         {
             this.Cpu = cpu;
             this.Motherboard = motherboard;
@@ -20,6 +20,6 @@
 
         public IMotherboard Motherboard { get; private set; }
 
-        public IEnumerable<HardDrive> HardDrives { get; private set; }
+        public IEnumerable<IHardDrive> HardDrives { get; private set; }
     }
 }

@@ -7,7 +7,7 @@
 
     public class Server : Computer
     {
-        public Server(Cpu cpu, IMotherboard motherboard, IEnumerable<HardDrive> hardDrives)
+        public Server(Cpu cpu, IMotherboard motherboard, IEnumerable<IHardDrive> hardDrives)
             : base(cpu, motherboard, hardDrives)
         {
         }

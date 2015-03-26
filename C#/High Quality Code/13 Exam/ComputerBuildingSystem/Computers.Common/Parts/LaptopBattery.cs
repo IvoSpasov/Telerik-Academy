@@ -4,11 +4,13 @@
 
     public class LaptopBattery : IBattery
     {
-        private const int LaptopBatteryInitialPower = 50;
+        private const int InitialPower = 50;
+        private const int MaxPower = 100;
+        private const int MinPower = 0;
 
         public LaptopBattery() 
         { 
-            this.BatteryPercentage = LaptopBatteryInitialPower;
+            this.BatteryPercentage = InitialPower;
         }
 
         public int BatteryPercentage { get; private set; }
@@ -17,14 +19,14 @@
         {
             this.BatteryPercentage += additialCharge;
 
-            if (this.BatteryPercentage > 100)
+            if (this.BatteryPercentage > MaxPower)
             {
-                this.BatteryPercentage = 100;
+                this.BatteryPercentage = MaxPower;
             }
 
-            if (this.BatteryPercentage < 0)
+            if (this.BatteryPercentage < MinPower)
             {
-                this.BatteryPercentage = 0;
+                this.BatteryPercentage = MinPower;
             }
         }
     }

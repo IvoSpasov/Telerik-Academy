@@ -7,7 +7,7 @@
 
     public class Pc : Computer
     {
-        public Pc(Cpu cpu, IMotherboard motherboard, IEnumerable<HardDrive> hardDrives)
+        public Pc(Cpu cpu, IMotherboard motherboard, IEnumerable<IHardDrive> hardDrives)
             : base(cpu, motherboard, hardDrives)
         {
         }

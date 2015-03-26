@@ -7,7 +7,7 @@
 
     public class Laptop : Computer
     {
-        public Laptop(Cpu cpu, IMotherboard motherboard, IEnumerable<HardDrive> hardDrives, IBattery battery)
+        public Laptop(Cpu cpu, IMotherboard motherboard, IEnumerable<IHardDrive> hardDrives, IBattery battery)
             : base(cpu, motherboard, hardDrives)
         {
             this.Battery = battery;
