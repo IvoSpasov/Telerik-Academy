@@ -7,8 +7,8 @@
 
     public class Server : Computer
     {
-        public Server(Cpu cpu, IMotherboard motherboard, IEnumerable<IHardDrive> hardDrives)
-            : base(cpu, motherboard, hardDrives)
+        public Server(ICpu cpu, IRamMemory ram, IEnumerable<IHardDrive> hardDrives)
+            : base(cpu, ram, hardDrives, new MonochromeVideoCard())
         {
         }
 

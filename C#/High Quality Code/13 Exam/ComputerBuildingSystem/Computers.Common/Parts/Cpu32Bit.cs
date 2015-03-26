@@ -6,8 +6,8 @@
     {
         private const int MaxNumber = 500;
 
-        public Cpu32Bit(byte numberOfCores, IMotherboard motherboard)
-            : base(numberOfCores, motherboard)
+        public Cpu32Bit(byte numberOfCores)
+            : base(numberOfCores)
         {
         }
 

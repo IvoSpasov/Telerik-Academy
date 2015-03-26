@@ -6,8 +6,8 @@
     {
         private const int MaxNumber = 1000;
 
-        public Cpu64Bit(byte numberOfCores, IMotherboard motherboard)
-            : base(numberOfCores, motherboard)
+        public Cpu64Bit(byte numberOfCores)
+            : base(numberOfCores)
         {
         }
 

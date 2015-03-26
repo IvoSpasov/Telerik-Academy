@@ -4,7 +4,7 @@
 
     using Computers.Common.Interfaces;
 
-    public class ColorfulVideoCard : IVideoCard
+    public class ColorfulVideoCard : MotherboardComponent, IVideoCard
     {
         public void Draw(string text)
         {

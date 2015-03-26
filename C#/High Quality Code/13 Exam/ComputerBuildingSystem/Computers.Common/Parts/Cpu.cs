@@ -2,45 +2,41 @@
 {
     using System;
 
-    using Computers.Common.Enums;
     using Interfaces;
 
-    public abstract class Cpu
+    public abstract class Cpu : MotherboardComponent, ICpu
     {
-        private readonly byte numberOfCores;
-        private readonly IMotherboard motherboard;
-
         private readonly Random randomGenerator;
 
-        public Cpu(byte numberOfCores, IMotherboard motherboard)
+        public Cpu(byte numberOfCores)
         {
-            this.numberOfCores = numberOfCores;
-            this.motherboard = motherboard;
+            this.NumberOfCores = numberOfCores;
             this.randomGenerator = new Random();
         }
 
-        // separate to two methods for strong cohesion?
-        public void GenerateRandomNumberAndSaveItToRam(int minValue, int maxValue)
+        public byte NumberOfCores { get; private set; }
+
+        public void GenerateRandomNumber(int minValue, int maxValue)
         {
-            int randomNumber = this.randomGenerator.Next(minValue, maxValue);
-            this.motherboard.SaveRamValue(randomNumber);
+            int randomNumber = this.randomGenerator.Next(minValue, maxValue + 1);
+            this.Motherboard.SaveRamValue(randomNumber);
         }
 
         public void CalculateSquareNumber()
         {
-            int number = this.motherboard.LoadRamValue();
+            int number = this.Motherboard.LoadRamValue();
             if (number < 0)
             {
-                this.motherboard.DrawOnVideoCard("Number too low.");
+                this.Motherboard.DrawOnVideoCard("Number too low.");
             }
             else if (number > this.GetMaxNumber())
             {
-                this.motherboard.DrawOnVideoCard("Number too high.");
+                this.Motherboard.DrawOnVideoCard("Number too high.");
             }
             else
             {
                 int square = number * number;
-                this.motherboard.DrawOnVideoCard(string.Format("Square of {0} is {1}.", number, square));
+                this.Motherboard.DrawOnVideoCard(string.Format("Square of {0} is {1}.", number, square));
             }
         }
 

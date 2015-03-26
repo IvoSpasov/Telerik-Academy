@@ -3,12 +3,11 @@
     using System.Collections.Generic;
 
     using Computers.Common.Interfaces;
-    using Computers.Common.Parts;
 
     public class Laptop : Computer
     {
-        public Laptop(Cpu cpu, IMotherboard motherboard, IEnumerable<IHardDrive> hardDrives, IBattery battery)
-            : base(cpu, motherboard, hardDrives)
+        public Laptop(ICpu cpu, IRamMemory ram, IEnumerable<IHardDrive> hardDrives, IVideoCard videoCard, IBattery battery)
+            : base(cpu, ram, hardDrives, videoCard)
         {
             this.Battery = battery;
         }

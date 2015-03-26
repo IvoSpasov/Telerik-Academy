@@ -8,18 +8,23 @@
 
     public abstract class Computer
     {
-        public Computer(Cpu cpu, IMotherboard motherboard, IEnumerable<IHardDrive> hardDrives)
+        public Computer(ICpu cpu, IRamMemory ram, IEnumerable<IHardDrive> hardDrives, IVideoCard videoCard)
         {
             this.Cpu = cpu;
-            this.Motherboard = motherboard;
+            this.Ram = ram;
             this.HardDrives = hardDrives;
+            this.VideoCard = videoCard;
+            this.Motherboard = new Motherboard(this.Cpu, this.Ram, this.VideoCard);
         }
-
-        // TODO: Change to ICpu
-        public Cpu Cpu { get; private set; }
 
         public IMotherboard Motherboard { get; private set; }
 
+        public ICpu Cpu { get; private set; }
+
+        public IRamMemory Ram { get; private set; }
+
         public IEnumerable<IHardDrive> HardDrives { get; private set; }
+
+        protected IVideoCard VideoCard { get; private set; }
     }
 }

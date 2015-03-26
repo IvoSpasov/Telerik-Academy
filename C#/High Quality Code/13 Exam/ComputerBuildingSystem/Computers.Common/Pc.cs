@@ -3,18 +3,17 @@
     using System.Collections.Generic;
 
     using Computers.Common.Interfaces;
-    using Computers.Common.Parts;
 
     public class Pc : Computer
     {
-        public Pc(Cpu cpu, IMotherboard motherboard, IEnumerable<IHardDrive> hardDrives)
-            : base(cpu, motherboard, hardDrives)
+        public Pc(ICpu cpu, IRamMemory ram, IEnumerable<IHardDrive> hardDrives, IVideoCard videoCard)
+            : base(cpu, ram, hardDrives, videoCard)
         {
         }
 
         public void Play(int guessNumber)
         {
-            this.Cpu.GenerateRandomNumberAndSaveItToRam(1, 10);
+            this.Cpu.GenerateRandomNumber(1, 10);
             var number = this.Motherboard.LoadRamValue();
             if (number != guessNumber)
             {

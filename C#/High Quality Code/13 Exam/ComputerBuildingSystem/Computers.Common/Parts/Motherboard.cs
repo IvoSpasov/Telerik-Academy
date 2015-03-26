@@ -4,12 +4,19 @@
 
     public class Motherboard : IMotherboard
     {
+        private readonly ICpu cpu;
         private readonly IRamMemory ramMemory;
         private readonly IVideoCard videoCard;
-
-        public Motherboard(IRamMemory ram, IVideoCard videoCard)
+        
+        public Motherboard(ICpu cpu, IRamMemory ram, IVideoCard videoCard)
         {
+            cpu.Motherboard = this;
+            this.cpu = cpu;
+
+            ram.Motherboard = this;
             this.ramMemory = ram;
+
+            videoCard.Motherboard = this;
             this.videoCard = videoCard;
         }
 

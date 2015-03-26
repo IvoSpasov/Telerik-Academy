@@ -46,7 +46,9 @@
     <Compile Include="Factories\IComputerFactory.cs" />
     <Compile Include="Factories\ManufacturerFactory.cs" />
     <Compile Include="Interfaces\IBattery.cs" />
+    <Compile Include="Interfaces\ICpu.cs" />
     <Compile Include="Interfaces\IHardDrive.cs" />
+    <Compile Include="Interfaces\IMotherboardComponent.cs" />
     <Compile Include="Interfaces\IRamMemory.cs" />
     <Compile Include="Laptop.cs" />
     <Compile Include="Parts\Cpu32Bit.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Interfaces\IMotherboard.cs" />
     <Compile Include="Parts\MonochromeVideoCard.cs" />
     <Compile Include="Parts\Motherboard.cs" />
+    <Compile Include="Parts\MotherboardComponent.cs" />
     <Compile Include="Parts\RaidArray.cs" />
     <Compile Include="Pc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,7 +2,7 @@
 {
     using Computers.Common.Interfaces;
 
-    public class RamMemory : IRamMemory
+    public class RamMemory : MotherboardComponent, IRamMemory
     {
         private int value; 
 
