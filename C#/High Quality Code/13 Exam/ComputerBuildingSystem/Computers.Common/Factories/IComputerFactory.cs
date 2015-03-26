@@ -2,10 +2,10 @@
 {
     public interface IComputerFactory
     {
-        Computer CreatePc();
+        Pc CreatePc();
 
-        Computer CreateServer();
+        Server CreateServer();
 
-        Computer CreateLaptop();
+        Laptop CreateLaptop();
     }
 }

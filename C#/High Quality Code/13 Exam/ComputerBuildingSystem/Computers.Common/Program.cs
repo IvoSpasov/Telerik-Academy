@@ -1,10 +1,8 @@
 ﻿namespace Computers.Common
 {
     using System;
-    using System.Collections.Generic;
 
-    using Computers.Common.Enums;
-    using Computers.Common.Parts;
+    using Computers.Common.Factories;
 
     public class Program
     {
@@ -16,34 +14,18 @@
 
         public void Start()
         {
-            Computer pc;
-            Computer server;
-            Computer laptop;
+            Pc pc;
+            Server server;
+            Laptop laptop;
 
             var manufacturer = Console.ReadLine();
 
             if (manufacturer == "HP")
             {
-                var pcRam = new RamMemory(Ram2gb);
-                var pcVideoCard = new ColorVideoCard();
-                var pcMotherboard = new Motherboard(pcRam, pcVideoCard);
-                var pcCpu = new Cpu(Cpu2Core, NumberOfBits.Bit32, pcMotherboard);
-
-                pc = new Computer(ComputerType.Pc, pcCpu, pcMotherboard, new[] { new HardDrive(500, false, 0) }, null);
-
-                var serverRam = new RamMemory(Ram32gb);
-                var serverVideoCard = new MonochromeVideoCard();
-                var serverMotherboard = new Motherboard(serverRam, serverVideoCard);
-                var serverCpu = new Cpu(Cpu4Core, NumberOfBits.Bit32, serverMotherboard);
-
-                server = new Computer(ComputerType.Server, serverCpu, serverMotherboard, new List<HardDrive> { new HardDrive(0, true, 2, new List<HardDrive> { new HardDrive(1000, false, 0), new HardDrive(1000, false, 0) }) }, null);
-
-                var laptopVideoCard = new ColorVideoCard();
-                var laptopRam = new RamMemory(Ram4gb);
-                var laptopMotherboard = new Motherboard(laptopRam, laptopVideoCard);
-                var laptopCpu = new Cpu(Cpu2Core, NumberOfBits.Bit64, laptopMotherboard);
-
-                laptop = new Computer(ComputerType.Laptop, laptopCpu, laptopMotherboard, new[] { new HardDrive(500, false, 0) }, new LaptopBattery());
+                var hpComp = new HPComputers();
+                laptop = hpComp.CreateLaptop();
+                server = hpComp.CreateServer();
+                pc = hpComp.CreatePc();
             }
             //else if (manufacturer == "Dell")
             //{
