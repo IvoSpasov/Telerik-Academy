@@ -49,10 +49,11 @@
     <Compile Include="Interfaces\IHardDrive.cs" />
     <Compile Include="Interfaces\IRamMemory.cs" />
     <Compile Include="Laptop.cs" />
+    <Compile Include="Parts\Cpu32Bit.cs" />
+    <Compile Include="Parts\Cpu64Bit.cs" />
     <Compile Include="Parts\LaptopBattery.cs" />
     <Compile Include="Parts\ColorfulVideoCard.cs" />
     <Compile Include="Parts\Cpu.cs" />
-    <Compile Include="Enums\NumberOfBits.cs" />
     <Compile Include="Parts\HardDrive.cs" />
     <Compile Include="Interfaces\IMotherboard.cs" />
     <Compile Include="Parts\MonochromeVideoCard.cs" />

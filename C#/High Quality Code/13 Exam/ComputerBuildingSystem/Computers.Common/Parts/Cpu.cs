@@ -5,21 +5,16 @@
     using Computers.Common.Enums;
     using Interfaces;
 
-    public class Cpu
+    public abstract class Cpu
     {
-        private const int Cpu32BitHighBoundary = 500;
-        private const int Cpu64BitHighBoundary = 1000;
-
         private readonly byte numberOfCores;
-        private readonly NumberOfBits numberOfBits;
         private readonly IMotherboard motherboard;
 
         private readonly Random randomGenerator;
 
-        public Cpu(byte numberOfCores, NumberOfBits numberOfBits, IMotherboard motherboard)
+        public Cpu(byte numberOfCores, IMotherboard motherboard)
         {
             this.numberOfCores = numberOfCores;
-            this.numberOfBits = numberOfBits;
             this.motherboard = motherboard;
             this.randomGenerator = new Random();
         }
@@ -38,7 +33,7 @@
             {
                 this.motherboard.DrawOnVideoCard("Number too low.");
             }
-            else if (number > this.ReturnNumberHighBoundaryForCpu())
+            else if (number > this.GetMaxNumber())
             {
                 this.motherboard.DrawOnVideoCard("Number too high.");
             }
@@ -49,14 +44,6 @@
             }
         }
 
-        private int ReturnNumberHighBoundaryForCpu()
-        {
-            switch (this.numberOfBits)
-            {
-                case NumberOfBits.Bit32: return Cpu32BitHighBoundary;
-                case NumberOfBits.Bit64: return Cpu64BitHighBoundary;
-                default: throw new ArgumentException("Invalid processor");
-            }
-        }
+        public abstract int GetMaxNumber();
     }
 }
