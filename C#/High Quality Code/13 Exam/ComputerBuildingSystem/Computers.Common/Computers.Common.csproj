@@ -40,9 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Computer.cs" />
+    <Compile Include="Enums\Manufacturer.cs" />
     <Compile Include="Factories\DellComputers.cs" />
     <Compile Include="Factories\HpComputers.cs" />
     <Compile Include="Factories\IComputerFactory.cs" />
+    <Compile Include="Factories\ManufacturerFactory.cs" />
     <Compile Include="Interfaces\IBattery.cs" />
     <Compile Include="Interfaces\IHardDrive.cs" />
     <Compile Include="Interfaces\IRamMemory.cs" />
