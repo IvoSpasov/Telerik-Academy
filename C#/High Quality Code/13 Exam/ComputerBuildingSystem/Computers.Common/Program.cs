@@ -1,10 +1,10 @@
-﻿namespace ComputerBuilder
+﻿namespace Computers.Common
 {
     using System;
     using System.Collections.Generic;
 
-    using ComputerParts;
-    using ComputerParts.Enums;
+    using Computers.Common.Enums;
+    using Computers.Common.Parts;
 
     public class Program
     {
@@ -80,6 +80,7 @@
 
                 if (currentLine.StartsWith("Exit"))
                 {
+                    break;
                 }
 
                 var cp = currentLine.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);

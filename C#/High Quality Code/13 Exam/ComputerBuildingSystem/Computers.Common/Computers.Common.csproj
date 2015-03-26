@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{03E4C794-6EE6-4D21-8989-A3DF5A92C7C8}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{B7CE0AC1-68A5-4168-B54D-EBF2F8DD4A9B}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ComputerBuilder</RootNamespace>
-    <AssemblyName>ComputerBuilder</AssemblyName>
+    <RootNamespace>Computers.Common</RootNamespace>
+    <AssemblyName>Computers.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,18 +40,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Computer.cs" />
+    <Compile Include="Factories\IComputerFactory.cs" />
+    <Compile Include="Interfaces\IBattery.cs" />
+    <Compile Include="Interfaces\IRamMemory.cs" />
+    <Compile Include="Parts\LaptopBattery.cs" />
+    <Compile Include="Parts\ColorVideoCard.cs" />
+    <Compile Include="Parts\Cpu.cs" />
+    <Compile Include="Enums\NumberOfBits.cs" />
+    <Compile Include="Parts\HardDrive.cs" />
+    <Compile Include="Interfaces\IMotherboard.cs" />
+    <Compile Include="Parts\MonochromeVideoCard.cs" />
+    <Compile Include="Parts\Motherboard.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProgramStart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ComputerParts\ComputerParts.csproj">
-      <Project>{b7ce0ac1-68a5-4168-b54d-ebf2f8dd4a9b}</Project>
-      <Name>ComputerParts</Name>
-    </ProjectReference>
+    <Compile Include="Parts\RamMemory.cs" />
+    <Compile Include="Enums\ComputerType.cs" />
+    <Compile Include="Interfaces\IVideoCard.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

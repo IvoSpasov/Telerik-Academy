@@ -1,4 +1,4 @@
-﻿namespace ComputerParts
+﻿namespace Computers.Common.Parts
 {
     using Interfaces;
 

@@ -1,6 +1,6 @@
-﻿namespace ComputerParts
+﻿namespace Computers.Common.Parts
 {
-    using ComputerParts.Interfaces;
+    using Computers.Common.Interfaces;
 
     public class RamMemory : IRamMemory
     {

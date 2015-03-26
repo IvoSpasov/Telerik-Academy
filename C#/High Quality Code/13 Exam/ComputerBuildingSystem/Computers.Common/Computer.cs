@@ -1,11 +1,11 @@
-﻿namespace ComputerBuilder
+﻿namespace Computers.Common
 {
     using System;
     using System.Collections.Generic;
 
-    using ComputerParts;
-    using ComputerParts.Enums;
-    using ComputerParts.Interfaces;
+    using Computers.Common.Enums;
+    using Computers.Common.Interfaces;
+    using Computers.Common.Parts;
 
     public class Computer
     {
@@ -28,7 +28,7 @@
         public void ChargeBattery(int percentage)
         {
             this.Battery.Charge(percentage);
-            this.Motherboard.DrawOnVideoCard(string.Format("Battery status: {0}", this.Battery.BatteryPercentage));
+            this.Motherboard.DrawOnVideoCard(string.Format("Battery status: {0}%", this.Battery.BatteryPercentage));
         }
 
         public void Play(int guessNumber)
@@ -48,8 +48,6 @@
         public void Process(int data)
         {
             this.Motherboard.SaveRamValue(data);
-
-            // TODO: Fix it
             this.Cpu.CalculateSquareNumber();
         }
     }

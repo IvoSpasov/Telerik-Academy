@@ -1,8 +1,8 @@
-﻿namespace ComputerParts
+﻿namespace Computers.Common.Parts
 {
     using System;
 
-    using ComputerParts.Enums;
+    using Computers.Common.Enums;
     using Interfaces;
 
     public class Cpu

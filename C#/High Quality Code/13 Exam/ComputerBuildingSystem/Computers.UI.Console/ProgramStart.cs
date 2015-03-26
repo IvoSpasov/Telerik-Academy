@@ -1,5 +1,7 @@
 ﻿namespace ComputerBuilder
 {
+    using Computers.Common;
+
     public class ProgramStart
     {
         public static void Main()

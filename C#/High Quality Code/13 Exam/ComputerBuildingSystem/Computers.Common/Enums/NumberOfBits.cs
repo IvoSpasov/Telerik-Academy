@@ -1,4 +1,4 @@
-﻿namespace ComputerParts.Enums
+﻿namespace Computers.Common.Enums
 {
     public enum NumberOfBits
     {

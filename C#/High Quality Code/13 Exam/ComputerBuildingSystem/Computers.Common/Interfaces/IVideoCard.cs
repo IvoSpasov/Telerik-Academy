@@ -1,4 +1,4 @@
-﻿namespace ComputerParts.Interfaces
+﻿namespace Computers.Common.Interfaces
 {
     public interface IVideoCard
     {

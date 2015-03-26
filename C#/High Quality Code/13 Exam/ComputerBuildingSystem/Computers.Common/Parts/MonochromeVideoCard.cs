@@ -1,8 +1,8 @@
-﻿namespace ComputerParts
+﻿namespace Computers.Common.Parts
 {
     using System;
 
-    using ComputerParts.Interfaces;
+    using Computers.Common.Interfaces;
 
     public class MonochromeVideoCard : IVideoCard
     {
