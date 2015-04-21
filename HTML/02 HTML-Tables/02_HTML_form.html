@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>User Information</title>
+    <style>
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form name="user-information" method="post">
+        <div>
+            <label for="member-name">Member name:</label>
+            <input type="text" id="member-name" required />
+            <span class="bold">*req</span>
+        </div>
+        <div>
+            <label for="email">Email: </label>
+            <input type="email" id="email" required />
+            <span class="bold">*req</span>
+        </div>
+        <div>
+            <label for="school">School: </label>
+            <input type="text" id="school" required />
+            <span class="bold">*req</span>
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
+</body>
+</html>

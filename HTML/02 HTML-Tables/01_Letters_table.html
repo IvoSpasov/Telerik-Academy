@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Letters Table</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+        .right {
+            text-align: right;
+        }
+        td {
+            width: 28px;
+            padding: 2px;
+        }
+        table, td, th {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="3">Title goes here</td>
+                <td class="center">A</td>
+                <td class="right">B</td>
+            </tr>
+            <tr>
+                <td rowspan="3">C</td>
+                <td class="center">D</td>
+                <td class="center">E</td>
+                <td class="center">F</td>
+                <td class="right">G</td>
+            </tr>
+            <tr>
+                <td class="center">H</td>
+                <td colspan="2" class="center">I</td>
+                <td rowspan="2" class="right"><br />J</td>
+            </tr>
+            <tr>
+                <td class="center">K</td>
+                <td class="center">L</td>
+                <td class="center">M</td>
+            </tr>
+            <tr>
+                <td class="right">N</td>
+                <td colspan="4" class="center">O</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
