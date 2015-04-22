@@ -8,7 +8,7 @@ namespace UsersManagement.Data
 {
     public interface IRepository<T> where T : class
     {
-        IQueryable<T> All();
+        IEnumerable<T> All();
 
         //T GetById(int id);
 

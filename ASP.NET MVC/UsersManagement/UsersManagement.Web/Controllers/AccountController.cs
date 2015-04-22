@@ -29,8 +29,13 @@ namespace UsersManagement.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Signup(UserViewModel inputUser)
         {
-            this.users.Add(new User() { Id = 1, Username = inputUser.Username, Password = inputUser.Password });
-            return View();
+            if (ModelState.IsValid)
+            {
+                this.users.Add(new User(inputUser.Username, inputUser.Password));
+                return RedirectToAction("Login", inputUser);
+            }
+            
+            return View(inputUser);
         }
 
         [HttpGet]

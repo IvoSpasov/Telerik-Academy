@@ -63,11 +63,7 @@ namespace UsersManagement.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            //kernel.Bind<IUserToXml>().To<UserToXml>();
-
             kernel.Bind(typeof(IRepository<User>)).To<UserRepository>();
-
-            //kernel.Bind(typeof(IRepository<Post>)).To(typeof(DeletableEntityRepository<Post>));
         }        
     }
 }

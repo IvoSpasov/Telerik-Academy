@@ -2,14 +2,32 @@
 <users>
   <user>
     <id>1</id>
-    <username>Ivan432432</username>
-    <password>123456</password>
+    <username>ivo</username>
+    <password>123</password>
   </user>
-  <users>
-    <user>
-      <id>1</id>
-      <username>Ivan432432</username>
-      <password>123456</password>
-    </user>
-  </users>
+  <user>
+    <id>2</id>
+    <username>petur</username>
+    <password>456</password>
+  </user>
+  <user>
+    <id>3</id>
+    <username>kaloqn</username>
+    <password>789</password>
+  </user>
+  <user>
+    <id>4</id>
+    <username>kaloqn</username>
+    <password>789</password>
+  </user>
+  <user>
+    <id>5</id>
+    <username>eqaw</username>
+    <password>21</password>
+  </user>
+  <user>
+    <id>6</id>
+    <username>6</username>
+    <password>21</password>
+  </user>
 </users>
