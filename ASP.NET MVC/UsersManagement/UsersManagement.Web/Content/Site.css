@@ -26,3 +26,24 @@ textarea {
 .input-validation-error {
     border-color: red;
 }
+
+.input-group-addon {
+    background-color: #312d31;
+    color: #a9a6a9;
+    width: 160px;
+    text-align: left;
+}
+
+.btn-primary {
+    background-color: #e9b096;
+    border: 2px solid #ad9384;
+    color: #83817e;
+    width: 100px;
+}
+
+.text-large {
+    font-size: 20px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    padding-top: 25px;
+}
