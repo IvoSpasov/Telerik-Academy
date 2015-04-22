@@ -31,10 +31,20 @@ namespace UsersManagement.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var allUsers = this.users.All();
+                bool userExists = allUsers.Any(u => u.Username == inputUser.Username);
+
+                if (userExists)
+                {
+                    ViewBag.userExists = true;
+                    return (View(inputUser));
+                }
+
+
                 this.users.Add(new User(inputUser.Username, inputUser.Password));
                 return RedirectToAction("Login", inputUser);
             }
-            
+
             return View(inputUser);
         }
 
