@@ -39,9 +39,9 @@ namespace UsersManagement.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(UserViewModel registeredUser)
         {
-            return View();
+            return View(registeredUser);
         }
     }
 }

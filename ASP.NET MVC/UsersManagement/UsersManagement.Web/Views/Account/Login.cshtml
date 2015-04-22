@@ -1,7 +1,26 @@
-﻿
+﻿@model UsersManagement.Web.ViewModels.UserViewModel
+
 @{
     ViewBag.Title = "Login";
 }
 
 <h2>Login</h2>
 
+Please enter your username and password
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(u => u.Username)
+        @Html.EditorFor(u => u.Username)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(u => u.Password)
+        @Html.EditorFor(u => u.Password)
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Login" />
+    </div>
+}
