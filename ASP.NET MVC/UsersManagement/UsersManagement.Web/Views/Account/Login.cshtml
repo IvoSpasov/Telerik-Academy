@@ -30,13 +30,18 @@
             <div class=" form-group form-inline">
                 <div class="input-group">
                     @Html.LabelFor(u => u.Password, new { @class = "input-group-addon" })
-                    @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
+                    @Html.PasswordFor(u => u.Password, new { value = Model != null ? Model.Password : "", @class = "form-control" })
                 </div>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Sign up" class=" btn btn-primary pull-right" />
+                <input type="submit" value="Log in" class=" btn btn-primary pull-right" />
             </div>
         }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.ValidationSummary()
     </div>
 </div>

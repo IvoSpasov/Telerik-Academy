@@ -33,7 +33,7 @@ namespace UsersManagement.Web.Controllers
             if (ModelState.IsValid)
             {
                 var allUsers = this.users.All();
-                bool userExists = allUsers.Any(u => u.Username == inputUser.Username);
+                bool userExists = allUsers.Any(u => u.Username.ToLower() == inputUser.Username.ToLower());
 
                 if (userExists)
                 {
@@ -43,16 +43,28 @@ namespace UsersManagement.Web.Controllers
 
 
                 this.users.Add(new User(inputUser.Username, inputUser.Password));
-                return RedirectToAction("Login", inputUser);
+                TempData["CurrentUser"] = inputUser;
+                return RedirectToAction("Login");
             }
 
             return View(inputUser);
         }
 
         [HttpGet]
-        public ActionResult Login(UserViewModel registeredUser)
+        public ActionResult Login()
         {
-            return View(registeredUser);
+            return View(TempData["CurrentUser"]);
+        }
+
+        [HttpPost]
+        public ActionResult Login(UserViewModel inputUser)
+        {
+            if (ModelState.IsValid)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
+            return this.View(inputUser);
         }
     }
 }
