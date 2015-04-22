@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UsersManagement.Data;
+using UsersManagement.Data.Models;
 using UsersManagement.Web.ViewModels;
 
 
@@ -11,9 +12,9 @@ namespace UsersManagement.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IUserToXml users;
+        private readonly IRepository<User> users;
 
-        public AccountController(IUserToXml users)
+        public AccountController(IRepository<User> users)
         {
             this.users = users;
         }
@@ -28,7 +29,7 @@ namespace UsersManagement.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Signup(UserViewModel inputUser)
         {
-            users.AddNewUser(inputUser.Username, inputUser.Password);
+            this.users.Add(new User() { Id = 1, Username = inputUser.Username, Password = inputUser.Password });
             return View();
         }
 
