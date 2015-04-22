@@ -4,15 +4,18 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Xml.Linq;
 
 namespace UsersManagement.Data
 {
     public class UserToXml : IUserToXml
     {
+        private readonly string filePath = HttpContext.Current.Server.MapPath("~/App_Data/users.xml");
+
         public void AddNewUser(string username, string password)
         {
-            if (!File.Exists("../../users.xml"))
+            if (!File.Exists(filePath))
             {
                 CreateNewXml(username, password);
             }
@@ -29,12 +32,12 @@ namespace UsersManagement.Data
                     new XElement("username", username),
                     new XElement("password", password)));
 
-            usersInformationXml.Save("../../users.xml");
+            usersInformationXml.Save(filePath);
         }
 
         private void AddUserToExistingXml(string username, string password)
         {
-            XDocument usersInformationXml = XDocument.Load("../../users.xml");
+            XDocument usersInformationXml = XDocument.Load(filePath);
 
             var newUser = new XElement("user",
                 new XElement("username", username),
@@ -42,8 +45,7 @@ namespace UsersManagement.Data
 
             usersInformationXml.Element("users").Add(newUser);
 
-            usersInformationXml.Save("../../users.xml");
+            usersInformationXml.Save(filePath);
         }
-
     }
 }

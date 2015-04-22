@@ -11,7 +11,7 @@ namespace UsersManagement.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private IUserToXml users;
+        private readonly IUserToXml users;
 
         public AccountController(IUserToXml users)
         {
