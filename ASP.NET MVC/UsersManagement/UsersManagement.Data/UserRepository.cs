@@ -28,7 +28,7 @@ namespace UsersManagement.Data
         {
             if (this.usersInformationXml == null)
             {
-                // error    
+                throw new InvalidOperationException("Xml file does not exist");
             }
 
             var listOfUsers = from user in this.usersInformationXml.Descendants("user")
@@ -83,7 +83,7 @@ namespace UsersManagement.Data
             XElement userAsXmlElement = new XElement("user",
                     new XElement("id", nextUserId),
                     new XElement("username", user.Username),
-                    new XElement("password", user.Password));
+                    new XElement("password", Sha1Hash.Sha1HashStringForUtf8String(user.Password)));
 
             return userAsXmlElement;
         }
