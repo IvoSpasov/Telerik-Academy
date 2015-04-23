@@ -2,6 +2,7 @@
 {
     using System;
     using System.Web.Mvc;
+    using System.Web.Security;
 
     using UsersManagement.Data;
     using UsersManagement.Data.Models;
@@ -26,20 +27,20 @@
         [ValidateAntiForgeryToken]
         public ActionResult Signup(UserViewModel inputUser)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (this.users.GetByUsername(inputUser.Username) != null)
-                {
-                    ViewBag.userExists = true;
-                    return this.View(inputUser);
-                }
-
-                this.users.Add(new User(inputUser.Username, inputUser.Password));
-                this.TempData["CurrentUser"] = inputUser;
-                return this.RedirectToAction("Login");
+                return this.View(inputUser);
             }
 
-            return this.View(inputUser);
+            if (this.users.GetByUsername(inputUser.Username) != null)
+            {
+                ViewBag.userExists = true;
+                return this.View(inputUser);
+            }
+
+            this.users.Add(new User(inputUser.Username, inputUser.Password));
+            this.TempData["CurrentUser"] = inputUser;
+            return this.RedirectToAction("Login");
         }
 
         [HttpGet]
@@ -52,26 +53,27 @@
         [ValidateAntiForgeryToken]
         public ActionResult Login(UserViewModel inputUser)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                User foundUser = this.users.GetByUsername(inputUser.Username);
-                ViewBag.userExists = true;
-                if (foundUser == null)
-                {
-                    ViewBag.userExists = false;
-                    return this.View(inputUser);
-                }
-
-                if (!this.SamePasswords(inputUser, foundUser))
-                {
-                    ViewBag.samePasswords = false;
-                    return this.View(inputUser);
-                }
-
-                return this.RedirectToAction("Details", new { id = inputUser.Username });
+                return this.View(inputUser);
             }
 
-            return this.View(inputUser);
+            User foundUser = this.users.GetByUsername(inputUser.Username);
+            ViewBag.userExists = true;
+            if (foundUser == null)
+            {
+                ViewBag.userExists = false;
+                return this.View(inputUser);
+            }
+
+            if (!this.SamePasswords(inputUser, foundUser))
+            {
+                ViewBag.samePasswords = false;
+                return this.View(inputUser);
+            }
+
+            FormsAuthentication.SetAuthCookie(foundUser.Username, true);
+            return this.RedirectToAction("Details", new { id = inputUser.Username });
         }
 
         private bool SamePasswords(UserViewModel inputUser, User foundUser)
@@ -79,6 +81,12 @@
             string inputPasswordAsSha1 = Sha1Hash.Sha1HashStringForUtf8String(inputUser.Password);
             bool passwordsMatch = foundUser.Password == inputPasswordAsSha1;
             return passwordsMatch;
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -105,20 +113,21 @@
         [ValidateAntiForgeryToken]
         public ActionResult Details(UserViewModel inputUser)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var foundUser = this.users.GetByUsername(inputUser.Username);
 
-                if (foundUser == null)
-                {
-                    return this.View("Error");
-                }
-
-                foundUser.Password = Sha1Hash.Sha1HashStringForUtf8String(inputUser.Password);
-
-                this.users.Update(foundUser);
+                return this.View(inputUser);
             }
 
+            var foundUser = this.users.GetByUsername(inputUser.Username);
+
+            if (foundUser == null)
+            {
+                return this.View("Error");
+            }
+
+            foundUser.Password = Sha1Hash.Sha1HashStringForUtf8String(inputUser.Password);
+            this.users.Update(foundUser);
             return this.View(inputUser);
         }
     }
