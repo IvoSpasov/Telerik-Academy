@@ -12,6 +12,8 @@ namespace UsersManagement.Data
 
         //T GetById(int id);
 
+        T GetByUsername(string username);
+
         void Add(T entity);
 
         //void Update(T entity);

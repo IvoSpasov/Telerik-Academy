@@ -47,6 +47,17 @@ namespace UsersManagement.Data
             return listOfUsers;
         }
 
+        public User GetByUsername(string username)
+        {
+            if (!this.FileExists())
+            {
+                throw new InvalidOperationException("Xml file does not exist");
+            }
+
+            User foundUser = this.All().FirstOrDefault(u => u.Username.ToLower() == username.ToLower());
+            return foundUser;
+        }
+
         public void Add(User user)
         {
             if (!this.FileExists())

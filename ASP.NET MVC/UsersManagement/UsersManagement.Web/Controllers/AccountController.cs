@@ -71,7 +71,7 @@ namespace UsersManagement.Web.Controllers
                     return View(inputUser);
                 }
 
-                return this.RedirectToAction("Index", "Home");
+                return this.RedirectToAction("Details", new { id = inputUser.Username });
             }
 
             return this.View(inputUser);
@@ -103,9 +103,14 @@ namespace UsersManagement.Web.Controllers
             return passwordsMatch;
         }
 
+        [HttpGet]
         public ActionResult Details(string id)
         {
-            return View();
+            User foundUser = this.users.GetByUsername(id);
+            UserViewModel foundUserViewModel = new UserViewModel();
+            foundUserViewModel.Username = foundUser.Username;
+            foundUserViewModel.Password = foundUser.Password;
+            return View(foundUserViewModel);
         }
     }
 }
