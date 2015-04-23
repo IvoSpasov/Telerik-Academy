@@ -19,5 +19,7 @@ namespace UsersManagement.Data
         //void Delete(T entity);
 
         //void Delete(int id);
+
+        bool FileExists();
     }
 }

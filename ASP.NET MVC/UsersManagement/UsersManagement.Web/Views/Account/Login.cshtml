@@ -43,5 +43,14 @@
 <div class="row">
     <div class="col-md-12">
         @Html.ValidationSummary()
+
+        @if (ViewBag.userExists == false)
+        {
+            @: Username does not exist
+        }
+        else if (ViewBag.samePasswords == false)
+        {
+            @: Incorrect username/password
+        }
     </div>
 </div>

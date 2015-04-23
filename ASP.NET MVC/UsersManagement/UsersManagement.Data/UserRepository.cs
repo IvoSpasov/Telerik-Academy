@@ -18,15 +18,25 @@ namespace UsersManagement.Data
 
         public UserRepository()
         {
-            if (File.Exists(filePath))
+            if (this.FileExists())
             {
                 this.usersInformationXml = XDocument.Load(filePath);
             }
         }
 
+        public bool FileExists()
+        {
+            if (!File.Exists(filePath))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public IEnumerable<User> All()
         {
-            if (this.usersInformationXml == null)
+            if (!this.FileExists())
             {
                 throw new InvalidOperationException("Xml file does not exist");
             }
@@ -39,7 +49,7 @@ namespace UsersManagement.Data
 
         public void Add(User user)
         {
-            if (!File.Exists(filePath))
+            if (!this.FileExists())
             {
                 CreateNewXml(user);
             }
