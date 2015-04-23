@@ -4,7 +4,7 @@
 
     public class UserViewModel
     {
-        [Display(Name="User Name")]
+        [Display(Name = "User Name")]
         [Required]
         public string Username { get; set; }
 

@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Xml.Linq;
-using UsersManagement.Data.Models;
-
-namespace UsersManagement.Data
+﻿namespace UsersManagement.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Web;
+    using System.Xml.Linq;
+
+    using UsersManagement.Data.Models;
+
     public class UserRepository : IRepository<User>
     {
         private readonly string filePath = HttpContext.Current.Server.MapPath("~/App_Data/users.xml");
@@ -20,18 +18,8 @@ namespace UsersManagement.Data
         {
             if (this.FileExists())
             {
-                this.usersInformationXml = XDocument.Load(filePath);
+                this.usersInformationXml = XDocument.Load(this.filePath);
             }
-        }
-
-        public bool FileExists()
-        {
-            if (!File.Exists(filePath))
-            {
-                return false;
-            }
-
-            return true;
         }
 
         public IEnumerable<User> All()
@@ -73,25 +61,25 @@ namespace UsersManagement.Data
         {
             if (!this.FileExists())
             {
-                CreateNewXml(user);
+                this.CreateNewXml(user);
             }
             else
             {
-                AddUserToExistingXml(user);
+                this.AddUserToExistingXml(user);
             }
         }
 
         private void CreateNewXml(User user)
         {
             XElement newUserElement = new XElement("users", this.CreateUserElement(user));
-            newUserElement.Save(filePath);
+            newUserElement.Save(this.filePath);
         }
 
         private void AddUserToExistingXml(User user)
         {
             var newUserElement = this.CreateUserElement(user);
             this.usersInformationXml.Element("users").Add(newUserElement);
-            this.usersInformationXml.Save(filePath);
+            this.usersInformationXml.Save(this.filePath);
         }
 
         private XElement CreateUserElement(User user)
@@ -135,7 +123,17 @@ namespace UsersManagement.Data
 
             foundUser.Element("password").Value = user.Password;
 
-            this.usersInformationXml.Save(filePath);
+            this.usersInformationXml.Save(this.filePath);
+        }
+
+        private bool FileExists()
+        {
+            if (!File.Exists(this.filePath))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

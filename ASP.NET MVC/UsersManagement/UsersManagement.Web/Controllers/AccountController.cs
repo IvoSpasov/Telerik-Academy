@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-using UsersManagement.Data;
-using UsersManagement.Data.Models;
-using UsersManagement.Web.ViewModels;
-
-
-namespace UsersManagement.Web.Controllers
+﻿namespace UsersManagement.Web.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
+    using UsersManagement.Data;
+    using UsersManagement.Data.Models;
+    using UsersManagement.Web.ViewModels;
+
     public class AccountController : Controller
     {
         private readonly IRepository<User> users;
@@ -23,7 +19,7 @@ namespace UsersManagement.Web.Controllers
         [HttpGet]
         public ActionResult Signup()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -32,24 +28,24 @@ namespace UsersManagement.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (users.GetByUsername(inputUser.Username) != null)
+                if (this.users.GetByUsername(inputUser.Username) != null)
                 {
                     ViewBag.userExists = true;
-                    return (View(inputUser));
+                    return this.View(inputUser);
                 }
 
                 this.users.Add(new User(inputUser.Username, inputUser.Password));
-                TempData["CurrentUser"] = inputUser;
-                return RedirectToAction("Login");
+                this.TempData["CurrentUser"] = inputUser;
+                return this.RedirectToAction("Login");
             }
 
-            return View(inputUser);
+            return this.View(inputUser);
         }
 
         [HttpGet]
         public ActionResult Login()
         {
-            return View(TempData["CurrentUser"]);
+            return this.View(this.TempData["CurrentUser"]);
         }
 
         [HttpPost]
@@ -63,12 +59,13 @@ namespace UsersManagement.Web.Controllers
                 if (foundUser == null)
                 {
                     ViewBag.userExists = false;
-                    return View(inputUser);
+                    return this.View(inputUser);
                 }
-                if (!SamePasswords(inputUser, foundUser))
+
+                if (!this.SamePasswords(inputUser, foundUser))
                 {
                     ViewBag.samePasswords = false;
-                    return View(inputUser);
+                    return this.View(inputUser);
                 }
 
                 return this.RedirectToAction("Details", new { id = inputUser.Username });
@@ -89,19 +86,19 @@ namespace UsersManagement.Web.Controllers
         {
             if (id == null)
             {
-                return View("Error");
+                return this.View("Error");
             }
 
             User foundUser = this.users.GetByUsername(id);
             if (foundUser == null)
             {
-                return View("Error");
+                return this.View("Error");
             }
 
             UserViewModel foundUserViewModel = new UserViewModel();
             foundUserViewModel.Username = foundUser.Username;
             foundUserViewModel.Password = foundUser.Password;
-            return View(foundUserViewModel);
+            return this.View(foundUserViewModel);
         }
 
         [HttpPost]
@@ -114,7 +111,7 @@ namespace UsersManagement.Web.Controllers
 
                 if (foundUser == null)
                 {
-                    return View("Error");
+                    return this.View("Error");
                 }
 
                 foundUser.Password = Sha1Hash.Sha1HashStringForUtf8String(inputUser.Password);
@@ -122,7 +119,7 @@ namespace UsersManagement.Web.Controllers
                 this.users.Update(foundUser);
             }
 
-            return View(inputUser);
+            return this.View(inputUser);
         }
     }
 }
