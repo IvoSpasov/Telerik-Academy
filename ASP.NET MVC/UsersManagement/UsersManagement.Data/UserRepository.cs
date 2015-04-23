@@ -51,7 +51,7 @@ namespace UsersManagement.Data
         {
             if (!this.FileExists())
             {
-                throw new InvalidOperationException("Xml file does not exist");
+                return null;
             }
 
             User foundUser = this.All().FirstOrDefault(u => u.Id == id);
@@ -62,7 +62,7 @@ namespace UsersManagement.Data
         {
             if (!this.FileExists())
             {
-                throw new InvalidOperationException("Xml file does not exist");
+                return null;
             }
 
             User foundUser = this.All().FirstOrDefault(u => u.Username.ToLower() == username.ToLower());

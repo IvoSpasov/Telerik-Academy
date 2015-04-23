@@ -32,7 +32,7 @@ namespace UsersManagement.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (this.UserExists(inputUser))
+                if (users.GetByUsername(inputUser.Username) != null)
                 {
                     ViewBag.userExists = true;
                     return (View(inputUser));
@@ -58,9 +58,9 @@ namespace UsersManagement.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                User foundUser = null;
+                User foundUser = this.users.GetByUsername(inputUser.Username);
                 ViewBag.userExists = true;
-                if (!this.UserExists(inputUser, out foundUser))
+                if (foundUser == null)
                 {
                     ViewBag.userExists = false;
                     return View(inputUser);
@@ -77,34 +77,13 @@ namespace UsersManagement.Web.Controllers
             return this.View(inputUser);
         }
 
-
-        // TODO REFACTOR!!!!!!!
-        private bool UserExists(UserViewModel inputUser)
-        {
-            User foundUSer = null;
-            return UserExists(inputUser, out foundUSer);
-        }
-
-        private bool UserExists(UserViewModel inputUser, out User foundUser)
-        {
-            if (!this.users.FileExists())
-            {
-                foundUser = null;
-                return false;
-            }
-
-            var allUsers = this.users.All();
-            foundUser = allUsers.FirstOrDefault(u => u.Username.ToLower() == inputUser.Username.ToLower());
-            return foundUser != null ? true : false;
-        }
-
         private bool SamePasswords(UserViewModel inputUser, User foundUser)
         {
             string inputPasswordAsSha1 = Sha1Hash.Sha1HashStringForUtf8String(inputUser.Password);
             bool passwordsMatch = foundUser.Password == inputPasswordAsSha1;
             return passwordsMatch;
         }
-        
+
         [HttpGet]
         public ActionResult Details(string id)
         {
