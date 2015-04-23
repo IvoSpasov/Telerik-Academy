@@ -47,6 +47,17 @@ namespace UsersManagement.Data
             return listOfUsers;
         }
 
+        public User GetById(int id)
+        {
+            if (!this.FileExists())
+            {
+                throw new InvalidOperationException("Xml file does not exist");
+            }
+
+            User foundUser = this.All().FirstOrDefault(u => u.Id == id);
+            return foundUser;
+        }
+
         public User GetByUsername(string username)
         {
             if (!this.FileExists())
@@ -107,6 +118,24 @@ namespace UsersManagement.Data
                     new XElement("password", Sha1Hash.Sha1HashStringForUtf8String(user.Password)));
 
             return userAsXmlElement;
+        }
+
+        public void Update(User user)
+        {
+            var foundUsers = from u in this.usersInformationXml.Descendants("user")
+                             where (int)u.Element("id") == user.Id
+                             select u;
+
+            var foundUser = foundUsers.FirstOrDefault();
+
+            if (foundUser == null)
+            {
+                throw new InvalidOperationException("user not found");
+            }
+
+            foundUser.Element("password").Value = user.Password;
+
+            this.usersInformationXml.Save(filePath);
         }
     }
 }

@@ -10,13 +10,13 @@ namespace UsersManagement.Data
     {
         IEnumerable<T> All();
 
-        //T GetById(int id);
+        T GetById(int id);
 
         T GetByUsername(string username);
 
         void Add(T entity);
 
-        //void Update(T entity);
+        void Update(T entity);
 
         //void Delete(T entity);
 

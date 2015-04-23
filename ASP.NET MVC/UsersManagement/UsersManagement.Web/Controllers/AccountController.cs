@@ -77,6 +77,8 @@ namespace UsersManagement.Web.Controllers
             return this.View(inputUser);
         }
 
+
+        // TODO REFACTOR!!!!!!!
         private bool UserExists(UserViewModel inputUser)
         {
             User foundUSer = null;
@@ -102,15 +104,46 @@ namespace UsersManagement.Web.Controllers
             bool passwordsMatch = foundUser.Password == inputPasswordAsSha1;
             return passwordsMatch;
         }
-
+        
         [HttpGet]
         public ActionResult Details(string id)
         {
+            if (id == null)
+            {
+                return View("Error");
+            }
+
             User foundUser = this.users.GetByUsername(id);
+            if (foundUser == null)
+            {
+                return View("Error");
+            }
+
             UserViewModel foundUserViewModel = new UserViewModel();
             foundUserViewModel.Username = foundUser.Username;
             foundUserViewModel.Password = foundUser.Password;
             return View(foundUserViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(UserViewModel inputUser)
+        {
+            if (ModelState.IsValid)
+            {
+                var foundUser = this.users.GetByUsername(inputUser.Username);
+
+                if (foundUser == null)
+                {
+                    return View("Error");
+                }
+
+                foundUser.Password = Sha1Hash.Sha1HashStringForUtf8String(inputUser.Password);
+
+                this.users.Update(foundUser);
+            }
+
+            return View(inputUser);
         }
     }
 }
