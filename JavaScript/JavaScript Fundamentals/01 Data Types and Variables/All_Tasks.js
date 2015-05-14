@@ -34,9 +34,9 @@
     // Task 4
     // Create null, undefined variables and try typeof on them.
 
-    var notDefined = null,
+    var empty = null,
         notExisting = undefined;
-    console.log(notDefined + ' is from type ' + typeof(notDefined));
+    console.log(empty + ' is from type ' + typeof(empty));
     console.log(notExisting + ' is from type ' + typeof(notExisting));
 })();
 
