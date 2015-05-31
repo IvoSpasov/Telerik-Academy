@@ -16,17 +16,17 @@
     }
 
     var circle = {
-            radius: 6,
+            radius: 5,
             xOffset: 0,
-            yOffset: 5
+            yOffset: 0
         },
         firstPoint = {
             x: 2,
             y: 2
         },
         secondPoint = {
-            x: -2,
-            y: -2
+            x: -4,
+            y: -3.5
         };
 
     console.log(pointWithinCircle(circle, firstPoint));

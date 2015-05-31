@@ -8,8 +8,8 @@
 
     var firstTrapezoid = {
         a: 5,
-        b: 8,
-        h: 3
+        b: 7,
+        h: 12
     };
 
     console.log('The area of the trapezoid is: ' + calculateTrapezoidArea(firstTrapezoid));

@@ -36,7 +36,7 @@
         },
         secondPoint = {
             x: 0,
-            y: 0
+            y: 1
         },
         inCircleAndOutOfRectangleFirstPoint = isPointInsideCircle(circle, firstPoint) &&
             !isPointInsideRectangle(rectangle, firstPoint),
