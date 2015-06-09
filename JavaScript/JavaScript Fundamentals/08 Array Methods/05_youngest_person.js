@@ -33,9 +33,10 @@
             new Person('Monika', 'Georgieva', 15, true),
             new Person('Antonia', 'Arsova', 10, true),
             new Person('Maria', 'Aleksandorva', 35, true)
-        ];
+        ],
+        youngest;
 
-    var youngest = people.filter(function (person) {
+    youngest = people.filter(function (person) {
         return !person.isFemale;
     }).sort(function (x, y) {
         return x.age - y.age;
