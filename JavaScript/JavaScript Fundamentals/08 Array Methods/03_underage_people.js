@@ -1,4 +1,5 @@
-// Write a function that checks if an array of person contains only people of age (with age 18 or greater)
+// Write a function that prints all underaged persons of an array of person
+// Use Array#filter and Array#forEach
 // Use only array methods and no regular loops (for, while)
 
 (function () {
@@ -19,11 +20,11 @@
         new Person('John', 'Smith', 53),
         new Person('Monika', 'Georgieva', 10),
         new Person('Antonia', 'Arsova', 28)
-    ],
-        result;
+    ];
 
-    result = people.every(function (item) {
-        return item.age >= 18;
+    people.filter(function (item) {
+        return item.age < 18;
+    }).forEach(function (item) {
+        console.log(item.toString());
     });
-    console.log('Are all people above 18: ' + result);
 })();
