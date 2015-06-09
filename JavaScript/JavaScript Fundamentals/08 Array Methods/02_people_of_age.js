@@ -9,10 +9,6 @@
         this.age = age;
     }
 
-    Person.prototype.toString = function () {
-        return this.firstName + ' ' + this.lastName + ' at ' + this.age;
-    };
-
     var people = [
         new Person('Gosho', 'Petrov', 23),
         new Person('Ivan', 'Topalov', 12),

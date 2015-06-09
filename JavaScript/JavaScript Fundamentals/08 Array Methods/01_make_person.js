@@ -14,15 +14,15 @@
         };
     }
 
-    function makePerson(firstName, lastName, age, gender) {
+    function makePerson(firstName, lastName, age, isFemale) {
         return {
             firstName: firstName,
             lastName: lastName,
             age: age,
-            gender: gender,
+            isFemale: isFemale,
             toString: function () {
                 return this.firstName + ' ' + this.lastName
-                    + ' at ' + this.age + ', ' + (this.gender ? 'female' : 'male');
+                    + ' at ' + this.age + ', ' + (this.isFemale ? 'female' : 'male');
             }
         };
     }
