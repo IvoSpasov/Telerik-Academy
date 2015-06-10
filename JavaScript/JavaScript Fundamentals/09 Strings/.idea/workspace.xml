@@ -57,14 +57,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="04_parse_tags.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="04_parse_tags.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/04_parse_tags.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34548944" vertical-offset="818" max-vertical-offset="2418">
+            <state vertical-scroll-proportion="0.0" vertical-offset="818" max-vertical-offset="2418">
               <caret line="38" column="73" selection-start-line="38" selection-start-column="73" selection-end-line="38" selection-end-column="73" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="05_nbsp.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/05_nbsp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+              <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="05_nbsp.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/05_nbsp.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.11712598" vertical-offset="0" max-vertical-offset="1016">
+              <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -127,6 +147,8 @@
         <option value="$PROJECT_DIR$/03_sub_string_in_text.js" />
         <option value="$PROJECT_DIR$/04_parse_tags.html" />
         <option value="$PROJECT_DIR$/04_parse_tags.js" />
+        <option value="$PROJECT_DIR$/05_nbsp.html" />
+        <option value="$PROJECT_DIR$/05_nbsp.js" />
       </list>
     </option>
   </component>
@@ -367,16 +389,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_correct_brackets.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_sub_string_in_text.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="255">
@@ -405,11 +417,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/04_parse_tags.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34548944" vertical-offset="818" max-vertical-offset="2418">
+        <state vertical-scroll-proportion="0.0" vertical-offset="818" max-vertical-offset="2418">
           <caret line="38" column="73" selection-start-line="38" selection-start-column="73" selection-end-line="38" selection-end-column="73" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_correct_brackets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/05_nbsp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/05_nbsp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11712598" vertical-offset="0" max-vertical-offset="1016">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
