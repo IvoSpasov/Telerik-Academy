@@ -23,11 +23,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="01_reverse_string.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="01_reverse_string.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01_reverse_string.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28790787" vertical-offset="0" max-vertical-offset="1042">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
               <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="02_correct_brackets.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/02_correct_brackets.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.75898933" vertical-offset="149" max-vertical-offset="1364">
+              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="02_correct_brackets.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/02_correct_brackets.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="255">
+              <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -55,6 +77,8 @@
       <list>
         <option value="$PROJECT_DIR$/01_reverse_string.html" />
         <option value="$PROJECT_DIR$/01_reverse_string.js" />
+        <option value="$PROJECT_DIR$/02_correct_brackets.html" />
+        <option value="$PROJECT_DIR$/02_correct_brackets.js" />
       </list>
     </option>
   </component>
@@ -243,9 +267,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_reverse_string.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28790787" vertical-offset="0" max-vertical-offset="1042">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
           <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_correct_brackets.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="255">
+          <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_correct_brackets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75898933" vertical-offset="149" max-vertical-offset="1364">
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
