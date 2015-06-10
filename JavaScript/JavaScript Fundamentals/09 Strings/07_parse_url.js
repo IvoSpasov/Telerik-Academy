@@ -44,6 +44,7 @@
         address3 = "en.wikipedia.org/wiki/List_of_Unicode_characters",
         address4 = "en.wikipedia.org",
         extractedAddress = parseUrl(address);
+
     console.log(address);
     console.log(extractedAddress.toString());
     console.log('');
