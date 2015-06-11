@@ -23,14 +23,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="01_format_with_placeholders.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="01_format_with_placeholders.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01_format_with_placeholders.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0710173" vertical-offset="0" max-vertical-offset="1333">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1333">
               <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="02_html_binding.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/02_html_binding.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.34836853" vertical-offset="594" max-vertical-offset="1749">
+              <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="02_html_binding.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/02_html_binding.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="255">
+              <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -57,6 +79,8 @@
       <list>
         <option value="$PROJECT_DIR$/01_format_with_placeholders.html" />
         <option value="$PROJECT_DIR$/01_format_with_placeholders.js" />
+        <option value="$PROJECT_DIR$/02_html_binding.html" />
+        <option value="$PROJECT_DIR$/02_html_binding.js" />
       </list>
     </option>
   </component>
@@ -227,10 +251,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/02_html_binding.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="255">
+          <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/01_format_with_placeholders.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0710173" vertical-offset="0" max-vertical-offset="1333">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1333">
           <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_html_binding.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34836853" vertical-offset="594" max-vertical-offset="1749">
+          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
