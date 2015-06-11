@@ -6,7 +6,9 @@
     var divTag = '<div data-bind-content="name"></div>',
         divTagOptions = {name: 'Steven'},
         anchorTag = '<a data-bind-content="name" data-bind-href="link" data-bind-class="name"></а>',
-        anchorTagOptions = {name: 'Elena', link: 'http://telerikacademy.com'};
+        anchorTagOptions = {name: 'Elena', link: 'http://telerikacademy.com'},
+        divTag2 = '<div data-bind-class="className"></div>',
+        divTag2Options = {className: 'Academy'};
 
     if (!String.prototype.bind) {
         String.prototype.bind = function (options) {
@@ -32,6 +34,12 @@
                     case 'content':
                         result = insertContent(result, options[dataValues[i]]);
                         break;
+                    case 'href':
+                        result = insertHref(result, options[dataValues[i]]);
+                        break;
+                    case 'class':
+                        result = insertClass(result, options[dataValues[i]]);
+                        break;
                 }
             }
 
@@ -43,6 +51,17 @@
         return element.replace(/></, '>' + content + '<');
     }
 
+    function insertHref(element, href) {
+        var updatedHref = '" href="' + href + '">';
+        return element.replace(/">|" >/, updatedHref);
+    }
+
+    function insertClass(element, className) {
+        var updatedClassName = '" class="' + className + '">';
+        return element.replace(/">|" >/, updatedClassName);
+    }
+
     console.log(divTag.bind(divTagOptions));
     console.log(anchorTag.bind(anchorTagOptions));
+    console.log(divTag2.bind(divTag2Options));
 })();
