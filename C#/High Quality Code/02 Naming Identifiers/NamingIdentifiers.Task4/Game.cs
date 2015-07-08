@@ -12,86 +12,57 @@ namespace NamingIdentifiers.Task4
         private const int NumberOfCols = 10;
         private const string GreetingMessage = "Let's play \"mines\". Try to guess the boxes without mines." +
                             "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game";
+        private const int MaxPlayersOnScoreBoard = 5;
 
         private PlayingBoard playingBoard;
         private int selectedRow = 0;
         private int selectedCol = 0;
-        private bool MineIsHit = false;
-        private bool CommandIsExit = false;
-        private bool ShowGreetingMessage = true;
+        private bool mineIsHit = false;
+        private bool commandIsExit = false; 
+        private bool gameIsWon = false;
+        private bool showGreetingMessage = true;
         private int correctGuessesCounter = 0;
-
-        // private var players = new List<Player>();
+        private List<Player> players = new List<Player>();
 
         private const int max = 35;
-        private bool isGameWon = false;
+        
 
         public void Start()
         {
-            if (ShowGreetingMessage)
+            if (showGreetingMessage)
             {
                 Console.WriteLine(GreetingMessage);
             }
 
             this.playingBoard = new PlayingBoard(NumberOfRows, NumberOfCols);
-            this.playingBoard.Print();
+            this.playingBoard.PrintBoardWithHiddenMines();
             string command;
 
-            while (!MineIsHit && !CommandIsExit)
+            while (!this.mineIsHit && !this.commandIsExit && !this.gameIsWon)
             {
                 Console.Write("Please enter command or row and column: ");
-                command = Console.ReadLine().Trim();
+                command = Console.ReadLine();
                 this.ProcessCommand(command);
             }
 
-            //    if (MineIsHit)
-            //    {
-            //        PrintPlayingBoard(bombsBoard);
-            //        Console.Write("\nHrrrrrr! Umria gerojski s {0} to4ki. " +
-            //            "Daj si niknejm: ", counter);
-            //        string niknejm = Console.ReadLine();
-            //        Player t = new Player(niknejm, counter);
-            //        if (players.Count < 5)
-            //        {
-            //            players.Add(t);
-            //        }
-            //        else
-            //        {
-            //            for (int i = 0; i < players.Count; i++)
-            //            {
-            //                if (players[i].Points < t.Points)
-            //                {
-            //                    players.Insert(i, t);
-            //                    players.RemoveAt(players.Count - 1);
-            //                    break;
-            //                }
-            //            }
-            //        }
-            //        players.Sort((Player r1, Player r2) => r2.Name.CompareTo(r1.Name));
-            //        players.Sort((Player r1, Player r2) => r2.Points.CompareTo(r1.Points));
-            //        PrintHighscores(players);
+            if (mineIsHit)
+            {
+                this.playingBoard.PrintBoardWithMines();
+                Console.Write("\n You hit a mine. Your score is: {0} ", correctGuessesCounter);
+                AddPlayerToScoreBoard();
+                PrintHighscores(players);
+                this.RestartGame();
+            }
 
-            //        playingBoard = CreatePlayingBoard();
-            //        bombsBoard = slojibombite();
-            //        counter = 0;
-            //        grum = false;
-            //        flag = true;
-            //    }
-            //    if (flag2)
-            //    {
-            //        Console.WriteLine("\nBRAVOOOS! Otvri 35 kletki bez kapka kryv.");
-            //        PrintPlayingBoard(bombsBoard);
-            //        Console.WriteLine("Daj si imeto, batka: ");
-            //        string imeee = Console.ReadLine();
-            //        Player to4kii = new Player(imeee, counter);
-            //        players.Add(to4kii);
-            //        PrintHighscores(players);
-            //        playingBoard = CreatePlayingBoard();
-            //        bombsBoard = slojibombite();
-            //        counter = 0;
-            //        flag2 = false;
-            //        flag = true;
-            //    }
+            if (this.gameIsWon)
+            {
+                Console.WriteLine("\n You win.");
+                this.playingBoard.PrintBoardWithMines();
+                AddPlayerToScoreBoard();
+                PrintHighscores(players);
+
+                this.RestartGame();
+            }
         }
 
         private void ProcessCommand(string command)
@@ -100,7 +71,7 @@ namespace NamingIdentifiers.Task4
             {
                 if (this.playingBoard.BoardWithMines[selectedRow, selectedCol] == '*')
                 {
-                    MineIsHit = true;
+                    mineIsHit = true;
                 }
                 else
                 {
@@ -109,11 +80,11 @@ namespace NamingIdentifiers.Task4
 
                     if (max == correctGuessesCounter)
                     {
-                        isGameWon = true;
+                        gameIsWon = true;
                     }
                     else
                     {
-                        playingBoard.Print();
+                        playingBoard.PrintBoardWithHiddenMines();
                     }
                 }
             }
@@ -122,15 +93,13 @@ namespace NamingIdentifiers.Task4
                 switch (command)
                 {
                     case "scores":
-                        //PrintHighscores(players);
+                        PrintHighscores(players);
                         break;
                     case "restart":
-                        this.MineIsHit = false;
-                        this.ShowGreetingMessage = false;
-                        this.Start();
+                        this.RestartGame();
                         break;
                     case "exit":
-                        CommandIsExit = true;
+                        commandIsExit = true;
                         Console.WriteLine("Thank you for playing.");
                         break;
                     default:
@@ -221,7 +190,61 @@ namespace NamingIdentifiers.Task4
                 }
             }
 
+            this.playingBoard.BoardWithMines[this.selectedRow, this.selectedCol] = char.Parse(numberOfBombs.ToString());
             this.playingBoard.BoardWithHiddenMines[this.selectedRow, this.selectedCol] = char.Parse(numberOfBombs.ToString());
+        }
+
+        private void RestartGame()
+        {
+            this.mineIsHit = false;
+            this.showGreetingMessage = false;
+            this.gameIsWon = false;
+            this.correctGuessesCounter = 0;
+            this.Start();
+        }
+
+        private void PrintHighscores(List<Player> players)
+        {
+            if (players.Count > 0)
+            {
+                Console.WriteLine("\nPoints:");
+                for (int i = 0; i < players.Count; i++)
+                {
+                    Console.WriteLine("{0}. {1} --> {2} points", i + 1, players[i].Name, players[i].Points);
+                }
+
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("No highscores yet.\n");
+            }
+        }
+
+        private void AddPlayerToScoreBoard()
+        {
+            Console.WriteLine("Please enter your nickname");
+            string nickName = Console.ReadLine();
+            Player currentPlayer = new Player(nickName, correctGuessesCounter);
+            if (players.Count < MaxPlayersOnScoreBoard)
+            {
+                players.Add(currentPlayer);
+            }
+            else
+            {
+                for (int i = 0; i < players.Count; i++)
+                {
+                    if (players[i].Points < currentPlayer.Points)
+                    {
+                        players.Insert(i, currentPlayer);
+                        players.RemoveAt(players.Count - 1);
+                        break;
+                    }
+                }
+            }
+
+            players.Sort((Player p1, Player p2) => p2.Name.CompareTo(p1.Name));
+            players.Sort((Player p1, Player p2) => p2.Points.CompareTo(p1.Points));
         }
     }
 }

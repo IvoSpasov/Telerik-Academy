@@ -70,7 +70,17 @@ namespace NamingIdentifiers.Task4
             private set { this.boardWithMines = value; }
         }
 
-        public void Print()
+        public void PrintBoardWithHiddenMines()
+        {
+            this.Print(this.BoardWithHiddenMines);
+        }
+
+        public void PrintBoardWithMines()
+        {
+            this.Print(this.BoardWithMines);
+        }
+
+        private void Print(char[,] board)
         {
             Console.WriteLine("\n    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("   ---------------------");
@@ -79,7 +89,7 @@ namespace NamingIdentifiers.Task4
                 Console.Write("{0} | ", i);
                 for (int j = 0; j < this.cols; j++)
                 {
-                    Console.Write(string.Format("{0} ", this.boardWithHiddenMines[i, j]));
+                    Console.Write(string.Format("{0} ", board[i, j]));
                 }
 
                 Console.Write("|");
