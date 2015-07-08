@@ -28,6 +28,7 @@ namespace NamingIdentifiers.Task4
             {
                 return this.rows; 
             }
+
             private set
             {
                 if (value <= 0)
@@ -45,6 +46,7 @@ namespace NamingIdentifiers.Task4
             {
                 return this.cols;
             }
+
             private set
             {
                 if (value <= 0)
@@ -95,7 +97,6 @@ namespace NamingIdentifiers.Task4
         private char[,] CreateBoardWithMines()
         {
             var board = this.CreateMatrixFilledWithSymbols('-', this.rows, this.cols);
-
 
             //TODO: fix logic
             List<int> randomNumbers = new List<int>();
