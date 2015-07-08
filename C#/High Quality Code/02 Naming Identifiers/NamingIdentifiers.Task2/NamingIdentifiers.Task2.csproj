@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>da1ee69d-9b64-4341-8cbc-88da03b45ef8</ProjectGuid>
+    <ProjectGuid>{A35EC23A-12DD-4223-952F-7DE6334EE79D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NamingIdentifiers.Task2</RootNamespace>
@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="ProgramStart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sex.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31010.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamingIdentifiers.Task1", "NamingIdentifiers.Task1\NamingIdentifiers.Task1.csproj", "{9DA3D9C1-D294-44CF-9D22-9F8D013931F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamingIdentifiers.Task2", "NamingIdentifiers.Task2\NamingIdentifiers.Task2.csproj", "{A35EC23A-12DD-4223-952F-7DE6334EE79D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamingIdentifiers.Task4", "NamingIdentifiers.Task4\NamingIdentifiers.Task4.csproj", "{D4CF37AB-92D4-4590-B1ED-E1A6DEF2AACF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9DA3D9C1-D294-44CF-9D22-9F8D013931F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DA3D9C1-D294-44CF-9D22-9F8D013931F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DA3D9C1-D294-44CF-9D22-9F8D013931F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A35EC23A-12DD-4223-952F-7DE6334EE79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A35EC23A-12DD-4223-952F-7DE6334EE79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A35EC23A-12DD-4223-952F-7DE6334EE79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A35EC23A-12DD-4223-952F-7DE6334EE79D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4CF37AB-92D4-4590-B1ED-E1A6DEF2AACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4CF37AB-92D4-4590-B1ED-E1A6DEF2AACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4CF37AB-92D4-4590-B1ED-E1A6DEF2AACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4CF37AB-92D4-4590-B1ED-E1A6DEF2AACF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
