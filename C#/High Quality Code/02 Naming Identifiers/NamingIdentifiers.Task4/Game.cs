@@ -12,7 +12,6 @@ namespace NamingIdentifiers.Task4
         private const int NumberOfCols = 10;
         private const string GreetingMessage = "Let's play \"mines\". Try to guess the boxes without mines." +
                             "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game";
-        private const int MaxPlayersOnScoreBoard = 5;
 
         private PlayingBoard playingBoard;
         private int selectedRow = 0;
@@ -22,8 +21,7 @@ namespace NamingIdentifiers.Task4
         private bool gameIsWon = false;
         private bool showGreetingMessage = true;
         private int correctGuessesCounter = 0;
-        private List<Player> players = new List<Player>();
-
+        private Highscores highscores = new Highscores();
         private const int max = 35;
 
 
@@ -45,22 +43,19 @@ namespace NamingIdentifiers.Task4
                 this.ProcessCommand(command);
             }
 
-            if (mineIsHit)
+            if (this.mineIsHit)
             {
                 this.playingBoard.PrintBoardWithMines();
                 Console.Write("You hit a mine. Your score is: {0} ", correctGuessesCounter);
-                AddPlayerToScoreBoard();
-                PrintHighscores(players);
+                this.HandlePlayer();
                 this.RestartGame();
             }
 
             if (this.gameIsWon)
             {
-                Console.WriteLine("You win.");
                 this.playingBoard.PrintBoardWithMines();
-                AddPlayerToScoreBoard();
-                PrintHighscores(players);
-
+                Console.WriteLine("You win.");
+                this.HandlePlayer();
                 this.RestartGame();
             }
         }
@@ -93,7 +88,7 @@ namespace NamingIdentifiers.Task4
                 switch (command)
                 {
                     case "scores":
-                        PrintHighscores(players);
+                        this.highscores.PrintPlayersHighscores();
                         break;
                     case "restart":
                         this.RestartGame();
@@ -203,80 +198,10 @@ namespace NamingIdentifiers.Task4
             this.Start();
         }
 
-        private void PrintHighscores(List<Player> players)
+        private void HandlePlayer()
         {
-            if (players.Count > 0)
-            {
-                Console.WriteLine("\nHighScores:");
-                for (int i = 0; i < players.Count; i++)
-                {
-                    Console.WriteLine("{0}. {1} --> {2} points", i + 1, players[i].Name, players[i].Points);
-                }
-
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine("No highscores yet.\n");
-            }
-        }
-
-        private void AddPlayerToScoreBoard()
-        {
-            Console.WriteLine("Please enter your nickname:");
-            string nickName = Console.ReadLine();
-            if (!CheckIfPlayerExists(nickName))
-            {
-                // extract to method
-                Player currentPlayer = new Player(nickName, correctGuessesCounter);
-                if (players.Count < MaxPlayersOnScoreBoard)
-                {
-                    players.Add(currentPlayer);
-                }
-                else
-                {
-                    for (int i = 0; i < players.Count; i++)
-                    {
-                        if (players[i].Points < currentPlayer.Points)
-                        {
-                            players.Insert(i, currentPlayer);
-                            players.RemoveAt(players.Count - 1);
-                            break;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                AddScoreToExistingPlayer(nickName);
-            }
-
-            players.Sort((Player p1, Player p2) => p2.Name.CompareTo(p1.Name));
-            players.Sort((Player p1, Player p2) => p2.Points.CompareTo(p1.Points));
-        }
-
-        private bool CheckIfPlayerExists(string nickName)
-        {
-            foreach (var player in this.players)
-            {
-                if (player.Name == nickName)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private void AddScoreToExistingPlayer(string nickName)
-        {
-            foreach (var player in this.players)
-            {
-                if (player.Name == nickName && player.Points < this.correctGuessesCounter)
-                {
-                    player.Points = this.correctGuessesCounter;
-                }
-            }
+            this.highscores.AddPlayerToScoreBoard(correctGuessesCounter);
+            this.highscores.PrintPlayersHighscores();
         }
     }
 }
