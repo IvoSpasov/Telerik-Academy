@@ -10,7 +10,6 @@
                             "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game";
 
         private const string EnterCommandMessage = "Please enter command or row and column: ";
-        private const string MineHitMessage = string.Format("You hit a mine. Your score is: {0} ", this.correctGuessesCounter);
         private const string WinMessage = "You win.";
         private const string ThankYouMessage = "Thank you for playing.";
         private const string InvalidCommandMessage = "Invalid command or row or column.";
@@ -45,7 +44,7 @@
 
             if (this.mineIsHit)
             {
-                this.EndCurrentGame(MineHitMessage);
+                this.EndCurrentGame(string.Format("You hit a mine. Your score is: {0} ", this.correctGuessesCounter));
             }
 
             if (this.gameIsWon)
