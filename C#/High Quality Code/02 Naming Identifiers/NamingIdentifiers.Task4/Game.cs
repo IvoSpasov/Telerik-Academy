@@ -9,8 +9,13 @@
         private const string GreetingMessage = "Let's play \"mines\". Try to guess the boxes without mines." +
                             "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game";
 
+        private const string EnterCommandMessage = "Please enter command or row and column: ";
+        private const string MineHitMessage = string.Format("You hit a mine. Your score is: {0} ", this.correctGuessesCounter);
+        private const string WinMessage = "You win.";
+        private const string ThankYouMessage = "Thank you for playing.";
+        private const string InvalidCommandMessage = "Invalid command or row or column.";
         private const int Max = 35;
-
+        private readonly Highscores highscores = new Highscores();
         private PlayingBoard playingBoard;
         private int selectedRow = 0;
         private int selectedCol = 0;
@@ -19,7 +24,6 @@
         private bool gameIsWon = false;
         private bool showGreetingMessage = true;
         private int correctGuessesCounter = 0;
-        private Highscores highscores = new Highscores();
 
         public void Start()
         {
@@ -34,20 +38,19 @@
 
             while (!this.mineIsHit && !this.commandIsExit && !this.gameIsWon)
             {
-                Console.Write("Please enter command or row and column: ");
+                Console.Write(EnterCommandMessage);
                 command = Console.ReadLine();
                 this.ProcessCommand(command);
             }
 
             if (this.mineIsHit)
             {
-                string mes = string.Format("You hit a mine. Your score is: {0} ", this.correctGuessesCounter);
-                this.EndGame(mes);
+                this.EndCurrentGame(MineHitMessage);
             }
 
             if (this.gameIsWon)
             {
-                this.EndGame("You win.");
+                this.EndCurrentGame(WinMessage);
             }
         }
 
@@ -61,10 +64,10 @@
                 }
                 else
                 {
-                    this.CalculateNumberOfBombs();
+                    this.ApplyNumberOfBombsToCurrentCellOfBoard();
                     this.correctGuessesCounter++;
 
-                    if (Max == this.correctGuessesCounter)
+                    if (this.correctGuessesCounter == Max)
                     {
                         this.gameIsWon = true;
                     }
@@ -82,14 +85,14 @@
                         this.highscores.PrintPlayersHighscores();
                         break;
                     case "restart":
-                        this.RestartGame();
+                        this.Restart();
                         break;
                     case "exit":
                         this.commandIsExit = true;
-                        Console.WriteLine("Thank you for playing.");
+                        Console.WriteLine(ThankYouMessage);
                         break;
                     default:
-                        Console.WriteLine("Invalid command or row or column.");
+                        Console.WriteLine(InvalidCommandMessage);
                         break;
                 }
             }
@@ -102,13 +105,20 @@
             bool isValidRowAndCol = numbers.Length == 2 &&
                                     int.TryParse(numbers[0], out this.selectedRow) &&
                                     int.TryParse(numbers[1], out this.selectedCol) &&
-                                    this.selectedRow <= this.playingBoard.Rows &&
-                                    this.selectedCol <= this.playingBoard.Cols;
+                                    this.selectedRow < this.playingBoard.Rows &&
+                                    this.selectedCol < this.playingBoard.Cols;
 
             return isValidRowAndCol;
         }
 
-        private void CalculateNumberOfBombs()
+        private void ApplyNumberOfBombsToCurrentCellOfBoard()
+        {
+            int numberOfBombs = this.CalculateNumberOfBombs();
+            this.playingBoard.BoardWithMines[this.selectedRow, this.selectedCol] = char.Parse(numberOfBombs.ToString());
+            this.playingBoard.BoardWithHiddenMines[this.selectedRow, this.selectedCol] = char.Parse(numberOfBombs.ToString());
+        }
+
+        private int CalculateNumberOfBombs()
         {
             int numberOfBombs = 0;
 
@@ -176,11 +186,10 @@
                 }
             }
 
-            this.playingBoard.BoardWithMines[this.selectedRow, this.selectedCol] = char.Parse(numberOfBombs.ToString());
-            this.playingBoard.BoardWithHiddenMines[this.selectedRow, this.selectedCol] = char.Parse(numberOfBombs.ToString());
+            return numberOfBombs;
         }
 
-        private void RestartGame()
+        private void Restart()
         {
             this.mineIsHit = false;
             this.showGreetingMessage = false;
@@ -189,13 +198,13 @@
             this.Start();
         }
 
-        private void EndGame(string message)
+        private void EndCurrentGame(string message)
         {
             this.playingBoard.PrintBoardWithMines();
             Console.WriteLine(message);
             this.highscores.AddPlayerToScoreBoard(this.correctGuessesCounter);
             this.highscores.PrintPlayersHighscores();
-            this.RestartGame();
+            this.Restart();
         }
     }
 }
