@@ -18,14 +18,14 @@ namespace NamingIdentifiers.Task4
         private int selectedRow = 0;
         private int selectedCol = 0;
         private bool mineIsHit = false;
-        private bool commandIsExit = false; 
+        private bool commandIsExit = false;
         private bool gameIsWon = false;
         private bool showGreetingMessage = true;
         private int correctGuessesCounter = 0;
         private List<Player> players = new List<Player>();
 
         private const int max = 35;
-        
+
 
         public void Start()
         {
@@ -48,7 +48,7 @@ namespace NamingIdentifiers.Task4
             if (mineIsHit)
             {
                 this.playingBoard.PrintBoardWithMines();
-                Console.Write("\n You hit a mine. Your score is: {0} ", correctGuessesCounter);
+                Console.Write("You hit a mine. Your score is: {0} ", correctGuessesCounter);
                 AddPlayerToScoreBoard();
                 PrintHighscores(players);
                 this.RestartGame();
@@ -56,7 +56,7 @@ namespace NamingIdentifiers.Task4
 
             if (this.gameIsWon)
             {
-                Console.WriteLine("\n You win.");
+                Console.WriteLine("You win.");
                 this.playingBoard.PrintBoardWithMines();
                 AddPlayerToScoreBoard();
                 PrintHighscores(players);
@@ -207,7 +207,7 @@ namespace NamingIdentifiers.Task4
         {
             if (players.Count > 0)
             {
-                Console.WriteLine("\nPoints:");
+                Console.WriteLine("\nHighScores:");
                 for (int i = 0; i < players.Count; i++)
                 {
                     Console.WriteLine("{0}. {1} --> {2} points", i + 1, players[i].Name, players[i].Points);
@@ -223,28 +223,60 @@ namespace NamingIdentifiers.Task4
 
         private void AddPlayerToScoreBoard()
         {
-            Console.WriteLine("Please enter your nickname");
+            Console.WriteLine("Please enter your nickname:");
             string nickName = Console.ReadLine();
-            Player currentPlayer = new Player(nickName, correctGuessesCounter);
-            if (players.Count < MaxPlayersOnScoreBoard)
+            if (!CheckIfPlayerExists(nickName))
             {
-                players.Add(currentPlayer);
+                // extract to method
+                Player currentPlayer = new Player(nickName, correctGuessesCounter);
+                if (players.Count < MaxPlayersOnScoreBoard)
+                {
+                    players.Add(currentPlayer);
+                }
+                else
+                {
+                    for (int i = 0; i < players.Count; i++)
+                    {
+                        if (players[i].Points < currentPlayer.Points)
+                        {
+                            players.Insert(i, currentPlayer);
+                            players.RemoveAt(players.Count - 1);
+                            break;
+                        }
+                    }
+                }
             }
             else
             {
-                for (int i = 0; i < players.Count; i++)
-                {
-                    if (players[i].Points < currentPlayer.Points)
-                    {
-                        players.Insert(i, currentPlayer);
-                        players.RemoveAt(players.Count - 1);
-                        break;
-                    }
-                }
+                AddScoreToExistingPlayer(nickName);
             }
 
             players.Sort((Player p1, Player p2) => p2.Name.CompareTo(p1.Name));
             players.Sort((Player p1, Player p2) => p2.Points.CompareTo(p1.Points));
+        }
+
+        private bool CheckIfPlayerExists(string nickName)
+        {
+            foreach (var player in this.players)
+            {
+                if (player.Name == nickName)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void AddScoreToExistingPlayer(string nickName)
+        {
+            foreach (var player in this.players)
+            {
+                if (player.Name == nickName && player.Points < this.correctGuessesCounter)
+                {
+                    player.Points = this.correctGuessesCounter;
+                }
+            }
         }
     }
 }
