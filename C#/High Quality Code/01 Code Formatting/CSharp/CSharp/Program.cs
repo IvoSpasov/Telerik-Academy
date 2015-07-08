@@ -4,7 +4,7 @@ namespace CSharp
 
     public class Program
     {
-        private static readonly EventHolder events = new EventHolder();
+        private static readonly EventHolder Events = new EventHolder();
 
         public static void Main()
         {
@@ -51,7 +51,7 @@ namespace CSharp
             string title;
             string location;
             GetParameters(command, "AddEvent", out date, out title, out location);
-            events.AddEvent(date, title, location);
+            Events.AddEvent(date, title, location);
         }
 
         private static void ListEvents(string command)
@@ -60,13 +60,13 @@ namespace CSharp
             DateTime date = GetDate(command, "ListEvents");
             string countString = command.Substring(pipeIndex + 1);
             int count = int.Parse(countString);
-            events.ListEvents(date, count);
+            Events.ListEvents(date, count);
         }
 
         private static void DeleteEvents(string command)
         {
             string title = command.Substring("DeleteEvents".Length + 1);
-            events.DeleteEvents(title);
+            Events.DeleteEvents(title);
         }
 
         private static void GetParameters(string commandForExecution, string commandType, out DateTime dateAndTime, out string eventTitle, out string eventLocation)

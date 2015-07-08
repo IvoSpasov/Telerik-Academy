@@ -5,19 +5,19 @@
 
     public static class Messages
     {
-        private static readonly StringBuilder output = new StringBuilder();
+        private static readonly StringBuilder Output = new StringBuilder();
 
         public static string OutputString
         {
             get
             {
-                return output.ToString();
+                return Output.ToString();
             }
         }
 
         public static void EventAdded()
         {
-            output.Append("Event added" + Environment.NewLine);
+            Output.Append("Event added" + Environment.NewLine);
         }
 
         public static void EventDeleted(int amount)
@@ -28,20 +28,20 @@
             }
             else
             {
-                output.AppendFormat("{0} events deleted{1}", amount, Environment.NewLine);
+                Output.AppendFormat("{0} events deleted{1}", amount, Environment.NewLine);
             }
         }
 
         public static void NoEventsFound()
         {
-            output.Append("No events found" + Environment.NewLine);
+            Output.Append("No events found" + Environment.NewLine);
         }
 
         public static void PrintEvent(Event eventToPrint)
         {
             if (eventToPrint != null)
             {
-                output.Append(eventToPrint + Environment.NewLine);
+                Output.Append(eventToPrint + Environment.NewLine);
             }
         }
     }
