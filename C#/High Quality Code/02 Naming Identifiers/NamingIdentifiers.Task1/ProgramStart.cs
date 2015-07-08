@@ -6,7 +6,7 @@
 
         public static void Main()
         {
-            Printer printer = new Printer();
+            var printer = new Printer();
             printer.PrintOnConsole(true);
         }
     }
