@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NamingIdentifiers.Task4
+﻿namespace NamingIdentifiers.Task4
 {
+    using System;
+    using System.Collections.Generic;
+
     public class PlayingBoard
     {
         private const int NumberOfMines = 15;
@@ -122,8 +119,8 @@ namespace NamingIdentifiers.Task4
 
             foreach (int number in randomNumbers)
             {
-                int col = (number / this.cols);
-                int row = (number % this.cols);
+                int col = number / this.cols;
+                int row = number % this.cols;
                 if (row == 0 && number != 0)
                 {
                     col--;

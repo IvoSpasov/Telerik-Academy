@@ -9,6 +9,8 @@
         private const string GreetingMessage = "Let's play \"mines\". Try to guess the boxes without mines." +
                             "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game";
 
+        private const int Max = 35;
+
         private PlayingBoard playingBoard;
         private int selectedRow = 0;
         private int selectedCol = 0;
@@ -18,12 +20,10 @@
         private bool showGreetingMessage = true;
         private int correctGuessesCounter = 0;
         private Highscores highscores = new Highscores();
-        private const int max = 35;
-
 
         public void Start()
         {
-            if (showGreetingMessage)
+            if (this.showGreetingMessage)
             {
                 Console.WriteLine(GreetingMessage);
             }
@@ -41,7 +41,7 @@
 
             if (this.mineIsHit)
             {
-                string mes = string.Format("You hit a mine. Your score is: {0} ", correctGuessesCounter);
+                string mes = string.Format("You hit a mine. Your score is: {0} ", this.correctGuessesCounter);
                 this.EndGame(mes);
             }
 
@@ -53,24 +53,24 @@
 
         private void ProcessCommand(string command)
         {
-            if (CheckForValidRowAndCol(command))
+            if (this.CheckForValidRowAndCol(command))
             {
-                if (this.playingBoard.BoardWithMines[selectedRow, selectedCol] == '*')
+                if (this.playingBoard.BoardWithMines[this.selectedRow, this.selectedCol] == '*')
                 {
-                    mineIsHit = true;
+                    this.mineIsHit = true;
                 }
                 else
                 {
-                    CalculateNumberOfBombs();
-                    correctGuessesCounter++;
+                    this.CalculateNumberOfBombs();
+                    this.correctGuessesCounter++;
 
-                    if (max == correctGuessesCounter)
+                    if (Max == this.correctGuessesCounter)
                     {
-                        gameIsWon = true;
+                        this.gameIsWon = true;
                     }
                     else
                     {
-                        playingBoard.PrintBoardWithHiddenMines();
+                        this.playingBoard.PrintBoardWithHiddenMines();
                     }
                 }
             }
@@ -85,7 +85,7 @@
                         this.RestartGame();
                         break;
                     case "exit":
-                        commandIsExit = true;
+                        this.commandIsExit = true;
                         Console.WriteLine("Thank you for playing.");
                         break;
                     default:
@@ -103,7 +103,7 @@
                                     int.TryParse(numbers[0], out this.selectedRow) &&
                                     int.TryParse(numbers[1], out this.selectedCol) &&
                                     this.selectedRow <= this.playingBoard.Rows &&
-                                    this.selectedCol <= playingBoard.Cols;
+                                    this.selectedCol <= this.playingBoard.Cols;
 
             return isValidRowAndCol;
         }
@@ -193,7 +193,7 @@
         {
             this.playingBoard.PrintBoardWithMines();
             Console.WriteLine(message);
-            this.highscores.AddPlayerToScoreBoard(correctGuessesCounter);
+            this.highscores.AddPlayerToScoreBoard(this.correctGuessesCounter);
             this.highscores.PrintPlayersHighscores();
             this.RestartGame();
         }

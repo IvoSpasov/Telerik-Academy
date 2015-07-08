@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NamingIdentifiers.Task4
+﻿namespace NamingIdentifiers.Task4
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Highscores
     {
         private const int MaxPlayersOnScoreBoard = 5;
@@ -13,10 +10,10 @@ namespace NamingIdentifiers.Task4
 
         public void PrintPlayersHighscores()
         {
-            if (players.Count > 0)
+            if (this.players.Count > 0)
             {
                 Console.WriteLine("\nHighScores:");
-                for (int i = 0; i < players.Count; i++)
+                for (int i = 0; i < this.players.Count; i++)
                 {
                     Console.WriteLine("{0}. {1} --> {2} points", i + 1, this.players[i].Name, this.players[i].Points);
                 }
@@ -33,22 +30,22 @@ namespace NamingIdentifiers.Task4
         {
             Console.WriteLine("Please enter your nickname:");
             string nickName = Console.ReadLine();
-            if (!CheckIfPlayerExists(nickName))
+            if (!this.CheckIfPlayerExists(nickName))
             {
                 // extract to method
                 Player currentPlayer = new Player(nickName, correctGuessesCounter);
-                if (players.Count < MaxPlayersOnScoreBoard)
+                if (this.players.Count < MaxPlayersOnScoreBoard)
                 {
-                    players.Add(currentPlayer);
+                    this.players.Add(currentPlayer);
                 }
                 else
                 {
-                    for (int i = 0; i < players.Count; i++)
+                    for (int i = 0; i < this.players.Count; i++)
                     {
-                        if (players[i].Points < currentPlayer.Points)
+                        if (this.players[i].Points < currentPlayer.Points)
                         {
-                            players.Insert(i, currentPlayer);
-                            players.RemoveAt(players.Count - 1);
+                            this.players.Insert(i, currentPlayer);
+                            this.players.RemoveAt(this.players.Count - 1);
                             break;
                         }
                     }
@@ -56,11 +53,11 @@ namespace NamingIdentifiers.Task4
             }
             else
             {
-                AddScoreToExistingPlayer(nickName, correctGuessesCounter);
+                this.AddScoreToExistingPlayer(nickName, correctGuessesCounter);
             }
 
-            players.Sort((Player p1, Player p2) => p2.Name.CompareTo(p1.Name));
-            players.Sort((Player p1, Player p2) => p2.Points.CompareTo(p1.Points));
+            this.players.Sort((Player p1, Player p2) => p2.Name.CompareTo(p1.Name));
+            this.players.Sort((Player p1, Player p2) => p2.Points.CompareTo(p1.Points));
         }
 
         private bool CheckIfPlayerExists(string nickName)
