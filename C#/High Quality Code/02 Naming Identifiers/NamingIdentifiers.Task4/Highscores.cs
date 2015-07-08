@@ -2,15 +2,16 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Highscores
     {
         private const int MaxPlayersOnScoreBoard = 5;
-        private List<Player> players = new List<Player>();
+        private readonly List<Player> players = new List<Player>();
 
         public void PrintPlayersHighscores()
         {
-            if (this.players.Count > 0)
+            if (this.players.Any())
             {
                 Console.WriteLine("\nHighScores:");
                 for (int i = 0; i < this.players.Count; i++)
@@ -32,24 +33,8 @@
             string nickName = Console.ReadLine();
             if (!this.CheckIfPlayerExists(nickName))
             {
-                // extract to method
                 Player currentPlayer = new Player(nickName, correctGuessesCounter);
-                if (this.players.Count < MaxPlayersOnScoreBoard)
-                {
-                    this.players.Add(currentPlayer);
-                }
-                else
-                {
-                    for (int i = 0; i < this.players.Count; i++)
-                    {
-                        if (this.players[i].Points < currentPlayer.Points)
-                        {
-                            this.players.Insert(i, currentPlayer);
-                            this.players.RemoveAt(this.players.Count - 1);
-                            break;
-                        }
-                    }
-                }
+                this.AddNewPlayerToScoreboard(currentPlayer);                
             }
             else
             {
@@ -73,6 +58,27 @@
             return false;
         }
 
+        private void AddNewPlayerToScoreboard(Player currentPlayer)
+        {
+            if (this.players.Count < MaxPlayersOnScoreBoard)
+            {
+                this.players.Add(currentPlayer);
+            }
+            else
+            {
+                for (int i = 0; i < this.players.Count; i++)
+                {
+                    if (this.players[i].Points < currentPlayer.Points)
+                    {
+                        this.players.Insert(i, currentPlayer);
+                        this.players.RemoveAt(this.players.Count - 1);
+                        break;
+                    }
+                }
+            }
+        }
+
+        // This method adds the score olny if it is higher than the current one the player has.
         private void AddScoreToExistingPlayer(string nickName, int correctGuessesCounter)
         {
             foreach (var player in this.players)
