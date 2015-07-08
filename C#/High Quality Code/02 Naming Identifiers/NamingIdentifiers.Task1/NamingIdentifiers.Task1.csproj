@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{335271F5-CBAE-41F2-893E-937BB9CE79B7}</ProjectGuid>
+    <ProjectGuid>{9DA3D9C1-D294-44CF-9D22-9F8D013931F2}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Task_04</RootNamespace>
-    <AssemblyName>Task 04</AssemblyName>
+    <RootNamespace>NamingIdentifiers.Task1</RootNamespace>
+    <AssemblyName>NamingIdentifiers.Task1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Points.cs" />
-    <Compile Include="Mines.cs" />
+    <Compile Include="Printer.cs" />
+    <Compile Include="ProgramStart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
