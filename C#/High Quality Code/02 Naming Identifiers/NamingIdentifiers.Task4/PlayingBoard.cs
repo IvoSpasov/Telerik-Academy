@@ -16,10 +16,75 @@ namespace NamingIdentifiers.Task4
 
         public PlayingBoard(int rows, int cols)
         {
-            this.rows = rows;
-            this.cols = cols;
-            this.boardWithHiddenMines = this.CreateBoardWithHiddenMines();
-            this.boardWithMines = this.CreateBoardWithMines();
+            this.Rows = rows;
+            this.Cols = cols;
+            this.BoardWithHiddenMines = this.CreateBoardWithHiddenMines();
+            this.BoardWithMines = this.CreateBoardWithMines();
+        }
+
+        public int Rows
+        {
+            get
+            {
+                return this.rows; 
+            }
+            private set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("The rows cannot be zero or less");
+                }
+
+                this.rows = value;
+            }
+        }
+
+        public int Cols
+        {
+            get
+            {
+                return this.cols;
+            }
+            private set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("The columns cannot be zero or less");
+                }
+
+                this.cols = value;
+            }
+        }
+
+        public char[,] BoardWithHiddenMines
+        {
+            get { return this.boardWithHiddenMines; }
+            private set { this.boardWithHiddenMines = value; }
+        }
+
+        public char[,] BoardWithMines
+        {
+            get { return this.boardWithMines; }
+            private set { this.boardWithMines = value; }
+        }
+
+        public void Print()
+        {
+            Console.WriteLine("\n    0 1 2 3 4 5 6 7 8 9");
+            Console.WriteLine("   ---------------------");
+            for (int i = 0; i < this.rows; i++)
+            {
+                Console.Write("{0} | ", i);
+                for (int j = 0; j < this.cols; j++)
+                {
+                    Console.Write(string.Format("{0} ", this.boardWithHiddenMines[i, j]));
+                }
+
+                Console.Write("|");
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("   ---------------------\n");
         }
 
         private char[,] CreateBoardWithHiddenMines()
