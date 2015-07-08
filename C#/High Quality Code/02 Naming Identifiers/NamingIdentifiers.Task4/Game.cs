@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NamingIdentifiers.Task4
+﻿namespace NamingIdentifiers.Task4
 {
+    using System;
+
     public class Game
     {
         private const int NumberOfRows = 5;
@@ -45,18 +41,13 @@ namespace NamingIdentifiers.Task4
 
             if (this.mineIsHit)
             {
-                this.playingBoard.PrintBoardWithMines();
-                Console.Write("You hit a mine. Your score is: {0} ", correctGuessesCounter);
-                this.HandlePlayer();
-                this.RestartGame();
+                string mes = string.Format("You hit a mine. Your score is: {0} ", correctGuessesCounter);
+                this.EndGame(mes);
             }
 
             if (this.gameIsWon)
             {
-                this.playingBoard.PrintBoardWithMines();
-                Console.WriteLine("You win.");
-                this.HandlePlayer();
-                this.RestartGame();
+                this.EndGame("You win.");
             }
         }
 
@@ -198,10 +189,13 @@ namespace NamingIdentifiers.Task4
             this.Start();
         }
 
-        private void HandlePlayer()
+        private void EndGame(string message)
         {
+            this.playingBoard.PrintBoardWithMines();
+            Console.WriteLine(message);
             this.highscores.AddPlayerToScoreBoard(correctGuessesCounter);
             this.highscores.PrintPlayersHighscores();
+            this.RestartGame();
         }
     }
 }
