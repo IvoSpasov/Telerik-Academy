@@ -27,11 +27,11 @@
         public Game(Highscores highscores)
         {
             this.highscores = highscores;
-            mineIsHit = false;
-            commandIsExit = false;
-            gameIsWon = false;
-            showGreetingMessage = true;
-            correctGuessesCounter = 0;
+            this.mineIsHit = false;
+            this.commandIsExit = false;
+            this.gameIsWon = false;
+            this.showGreetingMessage = true;
+            this.correctGuessesCounter = 0;
         }
 
         public void Start()
