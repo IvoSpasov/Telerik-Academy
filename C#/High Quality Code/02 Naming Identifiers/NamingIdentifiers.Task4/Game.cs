@@ -6,6 +6,7 @@
     {
         private const int NumberOfRows = 6;
         private const int NumberOfCols = 10;
+        private const int NumberOfMines = 15;
         private const string GreetingMessage = "Let's play \"mines\". Try to guess the boxes without mines." +
                             "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game";
 
@@ -13,7 +14,7 @@
         private const string WinMessage = "You win.";
         private const string ThankYouMessage = "Thank you for playing.";
         private const string InvalidCommandMessage = "Invalid command or row or column.";
-        private readonly Highscores highscores = new Highscores();
+        private readonly Highscores highscores;
         private PlayingBoard playingBoard;
         private int selectedRow = 0;
         private int selectedCol = 0;
@@ -23,6 +24,11 @@
         private bool showGreetingMessage = true;
         private int correctGuessesCounter = 0;
 
+        public Game(Highscores highscores)
+        {
+            this.highscores = highscores;
+        }
+
         public void Start()
         {
             if (this.showGreetingMessage)
@@ -30,7 +36,7 @@
                 Console.WriteLine(GreetingMessage);
             }
 
-            this.playingBoard = new PlayingBoard(NumberOfRows, NumberOfCols);
+            this.playingBoard = new PlayingBoard(NumberOfRows, NumberOfCols, NumberOfMines);
             this.playingBoard.PrintBoardWithHiddenMines();
             string command;
 

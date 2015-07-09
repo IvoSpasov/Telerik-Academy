@@ -7,7 +7,12 @@
     public class Highscores
     {
         private const int MaxPlayersOnScoreBoard = 5;
-        private readonly List<Player> players = new List<Player>();
+        private readonly List<Player> players;
+
+        public Highscores(List<Player> players)
+        {
+            this.players = players;
+        }
 
         public void PrintPlayersHighscores()
         {

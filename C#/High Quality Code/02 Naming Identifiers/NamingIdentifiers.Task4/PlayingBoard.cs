@@ -6,21 +6,20 @@
 
     public class PlayingBoard
     {
-        private const int NumberOfMines = 15;
         private readonly int totalCells;
         private int rows;
         private int cols;
-        private char[,] boardWithHiddenMines;
-        private char[,] boardWithMines;
+        private int numberOfMines;
 
-        public PlayingBoard(int rows, int cols)
+        public PlayingBoard(int rows, int cols, int numberOfMines)
         {
             this.Rows = rows;
             this.Cols = cols;
             this.totalCells = this.Rows * this.Cols;
+            this.NumberOfMines = numberOfMines;
+            this.NumberOfSafeCells = this.totalCells - this.NumberOfMines;
             this.BoardWithHiddenMines = this.CreateBoardWithHiddenMines();
             this.BoardWithMines = this.CreateBoardWithMines();
-            this.NumberOfSafeCells = this.totalCells - NumberOfMines;
         }
 
         public int Rows
@@ -61,16 +60,31 @@
 
         public int NumberOfSafeCells { get; private set; }
 
-        public char[,] BoardWithHiddenMines
-        {
-            get { return this.boardWithHiddenMines; }
-            private set { this.boardWithHiddenMines = value; }
-        }
+        public char[,] BoardWithHiddenMines { get; private set; }
 
-        public char[,] BoardWithMines
+        public char[,] BoardWithMines { get; private set; }
+
+        private int NumberOfMines
         {
-            get { return this.boardWithMines; }
-            private set { this.boardWithMines = value; }
+            get
+            {
+                return this.numberOfMines;
+            }
+
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("The mines cannot be zero or less.");
+                }
+
+                if (value > this.totalCells)
+                {
+                    throw new ArgumentException("The mines cannot be more that the free cells.");
+                }
+
+                this.numberOfMines = value;
+            }
         }
 
         public void PrintBoardWithHiddenMines()
@@ -87,7 +101,7 @@
         {
             Console.WriteLine("\n     " + this.GenerateSequentialNumbers());
             Console.WriteLine("    " + this.GenerateDashedLine());
-            
+
             for (int i = 0; i < this.Rows; i++)
             {
                 Console.Write("{0,2} | ", i);
@@ -166,7 +180,7 @@
         private List<int> GenerateRandomNumbers()
         {
             var randomNumbers = new List<int>();
-            while (randomNumbers.Count < NumberOfMines)
+            while (randomNumbers.Count < this.NumberOfMines)
             {
                 Random random = new Random();
                 int currentNumber = random.Next(this.totalCells);
