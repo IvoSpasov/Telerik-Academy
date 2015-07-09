@@ -33,7 +33,7 @@
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException("The rows cannot be zero or less");
+                    throw new ArgumentOutOfRangeException("Rows", "The rows cannot be zero or less");
                 }
 
                 this.rows = value;
@@ -51,7 +51,7 @@
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException("The columns cannot be zero or less");
+                    throw new ArgumentOutOfRangeException("Cols", "The columns cannot be zero or less");
                 }
 
                 this.cols = value;
@@ -75,7 +75,7 @@
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException("The mines cannot be zero or less.");
+                    throw new ArgumentOutOfRangeException("NumberOfMines", "The mines cannot be zero or less.");
                 }
 
                 if (value > this.totalCells)

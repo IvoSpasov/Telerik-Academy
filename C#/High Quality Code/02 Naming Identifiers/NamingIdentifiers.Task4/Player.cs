@@ -1,5 +1,7 @@
 ﻿namespace NamingIdentifiers.Task4
 {
+    using System;
+
     public class Player
     {
         private string name;
@@ -19,8 +21,20 @@
 
         public int Points
         {
-            get { return this.points; }
-            set { this.points = value; }
+            get
+            {
+                return this.points;
+            }
+
+            set 
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Points", "The value for points cannot be negative.");
+                }
+
+                this.points = value;
+            }
         }
     }
 }

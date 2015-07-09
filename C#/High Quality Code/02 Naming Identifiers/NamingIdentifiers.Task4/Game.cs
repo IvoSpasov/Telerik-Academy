@@ -16,17 +16,22 @@
         private const string InvalidCommandMessage = "Invalid command or row or column.";
         private readonly Highscores highscores;
         private PlayingBoard playingBoard;
-        private int selectedRow = 0;
-        private int selectedCol = 0;
-        private bool mineIsHit = false;
-        private bool commandIsExit = false;
-        private bool gameIsWon = false;
-        private bool showGreetingMessage = true;
-        private int correctGuessesCounter = 0;
+        private int selectedRow;
+        private int selectedCol;
+        private bool mineIsHit;
+        private bool commandIsExit;
+        private bool gameIsWon;
+        private bool showGreetingMessage;
+        private int correctGuessesCounter;
 
         public Game(Highscores highscores)
         {
             this.highscores = highscores;
+            mineIsHit = false;
+            commandIsExit = false;
+            gameIsWon = false;
+            showGreetingMessage = true;
+            correctGuessesCounter = 0;
         }
 
         public void Start()
