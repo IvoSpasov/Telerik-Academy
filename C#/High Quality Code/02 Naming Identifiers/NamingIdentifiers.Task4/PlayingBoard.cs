@@ -6,6 +6,7 @@
     public class PlayingBoard
     {
         private const int NumberOfMines = 15;
+        private readonly int totalCells;
         private int rows;
         private int cols;
         private char[,] boardWithHiddenMines;
@@ -15,8 +16,10 @@
         {
             this.Rows = rows;
             this.Cols = cols;
+            this.totalCells = this.Rows * this.Cols;
             this.BoardWithHiddenMines = this.CreateBoardWithHiddenMines();
             this.BoardWithMines = this.CreateBoardWithMines();
+            this.NumberOfSafeCells = this.totalCells - NumberOfMines;
         }
 
         public int Rows
@@ -55,6 +58,8 @@
             }
         }
 
+        public int NumberOfSafeCells { get; private set; }
+
         public char[,] BoardWithHiddenMines
         {
             get { return this.boardWithHiddenMines; }
@@ -81,10 +86,10 @@
         {
             Console.WriteLine("\n    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("   ---------------------");
-            for (int i = 0; i < this.rows; i++)
+            for (int i = 0; i < this.Rows; i++)
             {
                 Console.Write("{0} | ", i);
-                for (int j = 0; j < this.cols; j++)
+                for (int j = 0; j < this.Cols; j++)
                 {
                     Console.Write(string.Format("{0} ", board[i, j]));
                 }
@@ -98,57 +103,54 @@
 
         private char[,] CreateBoardWithHiddenMines()
         {
-            return this.CreateMatrixFilledWithSymbols('?', this.rows, this.cols);
+            return this.CreateMatrixFilledWithSymbols('?');
         }
 
         private char[,] CreateBoardWithMines()
         {
-            var board = this.CreateMatrixFilledWithSymbols('-', this.rows, this.cols);
-
-            //TODO: fix logic
-            List<int> randomNumbers = new List<int>();
-            while (randomNumbers.Count < NumberOfMines)
-            {
-                Random random = new Random();
-                int currentNumber = random.Next(50);
-                if (!randomNumbers.Contains(currentNumber))
-                {
-                    randomNumbers.Add(currentNumber);
-                }
-            }
+            var board = this.CreateMatrixFilledWithSymbols('-');
+            var randomNumbers = this.GenerateRandomNumbers();
+            int mineRow;
+            int mineCol;
 
             foreach (int number in randomNumbers)
             {
-                int col = number / this.cols;
-                int row = number % this.cols;
-                if (row == 0 && number != 0)
-                {
-                    col--;
-                    row = this.cols;
-                }
-                else
-                {
-                    row++;
-                }
-
-                board[col, row - 1] = '*';
+                mineRow = number / this.Cols;
+                mineCol = number % this.Cols;
+                board[mineRow, mineCol] = '*';
             }
 
             return board;
         }
 
-        private char[,] CreateMatrixFilledWithSymbols(char symbol, int rows, int cols)
+        private char[,] CreateMatrixFilledWithSymbols(char symbol)
         {
-            var board = new char[rows, cols];
-            for (int i = 0; i < rows; i++)
+            var board = new char[this.Rows, this.Cols];
+            for (int i = 0; i < this.Rows; i++)
             {
-                for (int j = 0; j < cols; j++)
+                for (int j = 0; j < this.Cols; j++)
                 {
                     board[i, j] = symbol;
                 }
             }
 
             return board;
+        }
+
+        private List<int> GenerateRandomNumbers()
+        {
+            var randomNumbers = new List<int>();
+            while (randomNumbers.Count < NumberOfMines)
+            {
+                Random random = new Random();
+                int currentNumber = random.Next(this.totalCells);
+                if (!randomNumbers.Contains(currentNumber))
+                {
+                    randomNumbers.Add(currentNumber);
+                }
+            }
+
+            return randomNumbers;
         }
     }
 }

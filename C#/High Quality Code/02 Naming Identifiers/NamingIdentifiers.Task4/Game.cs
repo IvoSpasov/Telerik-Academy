@@ -5,7 +5,7 @@
     public class Game
     {
         private const int NumberOfRows = 5;
-        private const int NumberOfCols = 10;
+        private const int NumberOfCols = 15;
         private const string GreetingMessage = "Let's play \"mines\". Try to guess the boxes without mines." +
                             "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game";
 
@@ -13,7 +13,6 @@
         private const string WinMessage = "You win.";
         private const string ThankYouMessage = "Thank you for playing.";
         private const string InvalidCommandMessage = "Invalid command or row or column.";
-        private const int Max = 35;
         private readonly Highscores highscores = new Highscores();
         private PlayingBoard playingBoard;
         private int selectedRow = 0;
@@ -66,7 +65,7 @@
                     this.ApplyNumberOfBombsToCurrentCellOfBoard();
                     this.correctGuessesCounter++;
 
-                    if (this.correctGuessesCounter == Max)
+                    if (this.correctGuessesCounter == this.playingBoard.NumberOfSafeCells)
                     {
                         this.gameIsWon = true;
                     }

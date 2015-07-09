@@ -29,7 +29,7 @@
 
         public void AddPlayerToScoreBoard(int correctGuessesCounter)
         {
-            Console.WriteLine("Please enter your nickname:");
+            Console.Write("Please enter your nickname: ");
             string nickName = Console.ReadLine();
             if (!this.CheckIfPlayerExists(nickName))
             {
