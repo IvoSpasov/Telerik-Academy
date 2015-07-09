@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Text;
 
     public class PlayingBoard
     {
@@ -26,7 +27,7 @@
         {
             get
             {
-                return this.rows; 
+                return this.rows;
             }
 
             private set
@@ -84,11 +85,12 @@
 
         private void Print(char[,] board)
         {
-            Console.WriteLine("\n    0 1 2 3 4 5 6 7 8 9");
-            Console.WriteLine("   ---------------------");
+            Console.WriteLine("\n     " + this.GenerateSequentialNumbers());
+            Console.WriteLine("    " + this.GenerateDashedLine());
+            
             for (int i = 0; i < this.Rows; i++)
             {
-                Console.Write("{0} | ", i);
+                Console.Write("{0,2} | ", i);
                 for (int j = 0; j < this.Cols; j++)
                 {
                     Console.Write(string.Format("{0} ", board[i, j]));
@@ -98,7 +100,31 @@
                 Console.WriteLine();
             }
 
-            Console.WriteLine("   ---------------------\n");
+            Console.WriteLine("    " + this.GenerateDashedLine() + "\n");
+        }
+
+        private string GenerateSequentialNumbers()
+        {
+            var builder = new StringBuilder();
+
+            for (int i = 0; i < this.Cols; i++)
+            {
+                if (i < 10)
+                {
+                    builder.AppendFormat("{0} ", i);
+                }
+                else
+                {
+                    builder.AppendFormat("{0}", i);
+                }
+            }
+
+            return builder.ToString();
+        }
+
+        private string GenerateDashedLine()
+        {
+            return new string('-', this.Cols * 2);
         }
 
         private char[,] CreateBoardWithHiddenMines()

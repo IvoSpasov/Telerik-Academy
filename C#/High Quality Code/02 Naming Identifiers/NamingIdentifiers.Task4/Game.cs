@@ -4,8 +4,8 @@
 
     public class Game
     {
-        private const int NumberOfRows = 5;
-        private const int NumberOfCols = 15;
+        private const int NumberOfRows = 6;
+        private const int NumberOfCols = 10;
         private const string GreetingMessage = "Let's play \"mines\". Try to guess the boxes without mines." +
                             "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game";
 
