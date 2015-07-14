@@ -7,13 +7,6 @@
         private const int NumberOfRows = 6;
         private const int NumberOfCols = 10;
         private const int NumberOfMines = 15;
-        private const string GreetingMessage = "Let's play \"mines\". Try to guess the boxes without mines." +
-                            "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game";
-
-        private const string EnterCommandMessage = "Please enter command or row and column: ";
-        private const string WinMessage = "You win.";
-        private const string ThankYouMessage = "Thank you for playing.";
-        private const string InvalidCommandMessage = "Invalid command or row or column.";
         private readonly Highscores highscores;
         private PlayingBoard playingBoard;
         private int selectedRow;
@@ -38,7 +31,8 @@
         {
             if (this.showGreetingMessage)
             {
-                Console.WriteLine(GreetingMessage);
+                Console.WriteLine("Let's play \"mines\". Try to guess the boxes without mines." +
+                            "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game");
             }
 
             this.playingBoard = new PlayingBoard(NumberOfRows, NumberOfCols, NumberOfMines);
@@ -47,7 +41,7 @@
 
             while (!this.mineIsHit && !this.commandIsExit && !this.gameIsWon)
             {
-                Console.Write(EnterCommandMessage);
+                Console.Write("Please enter command or row and column: ");
                 command = Console.ReadLine();
                 this.ProcessCommand(command);
             }
@@ -59,7 +53,7 @@
 
             if (this.gameIsWon)
             {
-                this.EndCurrentGame(WinMessage);
+                this.EndCurrentGame("You win.");
             }
         }
 
@@ -98,10 +92,10 @@
                         break;
                     case "exit":
                         this.commandIsExit = true;
-                        Console.WriteLine(ThankYouMessage);
+                        Console.WriteLine("Thank you for playing.");
                         break;
                     default:
-                        Console.WriteLine(InvalidCommandMessage);
+                        Console.WriteLine("Invalid command or row or column.");
                         break;
                 }
             }
