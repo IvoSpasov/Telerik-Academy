@@ -1,10 +1,8 @@
-﻿// Refactor the following code to apply variable usage and naming best practices:
-
-namespace _02_VariableUsage
+﻿namespace _02_VariableUsage
 {
     using System;
 
-    class MainProgram
+    public class ProgramStart
     {
         public static void Main()
         {
@@ -14,8 +12,8 @@ namespace _02_VariableUsage
 
         public static void PrintStatistics(double[] numbers)
         {
-            double maxValue = double.MinValue;
-            for (int i = 0; i < numbers.Length; i++)
+            double maxValue = numbers[0];
+            for (int i = 1; i < numbers.Length; i++)
             {
                 if (numbers[i] > maxValue)
                 {
@@ -25,8 +23,8 @@ namespace _02_VariableUsage
 
             Console.WriteLine("The maximal value from the array is: " + maxValue);
 
-            double minValue = double.MaxValue;
-            for (int i = 0; i < numbers.Length; i++)
+            double minValue = numbers[0];
+            for (int i = 1; i < numbers.Length; i++)
             {
                 if (numbers[i] < minValue)
                 {

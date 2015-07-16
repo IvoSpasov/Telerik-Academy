@@ -4,7 +4,8 @@
 
     public class Size
     {
-        private double width, height;
+        private double width;
+        private double height;
 
         public Size(double width, double height)
         {
