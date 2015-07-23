@@ -2,12 +2,14 @@
 {
     using System;
 
+    using NamingIdentifiers.Task4.Interfaces;
+
     public class Game
     {
         private const int NumberOfRows = 6;
         private const int NumberOfCols = 10;
         private const int NumberOfMines = 15;
-        private readonly Highscores highscores;
+        private readonly IHighscores highscores;
         private PlayingBoard playingBoard;
         private int selectedRow;
         private int selectedCol;
@@ -17,7 +19,7 @@
         private bool showGreetingMessage;
         private int correctGuessesCounter;
 
-        public Game(Highscores highscores)
+        public Game(IHighscores highscores)
         {
             this.highscores = highscores;
             this.mineIsHit = false;

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="Highscores.cs" />
+    <Compile Include="Interfaces\IHighscores.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayingBoard.cs" />

@@ -6,7 +6,7 @@
 
     using NamingIdentifiers.Task4.Interfaces;
 
-    public class Highscores
+    public class Highscores : IHighscores
     {
         private const int MaxPlayersOnScoreBoard = 5;
         private readonly List<IPlayer> players;
