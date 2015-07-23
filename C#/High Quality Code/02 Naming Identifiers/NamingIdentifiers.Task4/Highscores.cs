@@ -4,12 +4,14 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using NamingIdentifiers.Task4.Interfaces;
+
     public class Highscores
     {
         private const int MaxPlayersOnScoreBoard = 5;
-        private readonly List<Player> players;
+        private readonly List<IPlayer> players;
 
-        public Highscores(List<Player> players)
+        public Highscores(List<IPlayer> players)
         {
             this.players = players;
         }
@@ -38,7 +40,7 @@
             string nickName = Console.ReadLine();
             if (!this.CheckIfPlayerExists(nickName))
             {
-                Player currentPlayer = new Player(nickName, correctGuessesCounter);
+                var currentPlayer = new Player(nickName, correctGuessesCounter);
                 this.AddNewPlayerToScoreboard(currentPlayer);                
             }
             else
@@ -46,8 +48,8 @@
                 this.AddScoreToExistingPlayer(nickName, correctGuessesCounter);
             }
 
-            this.players.Sort((Player p1, Player p2) => p2.Name.CompareTo(p1.Name));
-            this.players.Sort((Player p1, Player p2) => p2.Points.CompareTo(p1.Points));
+            this.players.Sort((IPlayer p1, IPlayer p2) => p2.Name.CompareTo(p1.Name));
+            this.players.Sort((IPlayer p1, IPlayer p2) => p2.Points.CompareTo(p1.Points));
         }
 
         private bool CheckIfPlayerExists(string nickName)
@@ -63,7 +65,7 @@
             return false;
         }
 
-        private void AddNewPlayerToScoreboard(Player currentPlayer)
+        private void AddNewPlayerToScoreboard(IPlayer currentPlayer)
         {
             if (this.players.Count < MaxPlayersOnScoreBoard)
             {

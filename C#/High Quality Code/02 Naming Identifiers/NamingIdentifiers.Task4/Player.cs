@@ -1,8 +1,9 @@
 ﻿namespace NamingIdentifiers.Task4
 {
     using System;
+    using NamingIdentifiers.Task4.Interfaces;
 
-    public class Player
+    public class Player : IPlayer
     {
         private string name;
         private int points;
@@ -15,8 +16,14 @@
 
         public string Name
         {
-            get { return this.name; }
-            private set { this.name = value; }
+            get
+            {
+                return this.name;
+            }
+            private set
+            {
+                this.name = value;
+            }
         }
 
         public int Points
