@@ -45,6 +45,7 @@
     <Compile Include="Highscores.cs" />
     <Compile Include="Interfaces\IHighscores.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
+    <Compile Include="Interfaces\IPlayingBoard.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayingBoard.cs" />
     <Compile Include="ProgramStart.cs" />

@@ -4,7 +4,9 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class PlayingBoard
+    using NamingIdentifiers.Task4.Interfaces;
+
+    public class PlayingBoard : IPlayingBoard
     {
         private readonly int totalCells;
         private int rows;

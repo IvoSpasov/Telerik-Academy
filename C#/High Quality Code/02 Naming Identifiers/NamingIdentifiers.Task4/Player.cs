@@ -20,6 +20,7 @@
             {
                 return this.name;
             }
+
             private set
             {
                 this.name = value;

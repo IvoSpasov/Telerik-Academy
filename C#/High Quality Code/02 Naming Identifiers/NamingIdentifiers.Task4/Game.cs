@@ -6,11 +6,8 @@
 
     public class Game
     {
-        private const int NumberOfRows = 6;
-        private const int NumberOfCols = 10;
-        private const int NumberOfMines = 15;
         private readonly IHighscores highscores;
-        private PlayingBoard playingBoard;
+        private readonly IPlayingBoard playingBoard;
         private int selectedRow;
         private int selectedCol;
         private bool mineIsHit;
@@ -19,9 +16,10 @@
         private bool showGreetingMessage;
         private int correctGuessesCounter;
 
-        public Game(IHighscores highscores)
+        public Game(IHighscores highscores, IPlayingBoard playingBoard)
         {
             this.highscores = highscores;
+            this.playingBoard = playingBoard;
             this.mineIsHit = false;
             this.commandIsExit = false;
             this.gameIsWon = false;
@@ -37,7 +35,6 @@
                             "\nCommands:\n\"scores\": shows highscores\n\"restart\": starts a new game\n\"exit\": ends the game");
             }
 
-            this.playingBoard = new PlayingBoard(NumberOfRows, NumberOfCols, NumberOfMines);
             this.playingBoard.PrintBoardWithHiddenMines();
             string command;
 
