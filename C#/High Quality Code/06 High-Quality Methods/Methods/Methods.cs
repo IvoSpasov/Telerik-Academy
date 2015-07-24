@@ -4,20 +4,20 @@
 
     public class Methods
     {
-        public static double CalculateTriangleArea(double a, double b, double c)
+        public static double CalculateTriangleArea(double sideA, double sideB, double sideC)
         {
-            if (a <= 0 || b <= 0 || c <= 0)
+            if (sideA <= 0 || sideB <= 0 || sideC <= 0)
             {
                 throw new ArgumentException("Sides should be positive.");
             }
 
-            if (a + b <= c || a + c <= b || b + c <= a)
+            if (sideA + sideB <= sideC || sideA + sideC <= sideB || sideB + sideC <= sideA)
             {
                 throw new ArgumentException("The sum of any two sides should be greater than the length of the third side.");
             }
 
-            double s = (a + b + c) / 2;
-            double area = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
+            double semiperimeter  = (sideA + sideB + sideC) / 2;
+            double area = Math.Sqrt(semiperimeter  * (semiperimeter  - sideA) * (semiperimeter  - sideB) * (semiperimeter  - sideC));
             return area;
         }
 
@@ -63,22 +63,19 @@
             return maxElement;
         }
 
-        public static void PrintFormatedNumber(double number, NumericFormat format)
+        public static void PrintAsFloat(double number)
         {
-            switch (format)
-            {
-                case NumericFormat.TwoSignsAferFixedPoint: 
-                    Console.WriteLine("{0:f2}", number); 
-                    break;
-                case NumericFormat.Percentage: 
-                    Console.WriteLine("{0:p0}", number); 
-                    break;
-                case NumericFormat.PadRightEightSpaces: 
-                    Console.WriteLine("{0,8}", number); 
-                    break;
-                default: 
-                    throw new ArgumentException("Unsupported numeric format.");
-            }
+            Console.WriteLine("{0:f2}", number); 
+        }
+
+        public static void PrintAsPercentage(double number)
+        {
+            Console.WriteLine("{0:p0}", number); 
+        }
+
+        public static void PrintWithRightPadding(double number)
+        {
+            Console.WriteLine("{0,8}", number); 
         }
 
         public static double CalculateDistance(double x1, double y1, double x2, double y2)
@@ -87,43 +84,14 @@
             return distance;
         }
 
-        public static bool CheckIfLineIsHorizontal(double x1, double x2)
+        public static bool IsLineHorizontal(double x1, double x2)
         {
-            bool isHorizontal = x1 == x2;
-            return isHorizontal;
+            return x1 == x2;
         }
 
-        public static bool CheckIfLineIsVertical(double y1, double y2)
+        public static bool IsLineVertical(double y1, double y2)
         {
-            bool isVertical = y1 == y2;
-            return isVertical;
-        }
-
-        public static void Main()
-        {
-            Console.WriteLine(CalculateTriangleArea(3, 4, 5));
-            Console.WriteLine(DigitToWord(5));
-            Console.WriteLine(FindMax(5, -1, 3, 2, 14, 2, 3));
-
-            PrintFormatedNumber(1, NumericFormat.TwoSignsAferFixedPoint);
-            PrintFormatedNumber(0.75, NumericFormat.Percentage);
-            PrintFormatedNumber(2.30, NumericFormat.PadRightEightSpaces);
-
-            var point1 = new { x = 3, y = -1 };
-            var point2 = new { x = 3, y = 2.5 };
-            bool horizontal = CheckIfLineIsHorizontal(point1.x, point2.x);
-            bool vertical = CheckIfLineIsVertical(point1.y, point2.y);
-            Console.WriteLine(CalculateDistance(point1.x, point1.y, point2.x, point2.y));
-            Console.WriteLine("Horizontal? " + horizontal);
-            Console.WriteLine("Vertical? " + vertical);
-
-            Student peter = new Student("Peter", "Ivanov", DateTime.Parse("17.03.1992"));
-            peter.OtherInfo = "From Sofia, born at 17.03.1992";
-
-            Student stella = new Student("Stella", "Markova", DateTime.Parse("03.11.1993"));
-            stella.OtherInfo = "From Vidin, gamer, high results, born at 03.11.1993";
-
-            Console.WriteLine("{0} older than {1} -> {2}", peter.FirstName, stella.FirstName, peter.IsOlderThan(stella));
+            return y1 == y2;
         }
     }
 }

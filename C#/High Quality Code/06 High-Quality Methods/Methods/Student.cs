@@ -21,9 +21,7 @@
 
         public bool IsOlderThan(Student other)
         {
-            DateTime firstDate = this.DateOfBirth;
-            DateTime secondDate = other.DateOfBirth;
-            return firstDate > secondDate;
+            return this.DateOfBirth > other.DateOfBirth;
         }
     }
 }

@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Methods.cs" />
-    <Compile Include="NumericFormat.cs" />
+    <Compile Include="MethodsTest.cs" />
     <Compile Include="Student.cs" />
   </ItemGroup>
   <ItemGroup>
