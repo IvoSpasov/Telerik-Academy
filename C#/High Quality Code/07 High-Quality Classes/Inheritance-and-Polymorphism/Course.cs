@@ -53,7 +53,7 @@
             return result.ToString();
         }
 
-        protected string GetStudentsAsString()
+        private string GetStudentsAsString()
         {
             if (this.Students == null || this.Students.Count == 0)
             {

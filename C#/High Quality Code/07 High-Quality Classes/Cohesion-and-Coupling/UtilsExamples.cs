@@ -14,10 +14,10 @@
             Console.WriteLine(FileUtils.GetFileNameWithoutExtension("example.pdf"));
             Console.WriteLine(FileUtils.GetFileNameWithoutExtension("example.new.pdf"));
 
-            Console.WriteLine("Distance in the 2D space = {0:f2}",
-                GeometryUtils.CalcDistance2D(1, -2, 3, 4));
-            Console.WriteLine("Distance in the 3D space = {0:f2}",
-                GeometryUtils.CalcDistance3D(5, 2, -1, 3, -6, 4));
+            var geometryUtils = new GeometryUtils();
+
+            Console.WriteLine("Distance in the 2D space = {0:f2}", geometryUtils.CalcDistance2D(1, -2, 3, 4));
+            Console.WriteLine("Distance in the 3D space = {0:f2}", geometryUtils.CalcDistance3D(5, 2, -1, 3, -6, 4));
 
             var rectangularParallelepiped = new RectangularParallelepiped(3, 4, 5);
 

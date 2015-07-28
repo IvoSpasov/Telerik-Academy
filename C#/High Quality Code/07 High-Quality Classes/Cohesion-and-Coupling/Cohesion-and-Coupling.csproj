@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeometryUtils.cs" />
+    <Compile Include="IGeometryUtils.cs" />
     <Compile Include="RectangularParallelepiped.cs" />
     <Compile Include="UtilsExamples.cs" />
     <Compile Include="FileUtils.cs" />
