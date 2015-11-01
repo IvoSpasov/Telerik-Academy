@@ -9,6 +9,8 @@ namespace StudentSystem.Data.Repositories
 
         IQueryable<T> SearchFor(Expression<Func<T, bool>> conditions);
 
+        T GetById(int id);
+
         void Add(T entity);
 
         void Update(T entity);

@@ -23,8 +23,11 @@
 
         public IHttpActionResult Get()
         {
-            var courses = this.coursesRepository.All().ToList();
-            return this.Ok(courses);                
+            var courses = this.coursesRepository
+                .All()
+                .ToList();
+
+            return this.Ok(courses);
         }
     }
 }
