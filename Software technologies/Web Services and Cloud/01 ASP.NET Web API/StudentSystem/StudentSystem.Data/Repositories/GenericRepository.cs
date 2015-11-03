@@ -56,6 +56,11 @@
             entry.State = EntityState.Detached;
         }
 
+        public void SaveChanges()
+        {
+            this.context.SaveChanges();
+        }
+
         private DbEntityEntry AttachIfDetached(T entity)
         {
             var entry = this.context.Entry(entity);
