@@ -3,9 +3,9 @@
     using System.Linq;
     using System.Web.Http;
 
+    using Data;
     using Data.Repositories;
     using Models;
-    using Data;
     using StudentSystem.Models;
 
     public class CoursesController : ApiController
@@ -49,6 +49,5 @@
 
             return this.Ok();
         }
-
     }
 }
