@@ -6,6 +6,7 @@
     using Data.Repositories;
     using Models;
     using Data;
+    using StudentSystem.Models;
 
     public class CoursesController : ApiController
     {
@@ -29,5 +30,25 @@
 
             return this.Ok(courses);
         }
+
+        public IHttpActionResult Post(CourseRequestModel course)
+        {
+            if (!ModelState.IsValid || course == null)
+            {
+                return this.BadRequest();
+            }
+
+            Course newCourse = new Course()
+            {
+                Name = course.Name,
+                Description = course.Description
+            };
+
+            this.coursesRepository.Add(newCourse);
+            this.coursesRepository.SaveChanges();
+
+            return this.Ok();
+        }
+
     }
 }
