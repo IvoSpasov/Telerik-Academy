@@ -63,7 +63,10 @@ namespace StudentSystem.Services.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IStudentSystemDbContext>().To<StudentSystemDbContext>();
+            kernel
+                .Bind<IStudentSystemDbContext>()
+                .To<StudentSystemDbContext>()
+                .InRequestScope();
             kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>));
         }        
     }
