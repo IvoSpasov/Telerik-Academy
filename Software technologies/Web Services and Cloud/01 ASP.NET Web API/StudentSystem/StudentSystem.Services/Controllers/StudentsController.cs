@@ -2,21 +2,14 @@
 {
     using System.Linq;
     using System.Web.Http;
-
-    using Data;
+    
     using Data.Repositories;
-    using Models;
     using StudentSystem.Models;
 
 
     public class StudentsController : ApiController
     {
         private IGenericRepository<Student> studentsRepository;
-
-        public StudentsController()
-            : this(new GenericRepository<Student>(new StudentSystemDbContext()))
-        {
-        }
 
         public StudentsController(IGenericRepository<Student> studentsGenericRepository)
         {

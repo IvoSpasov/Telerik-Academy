@@ -2,8 +2,7 @@
 {
     using System.Linq;
     using System.Web.Http;
-
-    using Data;
+    
     using Data.Repositories;
     using Models;
     using StudentSystem.Models;
@@ -11,11 +10,6 @@
     public class CoursesController : ApiController
     {
         private IGenericRepository<Course> coursesRepository;
-
-        public CoursesController()
-            : this(new GenericRepository<Course>(new StudentSystemDbContext()))
-        {
-        }
 
         public CoursesController(IGenericRepository<Course> coursesGenericRepository)
         {
