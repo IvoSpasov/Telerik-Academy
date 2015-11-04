@@ -35,7 +35,7 @@
         {
             if (!ModelState.IsValid || course == null)
             {
-                return this.BadRequest();
+                return this.BadRequest(this.ModelState);
             }
 
             Course newCourse = new Course()

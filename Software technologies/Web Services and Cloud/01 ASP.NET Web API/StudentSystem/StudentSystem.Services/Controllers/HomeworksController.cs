@@ -31,5 +31,23 @@
 
             return this.Ok(homeworks);
         }
+
+        public IHttpActionResult Get(int? id)
+        {
+            if (id == null)
+            {
+                return this.BadRequest("Homework id cannot be null.");
+            }
+
+            var homework = this.homeworksRepository
+                .GetById(id.Value);
+
+            if (homework == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(homework);
+        }
     }
 }
