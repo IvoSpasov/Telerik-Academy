@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MusicSystem.Data.Common\MusicSystem.Data.Common.csproj">
+      <Project>{3df4807f-4925-4713-8719-9aab25c9b864}</Project>
+      <Name>MusicSystem.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MusicSystem.Data.Models\MusicSystem.Data.Models.csproj">
       <Project>{674ffa32-fc89-46a5-b0b9-4d3237a21b63}</Project>
       <Name>MusicSystem.Data.Models</Name>

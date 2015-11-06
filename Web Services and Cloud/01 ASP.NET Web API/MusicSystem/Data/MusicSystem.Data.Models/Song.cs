@@ -1,9 +1,12 @@
 ﻿namespace MusicSystem.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Song
     {
         public int Id { get; set; }
 
+        [Required]
         public string Title { get; set; }
 
         public string Year { get; set; }
