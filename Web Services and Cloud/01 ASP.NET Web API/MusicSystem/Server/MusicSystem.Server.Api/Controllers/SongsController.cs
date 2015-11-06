@@ -15,8 +15,8 @@
         private IRepository<Artist> artistsRepository;
 
         public SongsController(
-            IRepository<Song> songsRepository, 
-            IRepository<Album> albumsRepository, 
+            IRepository<Song> songsRepository,
+            IRepository<Album> albumsRepository,
             IRepository<Artist> artistsRepository)
         {
             this.songsRepository = songsRepository;
@@ -86,6 +86,44 @@
             this.songsRepository.SaveChanges();
 
             return this.Ok(newSong.Id);
+        }
+
+        public IHttpActionResult Put(int? id, SongRequestModel song)
+        {
+            if (id == null)
+            {
+                return this.BadRequest("Song id cannot be null");
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(ModelState);
+            }
+
+            var songFromDb = this.songsRepository
+                .GetById(id.Value);
+
+            if (songFromDb == null)
+            {
+                return this.NotFound();
+            }
+
+            Mapper.Map(song, songFromDb);
+            this.songsRepository.SaveChanges();
+
+            return this.Ok(songFromDb.Id);
+        }
+
+        public IHttpActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return this.BadRequest("Song id cannot be null");
+            }
+
+            this.songsRepository.Delete(id);
+            this.songsRepository.SaveChanges();
+            return this.Ok();
         }
     }
 }
