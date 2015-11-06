@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -251,6 +255,10 @@
     <ProjectReference Include="..\..\Data\MusicSystem.Data\MusicSystem.Data.csproj">
       <Project>{fa79a11c-e90f-46eb-a630-c1f5a890edd4}</Project>
       <Name>MusicSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicSystem.Server.Infrastructure\MusicSystem.Server.Infrastructure.csproj">
+      <Project>{ef0ebfa8-f565-4474-bf53-0c584ede8be0}</Project>
+      <Name>MusicSystem.Server.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
