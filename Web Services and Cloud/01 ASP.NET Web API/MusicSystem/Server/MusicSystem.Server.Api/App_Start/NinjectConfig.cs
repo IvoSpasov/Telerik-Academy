@@ -7,13 +7,13 @@ namespace MusicSystem.Server.Api.App_Start
     using System.Data.Entity;
     using System.Web;
 
+    using Common.Constants;
     using Data;
+    using Data.Common.Repositories;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Extensions.Conventions;
     using Ninject.Web.Common;
-    using Data.Common.Repositories;
-    using Common.Constants;
 
     public static class NinjectConfig 
     {
@@ -67,7 +67,8 @@ namespace MusicSystem.Server.Api.App_Start
         {
             kernel.Bind<DbContext>()
                 .To<MusicSystemDbContext>()
-                .InRequestScope(); ;
+                .InRequestScope();
+
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
 
             kernel.Bind(b => b.From(Assemblies.ServicesData)

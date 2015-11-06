@@ -1,11 +1,11 @@
-using System;
-using System.Web.Http;
-using System.Web.Mvc;
-using MusicSystem.Server.Api.Areas.HelpPage.ModelDescriptions;
-using MusicSystem.Server.Api.Areas.HelpPage.Models;
-
 namespace MusicSystem.Server.Api.Areas.HelpPage.Controllers
 {
+    using System;
+    using System.Web.Http;
+    using System.Web.Mvc;
+    using MusicSystem.Server.Api.Areas.HelpPage.ModelDescriptions;
+    using MusicSystem.Server.Api.Areas.HelpPage.Models;
+
     /// <summary>
     /// The controller that will handle requests for the help page.
     /// </summary>
@@ -33,7 +33,7 @@ namespace MusicSystem.Server.Api.Areas.HelpPage.Controllers
 
         public ActionResult Api(string apiId)
         {
-            if (!String.IsNullOrEmpty(apiId))
+            if (!string.IsNullOrEmpty(apiId))
             {
                 HelpPageApiModel apiModel = Configuration.GetHelpPageApiModel(apiId);
                 if (apiModel != null)
@@ -47,7 +47,7 @@ namespace MusicSystem.Server.Api.Areas.HelpPage.Controllers
 
         public ActionResult ResourceModel(string modelName)
         {
-            if (!String.IsNullOrEmpty(modelName))
+            if (!string.IsNullOrEmpty(modelName))
             {
                 ModelDescriptionGenerator modelDescriptionGenerator = Configuration.GetModelDescriptionGenerator();
                 ModelDescription modelDescription;

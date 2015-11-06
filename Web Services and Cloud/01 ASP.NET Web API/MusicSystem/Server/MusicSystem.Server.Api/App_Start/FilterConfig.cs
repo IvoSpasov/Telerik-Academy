@@ -1,8 +1,8 @@
-﻿using System.Web;
-using System.Web.Mvc;
-
-namespace MusicSystem.Server.Api
+﻿namespace MusicSystem.Server.Api
 {
+    using System.Web;
+    using System.Web.Mvc;
+
     public class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
