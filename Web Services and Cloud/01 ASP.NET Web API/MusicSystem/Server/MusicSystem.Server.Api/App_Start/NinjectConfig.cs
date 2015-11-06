@@ -10,8 +10,9 @@ namespace MusicSystem.Server.Api.App_Start
     using Data;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
+    using Ninject.Extensions.Conventions;
     using Ninject.Web.Common;
-    using MusicSystem.Data.Common.Repositories;
+    using Data.Common.Repositories;
 
     public static class NinjectConfig 
     {
@@ -67,6 +68,10 @@ namespace MusicSystem.Server.Api.App_Start
                 .To<MusicSystemDbContext>()
                 .InRequestScope(); ;
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
+
+            kernel.Bind(b => b.From("MusicSystem.Services.Data")
+                .SelectAllClasses()
+                .BindDefaultInterfaces());
         }        
     }
 }

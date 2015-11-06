@@ -65,6 +65,10 @@
       <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
       <Private>True</Private>
@@ -261,6 +265,10 @@
     <ProjectReference Include="..\..\Data\MusicSystem.Data\MusicSystem.Data.csproj">
       <Project>{fa79a11c-e90f-46eb-a630-c1f5a890edd4}</Project>
       <Name>MusicSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\MusicSystem.Services.Data\MusicSystem.Services.Data.csproj">
+      <Project>{bec71622-6db6-493e-9810-cc01dfc521a5}</Project>
+      <Name>MusicSystem.Services.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\MusicSystem.Server.Infrastructure\MusicSystem.Server.Infrastructure.csproj">
       <Project>{ef0ebfa8-f565-4474-bf53-0c584ede8be0}</Project>
