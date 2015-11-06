@@ -1,7 +1,7 @@
-using System.Collections.ObjectModel;
-
 namespace MusicSystem.Server.Api.Areas.HelpPage.ModelDescriptions
 {
+    using System.Collections.ObjectModel;
+
     public class ComplexTypeModelDescription : ModelDescription
     {
         public ComplexTypeModelDescription()

@@ -7,8 +7,8 @@
     using System.Web.Optimization;
     using System.Web.Routing;
 
-    using Infrastructure.Mapping;
     using Common.Constants;
+    using Infrastructure.Mapping;
 
     public class WebApiApplication : HttpApplication
     {

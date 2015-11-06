@@ -1,8 +1,9 @@
 ﻿namespace MusicSystem.Server.Api.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     using Data.Models;
     using Infrastructure.Mapping;
-    using System.ComponentModel.DataAnnotations;
 
     public class SongRequestModel : IMapFrom<Song>
     {
