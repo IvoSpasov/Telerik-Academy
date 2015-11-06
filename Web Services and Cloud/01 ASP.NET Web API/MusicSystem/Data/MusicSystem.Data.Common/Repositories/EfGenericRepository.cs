@@ -1,4 +1,4 @@
-﻿namespace Showcase.Data.Common.Repositories
+﻿namespace MusicSystem.Data.Common.Repositories
 {
     using System;
     using System.Data.Entity;

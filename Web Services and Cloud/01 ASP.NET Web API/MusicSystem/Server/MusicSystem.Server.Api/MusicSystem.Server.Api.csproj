@@ -154,7 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -192,10 +191,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SongsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SongResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +252,10 @@
     <ProjectReference Include="..\..\Data\MusicSystem.Data.Common\MusicSystem.Data.Common.csproj">
       <Project>{3df4807f-4925-4713-8719-9aab25c9b864}</Project>
       <Name>MusicSystem.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\MusicSystem.Data.Models\MusicSystem.Data.Models.csproj">
+      <Project>{674ffa32-fc89-46a5-b0b9-4d3237a21b63}</Project>
+      <Name>MusicSystem.Data.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Data\MusicSystem.Data\MusicSystem.Data.csproj">
       <Project>{fa79a11c-e90f-46eb-a630-c1f5a890edd4}</Project>

@@ -11,7 +11,7 @@ namespace MusicSystem.Server.Api.App_Start
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Web.Common;
-    using Showcase.Data.Common.Repositories;
+    using MusicSystem.Data.Common.Repositories;
 
     public static class NinjectConfig 
     {
