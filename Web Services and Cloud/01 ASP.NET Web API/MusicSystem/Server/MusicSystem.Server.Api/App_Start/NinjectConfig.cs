@@ -13,6 +13,7 @@ namespace MusicSystem.Server.Api.App_Start
     using Ninject.Extensions.Conventions;
     using Ninject.Web.Common;
     using Data.Common.Repositories;
+    using Common.Constants;
 
     public static class NinjectConfig 
     {
@@ -69,7 +70,7 @@ namespace MusicSystem.Server.Api.App_Start
                 .InRequestScope(); ;
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
 
-            kernel.Bind(b => b.From("MusicSystem.Services.Data")
+            kernel.Bind(b => b.From(Assemblies.ServicesData)
                 .SelectAllClasses()
                 .BindDefaultInterfaces());
         }        

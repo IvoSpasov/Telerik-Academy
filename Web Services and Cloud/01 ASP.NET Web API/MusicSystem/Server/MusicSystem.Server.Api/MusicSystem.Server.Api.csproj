@@ -266,6 +266,10 @@
       <Project>{fa79a11c-e90f-46eb-a630-c1f5a890edd4}</Project>
       <Name>MusicSystem.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\MusicSystem.Common\MusicSystem.Common.csproj">
+      <Project>{e9353864-9c96-42da-88a7-52b48cf1ef91}</Project>
+      <Name>MusicSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\MusicSystem.Services.Data\MusicSystem.Services.Data.csproj">
       <Project>{bec71622-6db6-493e-9810-cc01dfc521a5}</Project>
       <Name>MusicSystem.Services.Data</Name>
