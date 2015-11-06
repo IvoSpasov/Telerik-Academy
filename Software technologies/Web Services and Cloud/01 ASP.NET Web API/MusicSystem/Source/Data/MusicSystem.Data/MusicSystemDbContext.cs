@@ -8,7 +8,7 @@
     {
         public MusicSystemDbContext()
             : base("DefaultConnection")
-        {
+        {            
         }
 
         public IDbSet<Album> Albums { get; set; }
@@ -16,5 +16,10 @@
         public IDbSet<Artist> Artists { get; set; }
 
         public IDbSet<Song> Songs { get; set; }
+
+        public static MusicSystemDbContext Create()
+        {
+            return new MusicSystemDbContext();
+        }
     }
 }

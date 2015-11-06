@@ -16,7 +16,7 @@
 
         public string Name { get; set; }
 
-        public string Country { get; set; }
+        public string CountryName { get; set; }
 
         public DateTime DateOfBirth { get; set; }
 
