@@ -1,8 +1,7 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
 namespace MusicSystem.Server.Api.Areas.HelpPage.ModelDescriptions
 {
+    using System.Collections.ObjectModel;
+
     public class EnumTypeModelDescription : ModelDescription
     {
         public EnumTypeModelDescription()

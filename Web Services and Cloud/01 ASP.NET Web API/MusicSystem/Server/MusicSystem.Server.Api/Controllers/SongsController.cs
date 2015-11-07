@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
     using System.Web.Http;
-
+    using System.Web.Http.Cors;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Data.Common.Repositories;
@@ -11,6 +11,7 @@
     using Models;
     using Services.Data.Interfaces;
 
+    [EnableCors("*", "*", "*")]
     public class SongsController : ApiController
     {
         private IRepository<Song> songsRepository;
