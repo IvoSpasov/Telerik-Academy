@@ -5,7 +5,7 @@
     using Data;
     using Data.Migrations;
 
-    public static class DatabaseConfig
+    public class DatabaseConfig
     {
         public static void Initialize()
         {
