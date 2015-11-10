@@ -11,7 +11,7 @@
 
         public string Year { get; set; }
 
-        public string Genre { get; set; }
+        public Genre Genre { get; set; }
 
         public int? ArtistId { get; set; }
 

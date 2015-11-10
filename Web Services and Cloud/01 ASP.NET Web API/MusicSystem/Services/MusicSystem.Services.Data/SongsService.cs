@@ -2,8 +2,7 @@
 {
     using System;
     using System.Linq;
-
-    using AutoMapper;
+    
     using Interfaces;
     using MusicSystem.Data.Common.Repositories;
     using MusicSystem.Data.Models;
@@ -24,7 +23,7 @@
             this.artistsRepository = artistsRepository;
         }
 
-        public int Add(string title, string year, string genre, string albumTitle, string artistName)
+        public int Add(string title, string year, Genre genre, string albumTitle, string artistName)
         {
             var albumFromDb = this.GetAlbumFromDb(albumTitle);
             var artistFromDb = this.GetArtistFromDb(artistName);
