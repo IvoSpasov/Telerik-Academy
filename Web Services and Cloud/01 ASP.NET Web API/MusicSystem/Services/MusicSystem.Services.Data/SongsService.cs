@@ -29,14 +29,24 @@
                 .All();
         }
 
-        public Song SongById(int id)
+        public Song SongById(int? id)
         {
+            if (id == null)
+            {
+                throw new ArgumentNullException("id", "No id");
+            }
+
             return this.songsRepository
                 .GetById(id);
         }
 
         public int Add(Song song, string albumTitle, string artistName)
         {
+            if (song == null)
+            {
+                throw new ArgumentNullException("song", "No song");
+            }
+
             song.Album = this.GetAlbumFromDb(albumTitle);
             song.Artist = this.GetArtistFromDb(artistName);
             this.songsRepository.Add(song);
@@ -47,6 +57,11 @@
 
         public int Edit(Song song, string albumTitle, string artistName)
         {
+            if (song == null)
+            {
+                throw new ArgumentNullException("song", "No song");
+            }
+
             if (!string.IsNullOrEmpty(albumTitle))
             {
                 song.Album = this.GetAlbumFromDb(albumTitle);
@@ -62,8 +77,13 @@
             return song.Id;
         }
 
-        public void Delete(int id)
+        public void Delete(int? id)
         {
+            if (id == null)
+            {
+                throw new ArgumentNullException("id", "No id");
+            }
+
             this.songsRepository.Delete(id);
             this.songsRepository.SaveChanges();
         }
