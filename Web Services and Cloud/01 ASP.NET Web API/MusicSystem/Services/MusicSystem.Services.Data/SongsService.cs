@@ -45,27 +45,21 @@
             return song.Id;
         }
 
-        public int Edit(int id, string title, string year, Genre genre, string albumTitle, string artistName)
+        public int Edit(Song song, string albumTitle, string artistName)
         {
-            var songFromDb = this.songsRepository
-                .GetById(id);
-
-            if (songFromDb == null)
+            if (!string.IsNullOrEmpty(albumTitle))
             {
-                throw new InvalidOperationException("Song not found");
+                song.Album = this.GetAlbumFromDb(albumTitle);
+            }
+            if (!string.IsNullOrEmpty(artistName))
+            {
+                song.Artist = this.GetArtistFromDb(artistName);
             }
 
-            songFromDb.Title = title;
-            if (!string.IsNullOrEmpty(year))
-            {
-                songFromDb.Year = year;
-            }
-            songFromDb.Genre = genre;
-            songFromDb.Album = this.GetAlbumFromDb(albumTitle);
-            songFromDb.Artist = this.GetArtistFromDb(artistName);
-
+            this.songsRepository.Update(song);
             this.songsRepository.SaveChanges();
-            return songFromDb.Id;
+
+            return song.Id;
         }
 
         public void Delete(int id)

@@ -78,28 +78,31 @@
             return this.Ok(songId);
         }
 
-        public IHttpActionResult Put(int? id, SongRequestModel song)
+        public IHttpActionResult Put(SongEditRequestModel song)
         {
-            if (id == null)
-            {
-                return this.BadRequest("Song id cannot be null");
-            }
-
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState);
             }
 
+            var songFromDb = this.songsService
+                .SongById(song.Id);
+
+            if (songFromDb == null)
+            {
+                return this.NotFound();
+            }
+
             int songId;
+
             try
             {
-                songId = this.songsService.Edit(id.Value, song.Title, song.Year, song.Genre, song.AlbumTitle, song.ArtistName);
+                songId = this.songsService.Edit(
+                    Mapper.Map(song, songFromDb),
+                    song.AlbumTitle, 
+                    song.ArtistName);
             }
             catch (ArgumentException ex)
-            {
-                return this.BadRequest(ex.Message);
-            }
-            catch (InvalidOperationException ex)
             {
                 return this.BadRequest(ex.Message);
             }
