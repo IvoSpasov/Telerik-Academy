@@ -46,6 +46,28 @@
         }
 
         [TestMethod]
+        public void AllShouldReturnAllSongs()
+        {
+            var actualSongsCount = this.songsService.All().Count();
+            var expectedSongsCount = this.songsRepo.All().Count();
+            Assert.AreEqual(expectedSongsCount, actualSongsCount);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void SongByIdShouldThrowExceptionIfIdIsNull()
+        {
+            var result = this.songsService.SongById(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AddShouldThrowExceptionIfSongIsNull()
+        {
+            var result = this.songsService.Add(null, this.validAlbumTitle, this.validArtistName);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void AddShouldThrowExceptionIfAlbumTitleIsEmpty()
         {
@@ -109,5 +131,7 @@
             Assert.AreEqual(this.validAlbumTitle, song.Album.Title);
             Assert.AreEqual(this.validArtistName, song.Artist.Name);
         }
+
+        // TODO: Test Edit and delete
     }
 }
