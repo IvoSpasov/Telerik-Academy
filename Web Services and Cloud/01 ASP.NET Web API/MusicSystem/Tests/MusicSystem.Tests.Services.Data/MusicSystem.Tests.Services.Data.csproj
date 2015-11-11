@@ -64,6 +64,10 @@
       <Project>{674ffa32-fc89-46a5-b0b9-4d3237a21b63}</Project>
       <Name>MusicSystem.Data.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Services\MusicSystem.Services.Data\MusicSystem.Services.Data.csproj">
+      <Project>{bec71622-6db6-493e-9810-cc01dfc521a5}</Project>
+      <Name>MusicSystem.Services.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

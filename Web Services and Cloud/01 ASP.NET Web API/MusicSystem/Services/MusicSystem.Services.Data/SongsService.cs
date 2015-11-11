@@ -44,9 +44,9 @@
 
         private Album GetAlbumFromDb(string albumTitle)
         {
-            if (albumTitle == null)
+            if (string.IsNullOrEmpty(albumTitle))
             {
-                throw new ArgumentException("No album title");
+                throw new ArgumentNullException("albumTitle", "No album title");
             }
 
             var albumFromDb = this.albumsRepository
@@ -63,9 +63,9 @@
 
         private Artist GetArtistFromDb(string artistName)
         {
-            if (artistName == null)
+            if (string.IsNullOrEmpty(artistName))
             {
-                throw new ArgumentException("No artist name");
+                throw new ArgumentNullException("artistName", "No artist name");
             }
 
             var artistFromDb = this.artistsRepository
