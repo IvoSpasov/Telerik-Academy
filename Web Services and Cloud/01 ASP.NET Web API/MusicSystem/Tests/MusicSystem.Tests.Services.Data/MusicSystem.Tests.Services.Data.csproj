@@ -53,11 +53,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SongsServiceTests.cs" />
     <Compile Include="TestObjects\InMemoryRepository.cs" />
+    <Compile Include="TestObjects\TestObjectFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\MusicSystem.Data.Common\MusicSystem.Data.Common.csproj">
       <Project>{3df4807f-4925-4713-8719-9aab25c9b864}</Project>
       <Name>MusicSystem.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\MusicSystem.Data.Models\MusicSystem.Data.Models.csproj">
+      <Project>{674ffa32-fc89-46a5-b0b9-4d3237a21b63}</Project>
+      <Name>MusicSystem.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
