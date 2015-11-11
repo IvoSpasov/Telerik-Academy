@@ -88,5 +88,40 @@
                 this.validAlbumTitle, 
                 "Ivalid artist title");
         }
+
+        [TestMethod]
+        public void AddShouldInvokeSaveChanges()
+        {
+            var result = this.songsService.Add(
+                "Test title",
+                "Test year",
+                Genre.Rock,
+                this.validAlbumTitle,
+                this.validArtistName);
+
+            Assert.AreEqual(1, this.songsRepo.NumberOfSaves);
+        }
+
+        [TestMethod]
+        public void AddShouldPopulateSong()
+        {
+            const string SongTitle = "Test title";
+            const string SongYear = "Test year";
+
+            var result = this.songsService.Add(
+                SongTitle,
+                SongYear,
+                Genre.Rock,
+                this.validAlbumTitle,
+                this.validArtistName);
+
+            var song = this.songsRepo.All().FirstOrDefault(s => s.Title == SongTitle);
+            Assert.IsNotNull(song);
+            Assert.AreEqual(SongTitle, song.Title);
+            Assert.AreEqual(SongYear, song.Year);
+            Assert.AreEqual(Genre.Rock, song.Genre);
+            Assert.AreEqual(this.validAlbumTitle, song.Album.Title);
+            Assert.AreEqual(this.validArtistName, song.Artist.Name);
+        }
     }
 }

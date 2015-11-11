@@ -32,8 +32,8 @@
                 Title = title,
                 Year = year,
                 Genre = genre,
-                AlbumId = albumFromDb.Id,
-                ArtistId = artistFromDb.Id
+                Album = albumFromDb,
+                Artist = artistFromDb
             };
 
             this.songsRepository.Add(newSong);
