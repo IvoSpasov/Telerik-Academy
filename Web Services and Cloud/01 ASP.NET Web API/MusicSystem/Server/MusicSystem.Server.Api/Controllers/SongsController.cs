@@ -14,9 +14,6 @@
     [EnableCors("*", "*", "*")]
     public class SongsController : ApiController
     {
-        private IRepository<Song> songsRepository;
-        private IRepository<Album> albumsRepository;
-        private IRepository<Artist> artistsRepository;
         private ISongsService songsService;
 
         public SongsController(
@@ -25,15 +22,12 @@
             IRepository<Artist> artistsRepository,
             ISongsService songsService)
         {
-            this.songsRepository = songsRepository;
-            this.albumsRepository = albumsRepository;
-            this.artistsRepository = artistsRepository;
             this.songsService = songsService;
         }
 
         public IHttpActionResult Get()
         {
-            var songs = this.songsRepository
+            var songs = this.songsService
                 .All()
                 .ProjectTo<SongResponseModel>()
                 .ToList();
@@ -48,8 +42,8 @@
                 return this.BadRequest("Song id cannot be null");
             }
 
-            var songFromDb = this.songsRepository
-                .GetById(id.Value);
+            var songFromDb = this.songsService
+                .SongById(id.Value);
 
             if (songFromDb == null)
             {
@@ -72,9 +66,7 @@
             try
             {
                 songId = this.songsService.Add(
-                    song.Title,
-                    song.Year,
-                    song.Genre,
+                    Mapper.Map<Song>(song),
                     song.AlbumTitle,
                     song.ArtistName);
             }
@@ -98,18 +90,21 @@
                 return this.BadRequest(this.ModelState);
             }
 
-            var songFromDb = this.songsRepository
-                .GetById(id.Value);
-
-            if (songFromDb == null)
+            int songId;
+            try
             {
-                return this.NotFound();
+                songId = this.songsService.Edit(id.Value, song.Title, song.Year, song.Genre, song.AlbumTitle, song.ArtistName);
+            }
+            catch (ArgumentException ex)
+            {
+                return this.BadRequest(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return this.BadRequest(ex.Message);
             }
 
-            Mapper.Map(song, songFromDb);
-            this.songsRepository.SaveChanges();
-
-            return this.Ok(songFromDb.Id);
+            return this.Ok(songId);
         }
 
         public IHttpActionResult Delete(int? id)
@@ -118,9 +113,8 @@
             {
                 return this.BadRequest("Song id cannot be null");
             }
+            this.songsService.Delete(id.Value);
 
-            this.songsRepository.Delete(id);
-            this.songsRepository.SaveChanges();
             return this.Ok();
         }
     }

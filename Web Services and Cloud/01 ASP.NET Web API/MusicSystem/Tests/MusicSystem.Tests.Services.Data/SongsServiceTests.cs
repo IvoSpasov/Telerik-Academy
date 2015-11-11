@@ -8,6 +8,7 @@
     using System.Linq;
     using TestObjects;
 
+    // Repositories and data layer testing
     [TestClass]
     public class SongsServiceTests
     {
@@ -103,7 +104,7 @@
         }
 
         [TestMethod]
-        public void AddShouldPopulateSong()
+        public void AddShouldPopulateSongToDatabase()
         {
             const string SongTitle = "Test title";
             const string SongYear = "Test year";

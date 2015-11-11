@@ -23,23 +23,55 @@
             this.artistsRepository = artistsRepository;
         }
 
-        public int Add(string title, string year, Genre genre, string albumTitle, string artistName)
+        public IQueryable<Song> All()
         {
-            var albumFromDb = this.GetAlbumFromDb(albumTitle);
-            var artistFromDb = this.GetArtistFromDb(artistName);
-            var newSong = new Song
-            {
-                Title = title,
-                Year = year,
-                Genre = genre,
-                Album = albumFromDb,
-                Artist = artistFromDb
-            };
+            return this.songsRepository
+                .All();
+        }
 
-            this.songsRepository.Add(newSong);
+        public Song SongById(int id)
+        {
+            return this.songsRepository
+                .GetById(id);
+        }
+
+        public int Add(Song song, string albumTitle, string artistName)
+        {
+            song.Album = this.GetAlbumFromDb(albumTitle);
+            song.Artist = this.GetArtistFromDb(artistName);
+            this.songsRepository.Add(song);
             this.songsRepository.SaveChanges();
 
-            return newSong.Id;
+            return song.Id;
+        }
+
+        public int Edit(int id, string title, string year, Genre genre, string albumTitle, string artistName)
+        {
+            var songFromDb = this.songsRepository
+                .GetById(id);
+
+            if (songFromDb == null)
+            {
+                throw new InvalidOperationException("Song not found");
+            }
+
+            songFromDb.Title = title;
+            if (!string.IsNullOrEmpty(year))
+            {
+                songFromDb.Year = year;
+            }
+            songFromDb.Genre = genre;
+            songFromDb.Album = this.GetAlbumFromDb(albumTitle);
+            songFromDb.Artist = this.GetArtistFromDb(artistName);
+
+            this.songsRepository.SaveChanges();
+            return songFromDb.Id;
+        }
+
+        public void Delete(int id)
+        {
+            this.songsRepository.Delete(id);
+            this.songsRepository.SaveChanges();
         }
 
         private Album GetAlbumFromDb(string albumTitle)
