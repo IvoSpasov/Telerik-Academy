@@ -1,11 +1,12 @@
 ﻿namespace MusicSystem.Tests.Services.Data
 {
+    using System;
+    using System.Linq;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using MusicSystem.Data.Models;
     using MusicSystem.Services.Data;
     using MusicSystem.Services.Data.Interfaces;
-    using System;
-    using System.Linq;
     using TestObjects;
 
     // Repositories and data layer testing

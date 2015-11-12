@@ -1,11 +1,12 @@
 ﻿namespace MusicSystem.Tests.Server.Api
 {
-    using Moq;
-    using Data.Models;
-    using Services.Data.Interfaces;
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
+
+    using Data.Models;
+    using Moq;
     using MusicSystem.Server.Api.Models;
+    using Services.Data.Interfaces;
 
     public static class TestObjectFactory
     {

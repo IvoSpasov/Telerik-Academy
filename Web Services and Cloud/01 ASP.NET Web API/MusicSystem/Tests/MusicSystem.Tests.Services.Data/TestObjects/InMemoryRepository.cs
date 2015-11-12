@@ -1,9 +1,10 @@
 ﻿namespace MusicSystem.Tests.Services.Data.TestObjects
 {
     using System;
-    using System.Linq;
-    using MusicSystem.Data.Common.Repositories;
     using System.Collections.Generic;
+    using System.Linq;
+
+    using MusicSystem.Data.Common.Repositories;
 
     // Fake repository
     public class InMemoryRepository<T> : IRepository<T> where T : class

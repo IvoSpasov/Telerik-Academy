@@ -1,7 +1,8 @@
 ﻿namespace MusicSystem.Tests.Services.Data.TestObjects
 {
-    using MusicSystem.Data.Models;
     using System;
+
+    using MusicSystem.Data.Models;
 
     public static class TestObjectFactory
     {
