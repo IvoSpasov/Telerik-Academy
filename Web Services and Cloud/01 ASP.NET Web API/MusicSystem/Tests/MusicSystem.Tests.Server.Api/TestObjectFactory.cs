@@ -23,13 +23,13 @@
             var songsService = new Mock<ISongsService>();
             songsService.Setup(s => s.All())
                 .Returns(songs);
-            //songsService.Setup(s => s.SongById(It.Is<int>(id => id == 1)))
-            //    .Returns(songs.FirstOrDefault());
-            //songsService.Setup(s => s.SongById(It.Is<int>(id => id == -2)))
-            //    .Returns(null);
-            songsService.Setup(s => s.SongById(
-                    It.IsAny<int>()))
+
+            songsService.Setup(s => s.SongById(It.Is<int>(id => id == 1)))
                 .Returns(songs.FirstOrDefault());
+
+            songsService.Setup(s => s.SongById(It.Is<int>(id => id == -1)))
+                .Returns((Song)null);
+
             songsService.Setup(s => s.Add(
                     It.IsAny<Song>(),
                     It.IsAny<string>(),
