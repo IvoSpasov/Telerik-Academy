@@ -2,7 +2,7 @@ namespace Exam.Data.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ExamDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<ExamDbContext>
     {
         public Configuration()
         {
