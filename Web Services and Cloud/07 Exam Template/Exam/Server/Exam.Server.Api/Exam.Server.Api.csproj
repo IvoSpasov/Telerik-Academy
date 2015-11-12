@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -207,7 +211,6 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -284,6 +287,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\Exam.Data.Common\Exam.Data.Common.csproj">
+      <Project>{c080d77b-c0dc-4376-974f-76785054848e}</Project>
+      <Name>Exam.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\Exam.Data.Models\Exam.Data.Models.csproj">
       <Project>{d71c76ce-2884-479f-9903-503e349ec66c}</Project>
       <Name>Exam.Data.Models</Name>
@@ -291,6 +298,10 @@
     <ProjectReference Include="..\..\Data\Exam.Data\Exam.Data.csproj">
       <Project>{04cd96c5-a91c-46c5-92eb-0742f03161ea}</Project>
       <Name>Exam.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exam.Server.Infrastructure\Exam.Server.Infrastructure.csproj">
+      <Project>{369f4e68-77fd-422a-9df5-6cb18e13f78a}</Project>
+      <Name>Exam.Server.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
