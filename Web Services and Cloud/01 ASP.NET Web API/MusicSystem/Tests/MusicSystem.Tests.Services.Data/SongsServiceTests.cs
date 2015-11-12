@@ -8,8 +8,7 @@
     using MusicSystem.Services.Data;
     using MusicSystem.Services.Data.Interfaces;
     using TestObjects;
-
-    // Repositories and data layer testing
+    
     [TestClass]
     public class SongsServiceTests
     {
