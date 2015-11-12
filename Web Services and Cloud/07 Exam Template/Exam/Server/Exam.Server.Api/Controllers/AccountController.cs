@@ -9,16 +9,17 @@
     using System.Web;
     using System.Web.Http;
     using System.Web.Http.ModelBinding;
+
+    using Data.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.OAuth;
-    using Exam.Server.Api.Models;
-    using Exam.Server.Api.Providers;
-    using Exam.Server.Api.Results;
-    using Data.Models;
+    using Models.Account;
+    using Providers;
+    using Results;
 
     [Authorize]
     [RoutePrefix("api/Account")]
