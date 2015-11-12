@@ -207,9 +207,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\SongEditRequestModel.cs" />
-    <Compile Include="Models\SongRequestModel.cs" />
-    <Compile Include="Models\SongResponseModel.cs" />
+    <Compile Include="Models\Songs\SongEditRequestModel.cs" />
+    <Compile Include="Models\Songs\SongRequestModel.cs" />
+    <Compile Include="Models\Songs\SongResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

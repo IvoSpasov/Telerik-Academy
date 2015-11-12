@@ -5,7 +5,7 @@
 
     using Data.Models;
     using Moq;
-    using MusicSystem.Server.Api.Models;
+    using MusicSystem.Server.Api.Models.Songs;
     using Services.Data.Interfaces;
 
     public static class TestObjectFactory

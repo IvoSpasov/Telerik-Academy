@@ -4,7 +4,7 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using MusicSystem.Server.Api.Controllers;
-    using MusicSystem.Server.Api.Models;
+    using MusicSystem.Server.Api.Models.Songs;
     using MyTested.WebApi;
 
     [TestClass]

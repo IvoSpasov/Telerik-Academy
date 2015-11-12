@@ -1,4 +1,4 @@
-﻿namespace MusicSystem.Server.Api.Models
+﻿namespace MusicSystem.Server.Api.Models.Songs
 {
     using Data.Models;
     using Infrastructure.Mapping;

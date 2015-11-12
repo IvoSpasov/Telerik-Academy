@@ -8,7 +8,7 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Data.Models;
-    using Models;
+    using Models.Songs;
     using Services.Data.Interfaces;
 
     [EnableCors("*", "*", "*")]
