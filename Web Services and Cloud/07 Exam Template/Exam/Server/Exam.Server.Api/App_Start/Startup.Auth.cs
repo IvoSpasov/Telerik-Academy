@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin;
-namespace Exam.Server.Api
+﻿namespace Exam.Server.Api
 {
+    using System;
+
+    using Data;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.Owin;
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.Google;
     using Microsoft.Owin.Security.OAuth;
     using Owin;
-    using Exam.Server.Api.Providers;
-    using Data;
+    using Providers;
 
     public partial class Startup
     {
