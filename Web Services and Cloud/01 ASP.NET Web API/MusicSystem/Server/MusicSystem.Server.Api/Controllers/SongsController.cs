@@ -6,7 +6,6 @@
     using System.Web.Http.Cors;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Data.Common.Repositories;
     using Data.Models;
     using Models;
     using Services.Data.Interfaces;
@@ -52,6 +51,11 @@
 
         public IHttpActionResult Post(SongRequestModel song)
         {
+            if (song == null)
+            {
+                return this.BadRequest("Song cannot be null.");
+            }
+
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState);
@@ -76,6 +80,11 @@
 
         public IHttpActionResult Put(SongEditRequestModel song)
         {
+            if (song == null)
+            {
+                return this.BadRequest("Song cannot be null.");
+            }
+
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState);

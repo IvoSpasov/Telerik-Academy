@@ -5,6 +5,7 @@
     using Services.Data.Interfaces;
     using System.Linq;
     using System.Collections.Generic;
+    using MusicSystem.Server.Api.Models;
 
     public static class TestObjectFactory
     {
@@ -37,6 +38,24 @@
                 .Returns(1);
 
             return songsService.Object;
+        }
+
+        public static SongRequestModel GetInvalidModel()
+        {
+            return new SongRequestModel()
+            {
+                Year = "Test year"
+            };
+        }
+
+        public static SongRequestModel GetValidModel()
+        {
+            return new SongRequestModel()
+            {
+                Title = "Test title",
+                AlbumTitle = "Test album title",
+                ArtistName = "Test artist name"
+            };
         }
     }
 }
