@@ -14,7 +14,7 @@
             {
                 Title = "Test title",
                 Year = "Test year",
-                Genre = Genre.Rock                
+                Genre = Genre.Rock
             }
         }.AsQueryable();
 
@@ -25,9 +25,16 @@
                 .Returns(songs);
             //songsService.Setup(s => s.SongById(It.Is<int>(id => id == 1)))
             //    .Returns(songs.FirstOrDefault());
-            //songsService.Setup(s => s.SongById(It.Is<int>(id => id == 2)))
+            //songsService.Setup(s => s.SongById(It.Is<int>(id => id == -2)))
             //    .Returns(null);
-
+            songsService.Setup(s => s.SongById(
+                    It.IsAny<int>()))
+                .Returns(songs.FirstOrDefault());
+            songsService.Setup(s => s.Add(
+                    It.IsAny<Song>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>()))
+                .Returns(1);
 
             return songsService.Object;
         }

@@ -16,11 +16,7 @@
     {
         private ISongsService songsService;
 
-        public SongsController(
-            IRepository<Song> songsRepository,
-            IRepository<Album> albumsRepository,
-            IRepository<Artist> artistsRepository,
-            ISongsService songsService)
+        public SongsController(ISongsService songsService)
         {
             this.songsService = songsService;
         }
@@ -99,7 +95,7 @@
             {
                 songId = this.songsService.Edit(
                     Mapper.Map(song, songFromDb),
-                    song.AlbumTitle, 
+                    song.AlbumTitle,
                     song.ArtistName);
             }
             catch (ArgumentException ex)
