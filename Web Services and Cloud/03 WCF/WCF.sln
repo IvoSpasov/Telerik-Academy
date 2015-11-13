@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeekDayConsumer.Console", "
 		{116039BB-EED8-4905-8988-C0793F2A7BE9} = {116039BB-EED8-4905-8988-C0793F2A7BE9}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceWeekDay.Library", "WcfServiceWeekDay.Library\WcfServiceWeekDay.Library.csproj", "{46919E58-48D4-4140-82F7-4B7ED5B99ACB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{65098BF6-7A76-480D-B2D7-98FA1CFA3CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65098BF6-7A76-480D-B2D7-98FA1CFA3CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65098BF6-7A76-480D-B2D7-98FA1CFA3CAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46919E58-48D4-4140-82F7-4B7ED5B99ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46919E58-48D4-4140-82F7-4B7ED5B99ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46919E58-48D4-4140-82F7-4B7ED5B99ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46919E58-48D4-4140-82F7-4B7ED5B99ACB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
