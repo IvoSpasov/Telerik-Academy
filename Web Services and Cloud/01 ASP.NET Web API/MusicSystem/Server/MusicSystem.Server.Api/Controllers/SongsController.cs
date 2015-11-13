@@ -28,6 +28,11 @@
                 .ProjectTo<SongResponseModel>()
                 .ToList();
 
+            if (songs == null)
+            {
+                return this.NotFound();
+            }
+
             return this.Ok(songs);
         }
 
