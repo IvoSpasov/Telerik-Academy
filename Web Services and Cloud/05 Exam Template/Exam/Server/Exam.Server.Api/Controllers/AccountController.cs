@@ -273,7 +273,7 @@
             {
                 this.Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
 
-                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(
+                ClaimsIdentity authIdentity = await user.GenerateUserIdentityAsync(
                     this.UserManager,
                    OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(
@@ -281,7 +281,7 @@
                     CookieAuthenticationDefaults.AuthenticationType);
 
                 AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
-                this.Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
+                this.Authentication.SignIn(properties, authIdentity, cookieIdentity);
             }
             else
             {
