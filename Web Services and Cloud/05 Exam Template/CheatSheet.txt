@@ -1,0 +1,13 @@
+Check for warnings with style cop.
+MyTesed.WebApi.
+
+в DbContext -
+protected override void OnModelCreating
+
+/api/Account/Register
+в x-www-form-urlencoded
+- Email doncho@minkov.it
+- Password 123456q
+- ConfirmPassword 123456q
+
+/Token

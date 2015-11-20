@@ -1,2 +1,0 @@
-Check for warnings with style cop.
-MyTesed.WebApi.
