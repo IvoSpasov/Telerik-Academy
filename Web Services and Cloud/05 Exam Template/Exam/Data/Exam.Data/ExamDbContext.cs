@@ -1,8 +1,9 @@
 ﻿namespace Exam.Data
 {
+    using System.Data.Entity;
+
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
-    using System.Data.Entity;
 
     public class ExamDbContext : IdentityDbContext<User>
     {

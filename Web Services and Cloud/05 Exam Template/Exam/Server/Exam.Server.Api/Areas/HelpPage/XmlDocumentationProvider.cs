@@ -1,25 +1,25 @@
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Web.Http.Controllers;
-using System.Web.Http.Description;
-using System.Xml.XPath;
-using Exam.Server.Api.Areas.HelpPage.ModelDescriptions;
-
 namespace Exam.Server.Api.Areas.HelpPage
 {
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Reflection;
+    using System.Web.Http.Controllers;
+    using System.Web.Http.Description;
+    using System.Xml.XPath;
+    using ModelDescriptions;
+
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
     /// </summary>
     public class XmlDocumentationProvider : IDocumentationProvider, IModelDocumentationProvider
     {
-        private XPathNavigator _documentNavigator;
         private const string TypeExpression = "/doc/members/member[@name='T:{0}']";
         private const string MethodExpression = "/doc/members/member[@name='M:{0}']";
         private const string PropertyExpression = "/doc/members/member[@name='P:{0}']";
         private const string FieldExpression = "/doc/members/member[@name='F:{0}']";
         private const string ParameterExpression = "param[@name='{0}']";
+        private XPathNavigator documentNavigator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XmlDocumentationProvider"/> class.
@@ -31,8 +31,9 @@ namespace Exam.Server.Api.Areas.HelpPage
             {
                 throw new ArgumentNullException("documentPath");
             }
+
             XPathDocument xpath = new XPathDocument(documentPath);
-            this._documentNavigator = xpath.CreateNavigator();
+            this.documentNavigator = xpath.CreateNavigator();
         }
 
         public string GetDocumentation(HttpControllerDescriptor controllerDescriptor)
@@ -56,7 +57,7 @@ namespace Exam.Server.Api.Areas.HelpPage
                 if (methodNode != null)
                 {
                     string parameterName = reflectedParameterDescriptor.ParameterInfo.Name;
-                    XPathNavigator parameterNode = methodNode.SelectSingleNode(String.Format(CultureInfo.InvariantCulture, ParameterExpression, parameterName));
+                    XPathNavigator parameterNode = methodNode.SelectSingleNode(string.Format(CultureInfo.InvariantCulture, ParameterExpression, parameterName));
                     if (parameterNode != null)
                     {
                         return parameterNode.Value.Trim();
@@ -78,7 +79,7 @@ namespace Exam.Server.Api.Areas.HelpPage
             string memberName = string.Format(CultureInfo.InvariantCulture, "{0}.{1}", GetTypeName(member.DeclaringType), member.Name);
             string expression = member.MemberType == MemberTypes.Field ? FieldExpression : PropertyExpression;
             string selectExpression = string.Format(CultureInfo.InvariantCulture, expression, memberName);
-            XPathNavigator propertyNode = this._documentNavigator.SelectSingleNode(selectExpression);
+            XPathNavigator propertyNode = this.documentNavigator.SelectSingleNode(selectExpression);
             return GetTagValue(propertyNode, "summary");
         }
 
@@ -88,26 +89,14 @@ namespace Exam.Server.Api.Areas.HelpPage
             return GetTagValue(typeNode, "summary");
         }
 
-        private XPathNavigator GetMethodNode(HttpActionDescriptor actionDescriptor)
-        {
-            ReflectedHttpActionDescriptor reflectedActionDescriptor = actionDescriptor as ReflectedHttpActionDescriptor;
-            if (reflectedActionDescriptor != null)
-            {
-                string selectExpression = String.Format(CultureInfo.InvariantCulture, MethodExpression, GetMemberName(reflectedActionDescriptor.MethodInfo));
-                return this._documentNavigator.SelectSingleNode(selectExpression);
-            }
-
-            return null;
-        }
-
         private static string GetMemberName(MethodInfo method)
         {
-            string name = String.Format(CultureInfo.InvariantCulture, "{0}.{1}", GetTypeName(method.DeclaringType), method.Name);
+            string name = string.Format(CultureInfo.InvariantCulture, "{0}.{1}", GetTypeName(method.DeclaringType), method.Name);
             ParameterInfo[] parameters = method.GetParameters();
             if (parameters.Length != 0)
             {
                 string[] parameterTypeNames = parameters.Select(param => GetTypeName(param.ParameterType)).ToArray();
-                name += String.Format(CultureInfo.InvariantCulture, "({0})", String.Join(",", parameterTypeNames));
+                name += string.Format(CultureInfo.InvariantCulture, "({0})", string.Join(",", parameterTypeNames));
             }
 
             return name;
@@ -127,13 +116,6 @@ namespace Exam.Server.Api.Areas.HelpPage
             return null;
         }
 
-        private XPathNavigator GetTypeNode(Type type)
-        {
-            string controllerTypeName = GetTypeName(type);
-            string selectExpression = String.Format(CultureInfo.InvariantCulture, TypeExpression, controllerTypeName);
-            return this._documentNavigator.SelectSingleNode(selectExpression);
-        }
-
         private static string GetTypeName(Type type)
         {
             string name = type.FullName;
@@ -147,8 +129,9 @@ namespace Exam.Server.Api.Areas.HelpPage
                 // Trim the generic parameter counts from the name
                 genericTypeName = genericTypeName.Substring(0, genericTypeName.IndexOf('`'));
                 string[] argumentTypeNames = genericArguments.Select(t => GetTypeName(t)).ToArray();
-                name = String.Format(CultureInfo.InvariantCulture, "{0}{{{1}}}", genericTypeName, String.Join(",", argumentTypeNames));
+                name = string.Format(CultureInfo.InvariantCulture, "{0}{{{1}}}", genericTypeName, string.Join(",", argumentTypeNames));
             }
+
             if (type.IsNested)
             {
                 // Changing the nested type name from OuterType+InnerType to OuterType.InnerType to match the XML documentation syntax.
@@ -156,6 +139,25 @@ namespace Exam.Server.Api.Areas.HelpPage
             }
 
             return name;
+        }
+
+        private XPathNavigator GetMethodNode(HttpActionDescriptor actionDescriptor)
+        {
+            ReflectedHttpActionDescriptor reflectedActionDescriptor = actionDescriptor as ReflectedHttpActionDescriptor;
+            if (reflectedActionDescriptor != null)
+            {
+                string selectExpression = string.Format(CultureInfo.InvariantCulture, MethodExpression, GetMemberName(reflectedActionDescriptor.MethodInfo));
+                return this.documentNavigator.SelectSingleNode(selectExpression);
+            }
+
+            return null;
+        }
+
+        private XPathNavigator GetTypeNode(Type type)
+        {
+            string controllerTypeName = GetTypeName(type);
+            string selectExpression = string.Format(CultureInfo.InvariantCulture, TypeExpression, controllerTypeName);
+            return this.documentNavigator.SelectSingleNode(selectExpression);
         }
     }
 }

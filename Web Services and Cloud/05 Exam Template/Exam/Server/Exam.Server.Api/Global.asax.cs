@@ -13,7 +13,6 @@
     {
         protected void Application_Start()
         {
-
             DatabaseConfig.Initialize();
             AutoMapperConfig.RegisterMappings(Assembly.Load(Assemblies.ServerApi));
 

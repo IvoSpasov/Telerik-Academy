@@ -20,9 +20,13 @@
         }
 
         public IList<T> AttachedEntities { get; private set; }
+
         public IList<T> DetachedEntities { get; private set; }
+
         public IList<T> UpdatedEntities { get; private set; }
+
         public bool IsDisposed { get; private set; }
+
         public int NumberOfSaves { get; private set; }
 
         public void Add(T entity)
@@ -77,6 +81,7 @@
             {
                 throw new InvalidOperationException("No objects in database");
             }
+
             return this.data.FirstOrDefault();
         }
 

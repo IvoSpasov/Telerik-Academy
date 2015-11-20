@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net.Http.Headers;
-
 namespace Exam.Server.Api.Areas.HelpPage
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Net.Http.Headers;
+
     /// <summary>
     /// This is used to identify the place where the sample should be applied.
     /// </summary>
@@ -56,14 +56,17 @@ namespace Exam.Server.Api.Areas.HelpPage
             {
                 throw new InvalidEnumArgumentException("sampleDirection", (int)sampleDirection, typeof(SampleDirection));
             }
+
             if (controllerName == null)
             {
                 throw new ArgumentNullException("controllerName");
             }
+
             if (actionName == null)
             {
                 throw new ArgumentNullException("actionName");
             }
+
             if (parameterNames == null)
             {
                 throw new ArgumentNullException("parameterNames");
@@ -153,14 +156,17 @@ namespace Exam.Server.Api.Areas.HelpPage
             {
                 hashCode ^= this.MediaType.GetHashCode();
             }
+
             if (this.SampleDirection != null)
             {
                 hashCode ^= this.SampleDirection.GetHashCode();
             }
+
             if (this.ParameterType != null)
             {
                 hashCode ^= this.ParameterType.GetHashCode();
             }
+
             foreach (string parameterName in this.ParameterNames)
             {
                 hashCode ^= parameterName.ToUpperInvariant().GetHashCode();

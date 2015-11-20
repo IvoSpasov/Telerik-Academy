@@ -19,49 +19,49 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
     public class ModelDescriptionGenerator
     {
         // Modify this to support more data annotation attributes.
-        private readonly IDictionary<Type, Func<object, string>> AnnotationTextGenerator = new Dictionary<Type, Func<object, string>>
+        private readonly IDictionary<Type, Func<object, string>> annotationTextGenerator = new Dictionary<Type, Func<object, string>>
         {
             { typeof(RequiredAttribute), a => "Required" },
             { typeof(RangeAttribute), a =>
                 {
                     RangeAttribute range = (RangeAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Range: inclusive between {0} and {1}", range.Minimum, range.Maximum);
+                    return string.Format(CultureInfo.CurrentCulture, "Range: inclusive between {0} and {1}", range.Minimum, range.Maximum);
                 }
             },
             { typeof(MaxLengthAttribute), a =>
                 {
                     MaxLengthAttribute maxLength = (MaxLengthAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Max length: {0}", maxLength.Length);
+                    return string.Format(CultureInfo.CurrentCulture, "Max length: {0}", maxLength.Length);
                 }
             },
             { typeof(MinLengthAttribute), a =>
                 {
                     MinLengthAttribute minLength = (MinLengthAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Min length: {0}", minLength.Length);
+                    return string.Format(CultureInfo.CurrentCulture, "Min length: {0}", minLength.Length);
                 }
             },
             { typeof(StringLengthAttribute), a =>
                 {
                     StringLengthAttribute strLength = (StringLengthAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "String length: inclusive between {0} and {1}", strLength.MinimumLength, strLength.MaximumLength);
+                    return string.Format(CultureInfo.CurrentCulture, "String length: inclusive between {0} and {1}", strLength.MinimumLength, strLength.MaximumLength);
                 }
             },
             { typeof(DataTypeAttribute), a =>
                 {
                     DataTypeAttribute dataType = (DataTypeAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Data type: {0}", dataType.CustomDataType ?? dataType.DataType.ToString());
+                    return string.Format(CultureInfo.CurrentCulture, "Data type: {0}", dataType.CustomDataType ?? dataType.DataType.ToString());
                 }
             },
             { typeof(RegularExpressionAttribute), a =>
                 {
                     RegularExpressionAttribute regularExpression = (RegularExpressionAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Matching regular expression pattern: {0}", regularExpression.Pattern);
+                    return string.Format(CultureInfo.CurrentCulture, "Matching regular expression pattern: {0}", regularExpression.Pattern);
                 }
             },
         };
 
         // Modify this to add more default documentations.
-        private readonly IDictionary<Type, string> DefaultTypeDocumentation = new Dictionary<Type, string>
+        private readonly IDictionary<Type, string> defaultTypeDocumentation = new Dictionary<Type, string>
         {
             { typeof(short), "integer" },
             { typeof(int), "integer" },
@@ -84,7 +84,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
             { typeof(bool), "boolean" },
         };
 
-        private Lazy<IModelDocumentationProvider> _documentationProvider;
+        private Lazy<IModelDocumentationProvider> documentationProvider;
 
         public ModelDescriptionGenerator(HttpConfiguration config)
         {
@@ -93,7 +93,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
                 throw new ArgumentNullException("config");
             }
 
-            this._documentationProvider = new Lazy<IModelDocumentationProvider>(() => config.Services.GetDocumentationProvider() as IModelDocumentationProvider);
+            this.documentationProvider = new Lazy<IModelDocumentationProvider>(() => config.Services.GetDocumentationProvider() as IModelDocumentationProvider);
             this.GeneratedModels = new Dictionary<string, ModelDescription>(StringComparer.OrdinalIgnoreCase);
         }
 
@@ -103,7 +103,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
         {
             get
             {
-                return this._documentationProvider.Value;
+                return this.documentationProvider.Value;
             }
         }
 
@@ -139,7 +139,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
                 return modelDescription;
             }
 
-            if (this.DefaultTypeDocumentation.ContainsKey(modelType))
+            if (this.defaultTypeDocumentation.ContainsKey(modelType))
             {
                 return this.GenerateSimpleTypeModelDescription(modelType);
             }
@@ -161,6 +161,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
                         return this.GenerateCollectionModelDescription(modelType, genericArguments[0]);
                     }
                 }
+
                 if (genericArguments.Length == 2)
                 {
                     Type dictionaryType = typeof(IDictionary<,>).MakeGenericType(genericArguments);
@@ -205,7 +206,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
         private static string GetMemberName(MemberInfo member, bool hasDataContractAttribute)
         {
             JsonPropertyAttribute jsonProperty = member.GetCustomAttribute<JsonPropertyAttribute>();
-            if (jsonProperty != null && !String.IsNullOrEmpty(jsonProperty.PropertyName))
+            if (jsonProperty != null && !string.IsNullOrEmpty(jsonProperty.PropertyName))
             {
                 return jsonProperty.PropertyName;
             }
@@ -213,7 +214,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
             if (hasDataContractAttribute)
             {
                 DataMemberAttribute dataMember = member.GetCustomAttribute<DataMemberAttribute>();
-                if (dataMember != null && !String.IsNullOrEmpty(dataMember.Name))
+                if (dataMember != null && !string.IsNullOrEmpty(dataMember.Name))
                 {
                     return dataMember.Name;
                 }
@@ -252,10 +253,11 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
         private string CreateDefaultDocumentation(Type type)
         {
             string documentation;
-            if (this.DefaultTypeDocumentation.TryGetValue(type, out documentation))
+            if (this.defaultTypeDocumentation.TryGetValue(type, out documentation))
             {
                 return documentation;
             }
+
             if (this.DocumentationProvider != null)
             {
                 documentation = this.DocumentationProvider.GetDocumentation(type);
@@ -272,7 +274,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
             foreach (Attribute attribute in attributes)
             {
                 Func<object, string> textGenerator;
-                if (this.AnnotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
+                if (this.annotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
                 {
                     annotations.Add(
                         new ParameterAnnotation
@@ -291,13 +293,14 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
                 {
                     return -1;
                 }
+
                 if (y.AnnotationAttribute is RequiredAttribute)
                 {
                     return 1;
                 }
 
                 // Sort the rest based on alphabetic order of the documentation
-                return String.Compare(x.Documentation, y.Documentation, StringComparison.OrdinalIgnoreCase);
+                return string.Compare(x.Documentation, y.Documentation, StringComparison.OrdinalIgnoreCase);
             });
 
             foreach (ParameterAnnotation annotation in annotations)
@@ -413,6 +416,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
                     {
                         enumValue.Documentation = this.DocumentationProvider.GetDocumentation(field);
                     }
+
                     enumDescription.Values.Add(enumValue);
                 }
             }

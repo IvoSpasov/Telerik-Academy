@@ -1,7 +1,7 @@
-using System;
-
 namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
 {
+    using System;
+
     /// <summary>
     /// Describes a type model.
     /// </summary>
