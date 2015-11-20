@@ -129,8 +129,7 @@ namespace Exam.Server.Api.Areas.HelpPage.ModelDescriptions
                     throw new InvalidOperationException(
                         string.Format(
                             CultureInfo.CurrentCulture,
-                            "A model description could not be created. Duplicate model name '{0}' was found for types '{1}' and '{2}'. " +
-                            "Use the [ModelName] attribute to change the model name for at least one of the types so that it has a unique name.",
+                            "A model description could not be created. Duplicate model name '{0}' was found for types '{1}' and '{2}'. Use the [ModelName] attribute to change the model name for at least one of the types so that it has a unique name.",
                             modelName,
                             modelDescription.ModelType.FullName,
                             modelType.FullName));
