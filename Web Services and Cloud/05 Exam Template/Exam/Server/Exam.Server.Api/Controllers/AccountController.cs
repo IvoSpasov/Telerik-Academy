@@ -32,7 +32,8 @@
         {
         }
 
-        public AccountController(ApplicationUserManager userManager,
+        public AccountController(
+            ApplicationUserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
@@ -45,6 +46,7 @@
             {
                 return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
+
             private set
             {
                 _userManager = value;
@@ -125,9 +127,11 @@
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
+            IdentityResult result = await UserManager.ChangePasswordAsync(
+                User.Identity.GetUserId(),
+                model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -182,7 +186,8 @@
                 return BadRequest("The external login is already associated with an account.");
             }
 
-            IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId(),
+            IdentityResult result = await UserManager.AddLoginAsync(
+                User.Identity.GetUserId(),
                 new UserLoginInfo(externalData.LoginProvider, externalData.ProviderKey));
 
             if (!result.Succeeded)
@@ -210,7 +215,8 @@
             }
             else
             {
-                result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(),
+                result = await UserManager.RemoveLoginAsync(
+                    User.Identity.GetUserId(),
                     new UserLoginInfo(model.LoginProvider, model.ProviderKey));
             }
 
@@ -252,7 +258,8 @@
                 return new ChallengeResult(provider, this);
             }
 
-            User user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+            User user = await UserManager.FindAsync(new UserLoginInfo(
+                externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
@@ -260,10 +267,12 @@
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
-                ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(
+                    UserManager,
+                   OAuthDefaults.AuthenticationType);
+                ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(
+                    UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
                 AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
@@ -304,14 +313,16 @@
                 ExternalLoginViewModel login = new ExternalLoginViewModel
                 {
                     Name = description.Caption,
-                    Url = Url.Route("ExternalLogin", new
-                    {
-                        provider = description.AuthenticationType,
-                        response_type = "token",
-                        client_id = Startup.PublicClientId,
-                        redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
-                        state = state
-                    }),
+                    Url = Url.Route(
+                        "ExternalLogin",
+                        new
+                        {
+                            provider = description.AuthenticationType,
+                            response_type = "token",
+                            client_id = Startup.PublicClientId,
+                            redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
+                            state = state
+                        }),
                     State = state
                 };
                 logins.Add(login);
@@ -370,7 +381,7 @@
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
@@ -431,11 +442,11 @@
             public IList<Claim> GetClaims()
             {
                 IList<Claim> claims = new List<Claim>();
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, ProviderKey, null, LoginProvider));
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, this.ProviderKey, null, this.LoginProvider));
 
-                if (UserName != null)
+                if (this.UserName != null)
                 {
-                    claims.Add(new Claim(ClaimTypes.Name, UserName, null, LoginProvider));
+                    claims.Add(new Claim(ClaimTypes.Name, this.UserName, null, this.LoginProvider));
                 }
 
                 return claims;

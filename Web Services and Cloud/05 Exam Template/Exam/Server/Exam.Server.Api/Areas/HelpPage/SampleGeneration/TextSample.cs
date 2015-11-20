@@ -13,7 +13,8 @@ namespace Exam.Server.Api.Areas.HelpPage
             {
                 throw new ArgumentNullException("text");
             }
-            Text = text;
+
+            this.Text = text;
         }
 
         public string Text { get; private set; }
@@ -21,17 +22,17 @@ namespace Exam.Server.Api.Areas.HelpPage
         public override bool Equals(object obj)
         {
             TextSample other = obj as TextSample;
-            return other != null && Text == other.Text;
+            return other != null && this.Text == other.Text;
         }
 
         public override int GetHashCode()
         {
-            return Text.GetHashCode();
+            return this.Text.GetHashCode();
         }
 
         public override string ToString()
         {
-            return Text;
+            return this.Text;
         }
     }
 }
