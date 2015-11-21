@@ -6,11 +6,20 @@ protected override void OnModelCreating
 
 /api/Account/Register
 в x-www-form-urlencoded
-- Email doncho@minkov.it
-- Password 123456q
-- ConfirmPassword 123456q
+- Email - doncho@minkov.it
+- Password - 123456q
+- ConfirmPassword - 123456q
 
 /token
-Username
-Password
-grant_type password 
+Username - doncho@minkov.it
+Password - 123456q
+grant_type - password 
+
+Header:
+Authorization - Bearer [token]
+
+this.Request.CreateResponse(HttpStatusCode.Created), но не може да се използва с IHttpActionResult
+
+IValidatableObject
+[FromBody], [FromUri]
+[Route("")]
