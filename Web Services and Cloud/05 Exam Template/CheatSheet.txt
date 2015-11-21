@@ -10,4 +10,7 @@ protected override void OnModelCreating
 - Password 123456q
 - ConfirmPassword 123456q
 
-/Token
+/token
+Username
+Password
+grant_type password 

@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Exam.Server.Api.App_Start.NinjectConfig), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Exam.Server.Api.App_Start.NinjectConfig), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Exam.Server.Api.NinjectConfig), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Exam.Server.Api.NinjectConfig), "Stop")]
 
-namespace Exam.Server.Api.App_Start
+namespace Exam.Server.Api
 {
     using System;
     using System.Data.Entity;

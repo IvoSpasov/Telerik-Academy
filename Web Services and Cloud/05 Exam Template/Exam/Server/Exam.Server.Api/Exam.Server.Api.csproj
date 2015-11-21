@@ -338,6 +338,10 @@
       <Project>{7534ee25-ecbd-462e-8f14-e3f9dcd93f4f}</Project>
       <Name>Exam.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Services\Exam.Services.Data\Exam.Services.Data.csproj">
+      <Project>{f51e035c-e447-4c0e-b0e2-a828a021070c}</Project>
+      <Name>Exam.Services.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Exam.Server.Infrastructure\Exam.Server.Infrastructure.csproj">
       <Project>{369f4e68-77fd-422a-9df5-6cb18e13f78a}</Project>
       <Name>Exam.Server.Infrastructure</Name>
