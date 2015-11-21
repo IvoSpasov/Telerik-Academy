@@ -14,7 +14,8 @@ namespace Exam.Server.Wcf
     {
 
         [OperationContract]
-        string GetData(int value);
+        [WebInvoke(Method = "Get", UriTemplate = "services/users.svc")]
+        string GetData(string page);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

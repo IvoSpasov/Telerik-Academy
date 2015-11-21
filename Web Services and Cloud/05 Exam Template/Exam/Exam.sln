@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exam.Tests.Server.Api", "Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exam.Tests.Services.Data", "Tests\Exam.Tests.Services.Data\Exam.Tests.Services.Data.csproj", "{6FF24477-4CD2-4CA5-855F-329D6CEE3C74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exam.Server.Wcf", "Server\Exam.Server.Wcf\Exam.Server.Wcf.csproj", "{5E3C6B46-F020-4ED3-A416-DD3AD6FBC223}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{6FF24477-4CD2-4CA5-855F-329D6CEE3C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FF24477-4CD2-4CA5-855F-329D6CEE3C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FF24477-4CD2-4CA5-855F-329D6CEE3C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3C6B46-F020-4ED3-A416-DD3AD6FBC223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3C6B46-F020-4ED3-A416-DD3AD6FBC223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3C6B46-F020-4ED3-A416-DD3AD6FBC223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3C6B46-F020-4ED3-A416-DD3AD6FBC223}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,5 +90,6 @@ Global
 		{F51E035C-E447-4C0E-B0E2-A828A021070C} = {033A3D9E-65C3-480A-9E41-EF0EB56BBC2D}
 		{B360F5B9-4D8F-49FF-ADA3-1048B2A1D7E9} = {2B468F20-EEAF-4396-ABA3-005D9935671B}
 		{6FF24477-4CD2-4CA5-855F-329D6CEE3C74} = {2B468F20-EEAF-4396-ABA3-005D9935671B}
+		{5E3C6B46-F020-4ED3-A416-DD3AD6FBC223} = {C9946674-EBCA-4E03-84C3-978754100106}
 	EndGlobalSection
 EndGlobal
