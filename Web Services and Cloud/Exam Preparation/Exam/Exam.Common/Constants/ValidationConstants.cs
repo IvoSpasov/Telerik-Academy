@@ -2,5 +2,6 @@
 {
     public class ValidationConstants
     {
+        public const int NumberLength = 4;
     }
 }

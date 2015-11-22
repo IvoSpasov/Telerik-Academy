@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Web.Http;
     using AutoMapper.QueryableExtensions;
+    using Infrastructure.Validation;
     using Microsoft.AspNet.Identity;
     using Models.Games;
     using Services.Data.Interfaces;
@@ -37,7 +38,7 @@
                 .ProjectTo<NewGameResponseModel>()
                 .FirstOrDefault();
 
-            return this.Created(string.Format("api/games/{0}", newGame.Id), response);
+            return this.Created(string.Format("/api/games/{0}", newGame.Id), response);
         }
     }
 }

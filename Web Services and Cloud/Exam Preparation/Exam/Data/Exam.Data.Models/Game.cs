@@ -1,5 +1,6 @@
 ﻿namespace Exam.Data.Models
 {
+    using Common.Constants;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -26,8 +27,12 @@
         public GameState GameState { get; set; }
 
         [Required]
+        [MinLength(ValidationConstants.NumberLength)]
+        [MaxLength(ValidationConstants.NumberLength)]
         public string RedPlayerNumber { get; set; }
 
+        [MinLength(ValidationConstants.NumberLength)]
+        [MaxLength(ValidationConstants.NumberLength)]
         public string BluePlayerNumber { get; set; }
 
         public string RedPlayerId { get; set; }
