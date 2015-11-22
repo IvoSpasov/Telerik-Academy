@@ -5,7 +5,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class NewGameResponseModel : IMapFrom<Game>, IHaveCustomMappings
+    public class GameResponseModel : IMapFrom<Game>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -21,7 +21,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<Game, NewGameResponseModel>()
+            configuration.CreateMap<Game, GameResponseModel>()
                 .ForMember(g => g.Blue, opt => opt.MapFrom(g => g.BluePlayer == null ? "No blue player yet" : g.BluePlayer.Email))
                 .ForMember(g => g.Red, opt => opt.MapFrom(g => g.RedPlayer.Email))
                 .ForMember(g => g.GameState, opt => opt.MapFrom(g => g.GameState.ToString()));

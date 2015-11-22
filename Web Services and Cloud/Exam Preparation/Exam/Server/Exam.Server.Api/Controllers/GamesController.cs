@@ -3,7 +3,6 @@
     using System.Linq;
     using System.Web.Http;
     using AutoMapper.QueryableExtensions;
-    using Infrastructure.Validation;
     using Microsoft.AspNet.Identity;
     using Models.Games;
     using Services.Data.Interfaces;
@@ -15,6 +14,16 @@
         public GamesController(IGamesService gamesService)
         {
             this.gamesService = gamesService;
+        }
+
+        public IHttpActionResult Get(int page = 1)
+        {
+            var result = this.gamesService
+                .GetPublicGames(page)
+                .ProjectTo<GameResponseModel>()
+                .ToList();
+
+            return this.Ok(result);
         }
 
         [Authorize]
@@ -35,7 +44,7 @@
 
             var response = this.gamesService
                 .GetGame(newGame.Id)
-                .ProjectTo<NewGameResponseModel>()
+                .ProjectTo<GameResponseModel>()
                 .FirstOrDefault();
 
             return this.Created(string.Format("/api/games/{0}", newGame.Id), response);

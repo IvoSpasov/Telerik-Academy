@@ -1,9 +1,9 @@
 ﻿namespace Exam.Data.Models
 {
-    using Common.Constants;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Common.Constants;
 
     public class Game
     {
