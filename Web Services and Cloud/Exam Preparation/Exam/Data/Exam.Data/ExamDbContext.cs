@@ -12,7 +12,9 @@
         {
         }
 
-        public virtual IDbSet<Game> Commits { get; set; }
+        public virtual IDbSet<Game> Games { get; set; }
+
+        public virtual IDbSet<Guess> Guesses { get; set; }
 
         public static ExamDbContext Create()
         {
