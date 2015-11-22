@@ -45,6 +45,16 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Exam.Data.Common\Exam.Data.Common.csproj">
+      <Project>{c080d77b-c0dc-4376-974f-76785054848e}</Project>
+      <Name>Exam.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Exam.Data\Exam.Data.csproj">
+      <Project>{04cd96c5-a91c-46c5-92eb-0742f03161ea}</Project>
+      <Name>Exam.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -23,3 +23,5 @@ this.Request.CreateResponse(HttpStatusCode.Created), но не може да с�
 IValidatableObject
 [FromBody], [FromUri]
 [Route("")]
+
+don't forget validation and min/max length
