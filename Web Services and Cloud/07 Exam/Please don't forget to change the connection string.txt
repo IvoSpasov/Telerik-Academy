@@ -1,0 +1,3 @@
+Exam.Server.Api -> Web.config -> connectionStrings -> Data Source=
+
+Thank you.
